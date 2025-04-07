@@ -6,10 +6,12 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Support for multisite WordPress installations
 - Network admin page integration
+- Woodpecker CI integration for automated releases
 
 ### Improved
 - Error handling
 - User experience with better confirmation messages
+- Security by adding proper capability checks
 
 ## [1.0] - 2025-03-15
 ### Added
