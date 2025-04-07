@@ -1,35 +1,6 @@
-clone:
-  git:
-    image: woodpeckerci/plugin-git
-    debug: true
-
 steps:
-  build:
+  test:
     image: alpine:latest
     commands:
-      - apk add --no-cache bash zip
-      - VERSION=${CI_COMMIT_TAG#v}
-      - mkdir -p build/plugin-reference-cleaner
-      - cp plugin-reference-cleaner.php build/plugin-reference-cleaner/
-      - cp readme.txt build/plugin-reference-cleaner/
-      - cp LICENSE build/plugin-reference-cleaner/
-      - cp README.md build/plugin-reference-cleaner/
-      - if [ -f CHANGELOG.md ]; then cp CHANGELOG.md build/plugin-reference-cleaner/; fi
-      - cd build
-      - zip -r ../plugin-reference-cleaner-$VERSION.zip plugin-reference-cleaner
-      - cd ..
-      - echo "Build completed - plugin-reference-cleaner-$VERSION.zip"
-      - ls -la *.zip
-      
-  release:
-    image: plugins/gitea-release
-    environment:
-      PLUGIN_API_KEY:
-        from_secret: gitea_token
-      PLUGIN_BASE_URL: https://gitea.wpallstars.com
-      PLUGIN_FILES: plugin-reference-cleaner-*.zip
-      PLUGIN_TITLE: "Release ${CI_COMMIT_TAG}"
-      PLUGIN_NOTE: "Plugin Reference Cleaner ${CI_COMMIT_TAG}\n\nSee [CHANGELOG.md](https://gitea.wpallstars.com/wpallstars/plugin-reference-cleaner/src/branch/main/CHANGELOG.md) for details."
-
-when:
-  event: tag 
+      - echo "Hello from Woodpecker CI"
+      - echo "Testing minimal configuration"
