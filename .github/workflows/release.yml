@@ -1,0 +1,49 @@
+name: Build Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build and Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create build directory
+        run: mkdir -p build/plugin-reference-cleaner
+
+      - name: Copy plugin files
+        run: |
+          cp plugin-reference-cleaner.php build/plugin-reference-cleaner/
+          cp readme.txt build/plugin-reference-cleaner/
+          cp LICENSE build/plugin-reference-cleaner/
+          cp README.md build/plugin-reference-cleaner/
+
+      - name: Create ZIP file
+        run: |
+          cd build
+          zip -r ../plugin-reference-cleaner-${{ steps.get_version.outputs.VERSION }}.zip plugin-reference-cleaner
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release v${{ steps.get_version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          files: |
+            plugin-reference-cleaner-${{ steps.get_version.outputs.VERSION }}.zip
+          body: |
+            Plugin Reference Cleaner v${{ steps.get_version.outputs.VERSION }}
+            
+            See [CHANGELOG.md](https://github.com/wpallstars/plugin-reference-cleaner/blob/main/CHANGELOG.md) for details. 

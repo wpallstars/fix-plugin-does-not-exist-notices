@@ -1,0 +1,42 @@
+# Git
+.git
+.github
+.gitignore
+.gitattributes
+
+# Build tools
+.distignore
+build.sh
+build
+
+# Documentation
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+
+# Development files
+node_modules
+.editorconfig
+.eslintrc
+.eslintignore
+.stylelintrc
+phpcs.xml
+phpunit.xml
+tests
+.travis.yml
+.gitlab-ci.yml
+Gruntfile.js
+gulpfile.js
+package.json
+package-lock.json
+composer.json
+composer.lock
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+*.log
+*.bak
+*.tmp
+*.zip 
