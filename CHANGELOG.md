@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2] - 2025-04-07
+### Added
+- Improved documentation with detailed explanation
+- Added SQL reference for technical users
+- Suggested potential inclusion in WordPress core
+
 ## [1.1] - 2025-04-07
 ### Added
 - Support for multisite WordPress installations
