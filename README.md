@@ -1,13 +1,23 @@
 # Plugin Reference Cleaner
 
-A WordPress plugin that adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries in the database.
+Have you ever deleted a plugin some other way than on the `/wp-admin/plugins.php` page, you'll probabaly have been stuck with this annoying notifications that can't be cleared:
+
+> "The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
+
+This small WordPress utility plugin adds a "Remove Reference" button to these plugin deactivation error notices, allowing you to clean up the invalid plugin entries in the database.
 
 ## Description
 
 When WordPress detects a plugin file that no longer exists but is still referenced in the database as active, it displays an error notice. This plugin enhances those notices with a button that allows you to safely remove the invalid reference with a single click.
 
+You can find these with `SELECT * FROM wp_options WHERE option_name = 'active_plugins';` — but, the cleanup involved removing the rogue entry, and renumbering the others. This plugin can simply do that for you at the click of a button added to that WP standard notification.
+
+It's probabaly something that should be added to WP core. If anyone from the core team wants to adopt this solution, it's GPL, so feel free.
+
 **Note:** This plugin only needs to be installed and active if you have an error notification showing like this:
 "The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
+
+If you don't have this notification perpetually showing on your `/wp-admin/plugins.php` page, then you don't need this, but you might like to save or bookmark it for if ever you do.
 
 ## Features
 
