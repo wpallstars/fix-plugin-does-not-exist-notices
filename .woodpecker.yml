@@ -1,3 +1,8 @@
+clone:
+  git:
+    image: woodpeckerci/plugin-git
+    debug: true
+
 steps:
   build:
     image: alpine:latest
