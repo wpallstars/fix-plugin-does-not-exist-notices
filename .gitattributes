@@ -1,0 +1,32 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Text files that should be normalized
+*.php text
+*.css text
+*.js text
+*.htm text
+*.html text
+*.xml text
+*.txt text
+*.ini text
+*.inc text
+*.md text
+.htaccess text
+
+# Files that should be treated as binary
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.ttf binary
+*.eot binary
+*.woff binary
+
+# Set the default behavior for GitHub language detection
+*.css linguist-language=CSS
+*.js linguist-language=JavaScript
+*.php linguist-language=PHP 
