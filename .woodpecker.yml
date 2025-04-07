@@ -1,4 +1,4 @@
-pipeline:
+steps:
   build:
     image: alpine:latest
     commands:
@@ -30,10 +30,6 @@ pipeline:
         Plugin Reference Cleaner ${CI_COMMIT_TAG}
         
         See [CHANGELOG.md](https://gitea.wpallstars.com/wpallstars/plugin-reference-cleaner/src/branch/main/CHANGELOG.md) for details.
-    when:
-      event: tag
-      tag: v*
 
 when:
-  event: tag
-  tag: v* 
+  event: tag 
