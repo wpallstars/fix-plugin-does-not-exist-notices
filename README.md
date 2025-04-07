@@ -19,6 +19,13 @@ It's probabaly something that should be added to WP core. If anyone from the cor
 
 If you don't have this notification perpetually showing on your `/wp-admin/plugins.php` page, then you don't need this, but you might like to save or bookmark it for if ever you do.
 
+**Testing:** Just delete any plugin (that you can replace) from your `/wp-content/plugins` directory, via ftp or however you manage your WordPress files, then revisit your `/wp-admin/plugins.php` page with this plugin active to show the "Remove Reference" button.
+
+The only ways I know to clear this missing plugin notification are:
+1. Reinstall it and delete on the `/wp-admin/plugins.php` page.
+2. Run `SELECT * FROM wp_options WHERE option_name = 'active_plugins';` (or `wp_1_options`, `wp_2_options`, `wp_3_options`, etc on a multisite network, using the side id of the site affected) via phpMyAdmin or Adminer, etc, or via mysql via your server commandline. Then edit the record, copying the json into an AI LLM and asking it to update without the reference to the missing plugin.
+3. Use this plugin.
+
 ## Features
 
 * Adds a "Remove Reference" button to plugin error notices
