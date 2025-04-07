@@ -16,6 +16,7 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 * Confirms before removing any plugin references
 * Simple, lightweight solution with no settings page required
 * Secure implementation with proper permissions checking
+* Compatible with WordPress 5.0+
 
 ## Installation
 
