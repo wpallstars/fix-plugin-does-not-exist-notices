@@ -1,12 +1,12 @@
 === Plugin Reference Cleaner ===
 Author: Marcus Quinn
 Author URI: https://wpallstars.com
-Version: 1.2
+Version: 1.2.1
 License: GPL-2.0+
 
 == Description ==
 
-Have you ever deleted a plugin some other way than on the /wp-admin/plugins.php page, you'll probably have been stuck with this annoying notification that can't be cleared:
+Have you ever deleted a plugin some other way than through the /wp-admin/plugins.php page? If so, you've probably been stuck with this annoying notification that can't be cleared:
 
 "The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
 
@@ -14,7 +14,7 @@ This small WordPress utility plugin adds a "Remove Reference" button to these pl
 
 When WordPress detects a plugin file that no longer exists but is still referenced in the database as active, it displays an error notice. This plugin enhances those notices with a button that allows you to safely remove the invalid reference with a single click.
 
-You can find these with `SELECT * FROM wp_options WHERE option_name = 'active_plugins';` — but, the cleanup involved removing the rogue entry, and renumbering the others. This plugin can simply do that for you at the click of a button added to that WP standard notification.
+You can find these with `SELECT * FROM wp_options WHERE option_name = 'active_plugins';` — but the cleanup involves removing the rogue entry, and renumbering all others. This plugin can simply do that for you at the click of a button added to that WP standard notification.
 
 It's probably something that should be added to WP core. If anyone from the core team wants to adopt this solution, it's GPL, so feel free.
 
@@ -46,6 +46,11 @@ If you don't have this notification perpetually showing on your /wp-admin/plugin
 4. The page will refresh with the error notice removed
 
 == Changelog ==
+
+= 1.2.1 =
+* Fixed typos in documentation
+* Improved text clarity
+* Added question mark to first sentence for better readability
 
 = 1.2 =
 * Improved documentation with detailed explanation

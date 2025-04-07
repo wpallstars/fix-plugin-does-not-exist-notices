@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2025-04-07
+### Improved
+- Fixed typos in documentation
+- Improved text clarity
+- Added question mark to first sentence for better readability
+
 ## [1.2] - 2025-04-07
 ### Added
 - Improved documentation with detailed explanation

@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Plugin Reference Cleaner
  * Description: Adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries.
- * Version: 1.2
+ * Version: 1.2.1
  * Author: Marcus Quinn
  * Author URI: https://wpallstars.com
  * License: GPL-2.0+
