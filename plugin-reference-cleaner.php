@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Plugin Reference Cleaner
  * Description: Adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries.
- * Version: 1.2.3
+ * Version: 1.2.4
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -59,55 +59,123 @@ class Plugin_Reference_Cleaner {
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
                 var pluginFiles = <?php echo wp_json_encode($plugin_files); ?>;
+                console.log('Plugin Reference Cleaner: Detected plugin files:', pluginFiles);
                 
-                // Try multiple selectors to find error notices
-                var notices = document.querySelectorAll('.notice-error p, .error p, .notice p, .updated p, .update-nag p');
-                
-                if (notices.length === 0) {
-                    // If no p elements found, try the parent elements
-                    notices = document.querySelectorAll('.notice-error, .error, .notice, .updated, .update-nag');
-                }
-                
-                if (notices.length === 0) {
-                    // Try a more generic approach - find any element containing the error text
-                    var allElements = document.querySelectorAll('*');
-                    var errorNotices = [];
-                    
-                    for (var i = 0; i < allElements.length; i++) {
-                        var el = allElements[i];
-                        if (el.childNodes.length === 1 && el.childNodes[0].nodeType === 3) { // Text node
-                            if (el.textContent.includes('has been deactivated due to an error: Plugin file does not exist') ||
-                                el.textContent.includes('deactivated due to an error: Plugin file does not exist')) {
-                                errorNotices.push(el);
-                            }
-                        }
-                    }
-                    
-                    if (errorNotices.length > 0) {
-                        notices = errorNotices;
-                    }
-                }
-                
-                if (notices.length === 0) {
-                    console.log('Plugin Reference Cleaner: No notice elements found');
+                // Get all notifications directly in the plugins page
+                var pluginsPage = document.querySelector('.wrap');
+                if (!pluginsPage) {
+                    console.log('Plugin Reference Cleaner: Could not find the plugins page wrapper');
                     return;
                 }
                 
-                notices.forEach(function(notice) {
+                // Look specifically for elements containing the error message
+                // Use direct DOM traversal to find all text nodes
+                function findTextNodesWithText(element, searchText) {
+                    var result = [];
+                    var walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+                    var node;
+                    
+                    while (node = walk.nextNode()) {
+                        if (node.nodeValue.indexOf(searchText) > -1) {
+                            result.push(node);
+                        }
+                    }
+                    
+                    return result;
+                }
+                
+                // Find paragraphs containing error messages
+                var errorTexts = findTextNodesWithText(pluginsPage, 'Plugin file does not exist');
+                console.log('Plugin Reference Cleaner: Found error nodes:', errorTexts.length);
+                
+                if (errorTexts.length === 0) {
+                    // Try another approach - find direct error messages
+                    var allElements = pluginsPage.querySelectorAll('*');
+                    for (var i = 0; i < allElements.length; i++) {
+                        var el = allElements[i];
+                        var text = el.textContent;
+                        if (text && text.includes('has been deactivated due to an error: Plugin file does not exist')) {
+                            errorTexts.push(el);
+                        }
+                    }
+                }
+                
+                // Handle each error message
+                errorTexts.forEach(function(textNode) {
+                    console.log('Plugin Reference Cleaner: Processing error node:', textNode);
+                    
+                    // Get the parent element of the text node
+                    var errorElement = textNode.parentNode || textNode;
+                    
+                    // Check if a button already exists to avoid duplicates
+                    if (errorElement.querySelector('.remove-plugin-ref')) {
+                        console.log('Plugin Reference Cleaner: Button already exists for this element');
+                        return;
+                    }
+                    
+                    // Find which plugin file this error refers to
+                    var matchingPluginFile = null;
                     pluginFiles.forEach(function(pluginFile) {
-                        if (notice.textContent.includes(pluginFile) || 
-                            notice.textContent.includes('Plugin file does not exist')) {
-                            var button = document.createElement('button');
-                            button.textContent = 'Remove Reference';
-                            button.className = 'button button-secondary remove-plugin-ref';
-                            button.dataset.plugin = pluginFile;
-                            button.style.marginLeft = '10px';
-                            notice.appendChild(button);
-                            console.log('Plugin Reference Cleaner: Added button for ' + pluginFile);
+                        if (textNode.nodeValue && textNode.nodeValue.includes(pluginFile) || 
+                            (textNode.textContent && textNode.textContent.includes(pluginFile))) {
+                            matchingPluginFile = pluginFile;
                         }
                     });
+                    
+                    // If we couldn't match a specific plugin, use the first one as fallback
+                    if (!matchingPluginFile && pluginFiles.length > 0) {
+                        matchingPluginFile = pluginFiles[0];
+                        console.log('Plugin Reference Cleaner: Using fallback plugin file:', matchingPluginFile);
+                    }
+                    
+                    if (matchingPluginFile) {
+                        // Create button
+                        var button = document.createElement('button');
+                        button.textContent = 'Remove Reference';
+                        button.className = 'button button-secondary remove-plugin-ref';
+                        button.dataset.plugin = matchingPluginFile;
+                        button.style.marginLeft = '10px';
+                        
+                        // Append the button to the error message
+                        errorElement.appendChild(button);
+                        console.log('Plugin Reference Cleaner: Added button for ' + matchingPluginFile + ' to', errorElement);
+                    } else {
+                        console.log('Plugin Reference Cleaner: Could not determine plugin file for this error');
+                    }
                 });
+                
+                // Inject a more direct approach if the above fails
+                if (errorTexts.length === 0) {
+                    // Target the specific format in the screenshot
+                    var errorMessages = document.querySelectorAll('.wrap > .notice, .wrap > div > .notice');
+                    console.log('Plugin Reference Cleaner: Trying direct approach, found notices:', errorMessages.length);
+                    
+                    errorMessages.forEach(function(notice) {
+                        var text = notice.textContent;
+                        if (text && text.includes('Plugin file does not exist')) {
+                            // Extract the plugin path
+                            var pluginMatch = /The plugin ([^ ]+) has been deactivated/.exec(text);
+                            var pluginFile = pluginMatch ? pluginMatch[1] : (pluginFiles.length > 0 ? pluginFiles[0] : null);
+                            
+                            if (pluginFile) {
+                                // Get container to add button
+                                var container = notice.querySelector('p') || notice;
+                                
+                                if (!container.querySelector('.remove-plugin-ref')) {
+                                    var button = document.createElement('button');
+                                    button.textContent = 'Remove Reference';
+                                    button.className = 'button button-secondary remove-plugin-ref';
+                                    button.dataset.plugin = pluginFile;
+                                    button.style.marginLeft = '10px';
+                                    container.appendChild(button);
+                                    console.log('Plugin Reference Cleaner: Direct approach - added button for ' + pluginFile);
+                                }
+                            }
+                        }
+                    });
+                }
 
+                // Add click event listeners to all created buttons
                 document.querySelectorAll('.remove-plugin-ref').forEach(function(button) {
                     button.addEventListener('click', function(e) {
                         e.preventDefault();

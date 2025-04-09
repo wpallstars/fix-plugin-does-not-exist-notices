@@ -1,7 +1,7 @@
 # Plugin Reference Cleaner
 Author: Marcus Quinn
 Author URI: https://www.wpallstars.com
-Version: 1.2.3
+Version: 1.2.4
 License: GPL-2.0+
 
 ## Description
@@ -46,6 +46,12 @@ If you don't have this notification perpetually showing on your /wp-admin/plugin
 4. The page will refresh with the error notice removed
 
 ## Changelog
+
+### 1.2.4
+* Fixed compatibility with more WordPress admin themes
+* Added advanced DOM traversal to find error messages
+* Implemented fallback mechanisms to ensure button appears
+* Added detailed console logging for troubleshooting
 
 ### 1.2.3
 * Fixed button not appearing in some WordPress admin themes

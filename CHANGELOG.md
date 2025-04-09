@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.4] - 2023-10-05
+### Fixed
+- Compatibility with more WordPress admin UI variations
+- Specific targeting for admin notices in various themes
+
+### Added
+- Advanced DOM traversal using TreeWalker API
+- Multiple fallback approaches to ensure button appears
+- Enhanced console logging for troubleshooting
+
 ## [1.2.3] - 2023-10-05
 ### Fixed
 - Button not appearing in some WordPress admin themes
