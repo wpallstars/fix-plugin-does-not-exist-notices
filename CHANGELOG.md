@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2023-10-05
+### Changed
+- Complete redesign for maximum compatibility with all WordPress themes
+- Now uses the plugins list table for missing plugin references
+- Uses standard WordPress admin UI patterns and hooks
+
+### Added
+- Missing plugins now appear directly in the plugins list
+- "Remove Reference" action link in the plugins list
+- Success/error notices after removing references
+
+### Fixed
+- Compatibility issues with various WordPress admin themes
+- Reliability issues with notification detection
+
 ## [1.2.4] - 2023-10-05
 ### Fixed
 - Compatibility with more WordPress admin UI variations
