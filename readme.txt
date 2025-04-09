@@ -1,7 +1,7 @@
 === Plugin Reference Cleaner ===
 Author: Marcus Quinn
 Author URI: https://www.wpallstars.com
-Version: 1.3.1
+Version: 1.3.2
 License: GPL-2.0+
 
 == Description ==
@@ -46,6 +46,11 @@ If you don't have this notification perpetually showing on your /wp-admin/plugin
 4. The page will refresh with the error notice removed
 
 == Changelog ==
+
+= 1.3.2 =
+* Added prominent notification directly below WordPress error messages
+* Improved user guidance with visual cues to connect error and solution
+* Added eye-catching styling to help users understand how to fix errors
 
 = 1.3.1 =
 * Added instructional notification explaining how to use the plugin

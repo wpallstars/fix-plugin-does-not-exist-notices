@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.2] - 2023-10-05
+### Added
+- Prominent notification that appears directly below WordPress error messages
+- Visual styling to help users connect error message with solution
+- Direction arrows and highlighted text to improve user guidance
+
 ## [1.3.1] - 2023-10-05
 ### Added
 - Instructional notification explaining how to use the plugin

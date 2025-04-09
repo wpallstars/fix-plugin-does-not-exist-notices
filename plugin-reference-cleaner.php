@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Plugin Reference Cleaner
  * Description: Adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries.
- * Version: 1.3.1
+ * Version: 1.3.2
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -153,8 +153,42 @@ class Plugin_Reference_Cleaner {
         // Get invalid plugins
         $invalid_plugins = $this->get_invalid_plugins();
         
-        // Display instructional notice if there are invalid plugins
+        // Create a highlighted notice immediately after WordPress error messages
         if (!empty($invalid_plugins)) {
+            // Add a notice specifically targeting the WordPress error notification
+            add_action('admin_print_footer_scripts', function() use ($invalid_plugins) {
+                ?>
+                <script type="text/javascript">
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Find all error notifications about missing plugins
+                        var errorNotices = document.querySelectorAll('.notice-error, .error, .updated.error');
+                        
+                        errorNotices.forEach(function(notice) {
+                            if (notice.textContent.includes('Plugin file does not exist')) {
+                                // Create our custom notice
+                                var ourNotice = document.createElement('div');
+                                ourNotice.className = 'notice notice-warning';
+                                ourNotice.style.borderLeft = '4px solid #ffba00';
+                                ourNotice.style.backgroundColor = '#fff8e5';
+                                ourNotice.style.padding = '10px 12px';
+                                ourNotice.style.margin = '5px 0 15px';
+                                ourNotice.style.fontSize = '14px';
+                                
+                                // Add content
+                                ourNotice.innerHTML = '<h3 style="margin-top:0;color:#826200;">👉 Plugin Reference Cleaner Can Fix This</h3>' +
+                                    '<p>To remove the above error notification, scroll down to find the plugin marked with "<strong style="color:red">(File Missing)</strong>" and click its "<strong>Remove Reference</strong>" link.</p>' +
+                                    '<p>This will permanently remove the missing plugin reference from your database.</p>';
+                                
+                                // Insert our notice right after the error
+                                notice.parentNode.insertBefore(ourNotice, notice.nextSibling);
+                            }
+                        });
+                    });
+                </script>
+                <?php
+            });
+            
+            // Also display our standard info notice with more details
             echo '<div class="notice notice-info is-dismissible">';
             echo '<h3>Plugin Reference Cleaner</h3>';
             echo '<p><strong>Missing plugin files detected:</strong> The plugins listed below with <span style="color:red;">(File Missing)</span> tag no longer exist but are still referenced in your database.</p>';
