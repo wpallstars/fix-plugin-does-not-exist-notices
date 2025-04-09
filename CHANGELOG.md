@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2023-10-05
+### Added
+- Instructional notification explaining how to use the plugin
+- Step-by-step guidance for removing plugin references
+- Clear visual indicators for missing plugins
+
 ## [1.3.0] - 2023-10-05
 ### Changed
 - Complete redesign for maximum compatibility with all WordPress themes

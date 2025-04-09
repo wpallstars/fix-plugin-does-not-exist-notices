@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Plugin Reference Cleaner
  * Description: Adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries.
- * Version: 1.3.0
+ * Version: 1.3.1
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -148,6 +148,19 @@ class Plugin_Reference_Cleaner {
         // Only run on the plugins page
         if (!$this->is_plugins_page()) {
             return;
+        }
+        
+        // Get invalid plugins
+        $invalid_plugins = $this->get_invalid_plugins();
+        
+        // Display instructional notice if there are invalid plugins
+        if (!empty($invalid_plugins)) {
+            echo '<div class="notice notice-info is-dismissible">';
+            echo '<h3>Plugin Reference Cleaner</h3>';
+            echo '<p><strong>Missing plugin files detected:</strong> The plugins listed below with <span style="color:red;">(File Missing)</span> tag no longer exist but are still referenced in your database.</p>';
+            echo '<p><strong>How to fix:</strong> Click the "Remove Reference" link next to each missing plugin to safely remove it from your active plugins list.</p>';
+            echo '<p>This will clean up your database and remove the error notifications.</p>';
+            echo '</div>';
         }
         
         // Show success message
