@@ -1,49 +1,87 @@
 === Plugin Reference Cleaner ===
-Author: Marcus Quinn
-Author URI: https://www.wpallstars.com
-Version: 1.3.3
+Contributors: marcusquinn
+Donate link: https://www.wpallstars.com
+Tags: plugins, missing plugins, cleanup, error fix, admin tools
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.0
+Stable tag: 1.3.3
 License: GPL-2.0+
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+Easily remove references to deleted plugins that cause "Plugin file does not exist" errors in your WordPress admin.
 
 == Description ==
 
-Have you ever deleted a plugin some other way than through the /wp-admin/plugins.php page? If so, you've probably been stuck with this annoying notification that can't be cleared:
+Have you ever deleted a plugin directly from the server or database and then been stuck with annoying error notifications that can't be cleared?
 
 "The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
 
-This small WordPress utility plugin adds a "Remove Reference" button to these plugin deactivation error notices, allowing you to clean up the invalid plugin entries in the database.
+This small utility plugin adds missing plugins to your WordPress plugins list and provides a "Remove Reference" link, allowing you to safely clean up invalid plugin entries with one click.
 
-When WordPress detects a plugin file that no longer exists but is still referenced in the database as active, it displays an error notice. This plugin enhances those notices with a button that allows you to safely remove the invalid reference with a single click.
+= Key Features =
 
-You can find these with `SELECT * FROM wp_options WHERE option_name = 'active_plugins';` — but the cleanup involves removing the rogue entry, and renumbering all others. This plugin can simply do that for you at the click of a button added to that WP standard notification.
+* Adds missing plugins directly to your plugins list
+* Provides a simple "Remove Reference" action link
+* Works with both single site and multisite WordPress installations
+* Includes helpful notifications explaining how to fix plugin errors
+* One-click auto-scroll to find missing plugins in large sites
+* Clean, user-friendly interface following WordPress design patterns
 
-It's probably something that should be added to WP core. If anyone from the core team wants to adopt this solution, it's GPL, so feel free.
+= How It Works =
 
-Note: This plugin only needs to be installed and active if you have an error notification showing at /wp-admin/plugins.php, like this:
-"The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
+When WordPress detects a plugin file that no longer exists but is still referenced in the database as active, it displays an error notice. This plugin:
 
-If you don't have this notification perpetually showing on your /wp-admin/plugins.php page, then you don't need this, but you might like to save or bookmark it for if ever you do.
+1. Detects all missing plugin references in your database
+2. Adds them to your plugins list with "(File Missing)" indicators
+3. Provides a "Remove Reference" link to safely remove them
+4. Shows clear notifications guiding you through the cleanup process
 
-== Features ==
+= Use Cases =
 
-* Adds a "Remove Reference" button to plugin error notices
-* Works for both single site and multisite WordPress installations
-* Confirms before removing any plugin references
-* Simple, lightweight solution with no settings page required
-* Secure implementation with proper permissions checking
-* Compatible with WordPress 5.0+
+* You've accidentally deleted a plugin via FTP
+* A plugin was removed by another admin but references remain
+* You've migrated from another site and have leftover plugin references
+* Your hosting provider removed a plugin but didn't clean the database
 
 == Installation ==
 
-1. Upload the plugin-reference-cleaner.php file to your /wp-content/plugins/ directory
+1. Upload the `plugin-reference-cleaner` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. No configuration needed - the plugin works automatically
+4. If you have missing plugin errors, you'll immediately see them in your plugins list with "Remove Reference" links
 
-== Usage ==
+== Frequently Asked Questions ==
 
-1. Navigate to Plugins > Installed Plugins
-2. If any "Plugin file does not exist" error notices appear, a "Remove Reference" button will be displayed
-3. Click the button and confirm to remove the invalid plugin reference
-4. The page will refresh with the error notice removed
+= Is it safe to remove plugin references? =
+
+Yes, this plugin only removes entries from the WordPress active_plugins option, which is safe to modify when a plugin no longer exists. It doesn't modify any other database tables or settings.
+
+= What happens after I remove a reference? =
+
+The plugin entry will be removed from your active plugins list, and the corresponding error notification will no longer appear after you refresh the page.
+
+= Can I use this plugin on a multisite installation? =
+
+Yes, the plugin works on both single sites and multisite installations. It properly handles network-activated plugins as well.
+
+= How do I know which plugin references should be removed? =
+
+The plugin will only show "Remove Reference" links for plugins that are listed in your database but don't actually exist in your plugins directory. These are safe to remove.
+
+= Will this break my site? =
+
+No. Since the plugin is only removing references to plugins that no longer exist, removing these references won't affect your site's functionality. In fact, it's cleaning up remnants that might be causing issues.
+
+= What if I accidentally remove a reference I shouldn't have? =
+
+If you remove a reference to a plugin that you later want to reinstall, simply install the plugin again and activate it normally.
+
+== Screenshots ==
+
+1. Error message with explanation notification
+2. Missing plugin shown in the plugins list with "Remove Reference" link
+3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
 
@@ -103,6 +141,17 @@ If you don't have this notification perpetually showing on your /wp-admin/plugin
 
 = 1.0 =
 * Initial release
+
+== Upgrade Notice ==
+
+= 1.3.3 =
+Major usability improvement with auto-scroll feature to help find missing plugins in your list!
+
+= 1.3.0 =
+Completely redesigned for better compatibility with all WordPress themes - now works with any WordPress installation!
+
+= 1.2.2 =
+Important stability fix - resolves timeout issues during plugin activation!
 
 == Support ==
 

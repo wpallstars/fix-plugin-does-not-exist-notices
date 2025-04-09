@@ -46,4 +46,23 @@ jobs:
           body: |
             Plugin Reference Cleaner v${{ steps.get_version.outputs.VERSION }}
             
-            See [CHANGELOG.md](https://github.com/wpallstars/plugin-reference-cleaner/blob/main/CHANGELOG.md) for details. 
+            See [CHANGELOG.md](https://github.com/wpallstars/plugin-reference-cleaner/blob/main/CHANGELOG.md) for details.
+
+  # Deploy to WordPress.org
+  wordpress:
+    name: Deploy to WordPress.org
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: WordPress Plugin Deploy
+        id: deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        with:
+          generate-zip: true
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: plugin-reference-cleaner 

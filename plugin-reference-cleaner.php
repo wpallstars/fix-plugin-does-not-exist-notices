@@ -1,11 +1,37 @@
 <?php
-/*
+/**
+ * Plugin Reference Cleaner
+ *
+ * @package           PluginReferenceCleaner
+ * @author            Marcus Quinn
+ * @copyright         2023 WP All Stars
+ * @license           GPL-2.0+
+ *
+ * @wordpress-plugin
  * Plugin Name: Plugin Reference Cleaner
  * Description: Adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries.
  * Version: 1.3.3
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: plugin-reference-cleaner
+ * Domain Path: /languages
+ * Requires at least: 5.0
+ * Requires PHP: 7.0
+ *
+ * This plugin is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
+ *
+ * This plugin is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this plugin. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
  */
 
 // Exit if accessed directly

@@ -3,6 +3,9 @@
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+._*
+.Spotlight-V100
+.Trashes
 
 # Editor files
 *.swp
@@ -12,11 +15,19 @@ Desktop.ini
 .vscode/
 *.sublime-project
 *.sublime-workspace
+*.komodoproject
+.komodotools
+*.tmproj
+*.tmproject
+.project
+.settings/
 
 # Dependency directories
 node_modules/
 vendor/
 bower_components/
+composer.lock
+package-lock.json
 
 # Build files
 build/
@@ -38,4 +49,31 @@ debug.log
 # Misc
 .env
 .env.*
-!.env.example 
+!.env.example
+
+# WordPress testing
+.phpunit.result.cache
+.phpcs.cache
+phpunit.xml
+phpcs.xml
+
+# Development tools
+.git/
+.github/
+.gitlab/
+.gitattributes
+.travis.yml
+.drone.yml
+.woodpecker.yml
+codecov.yml
+.babelrc
+.browserslistrc
+.editorconfig
+.eslintignore
+.eslintrc
+.prettierrc
+.stylelintrc
+webpack.config.js
+gulpfile.js
+Gruntfile.js
+*.zip 

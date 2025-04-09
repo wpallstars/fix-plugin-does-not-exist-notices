@@ -8,10 +8,14 @@
 .distignore
 build.sh
 build
+.drone.yml
+.woodpecker.yml
 
 # Documentation
 CONTRIBUTING.md
 CODE_OF_CONDUCT.md
+CHANGELOG.md
+assets/README.md
 
 # Development files
 node_modules
@@ -31,6 +35,9 @@ package-lock.json
 composer.json
 composer.lock
 
+# WordPress.org specific
+.wordpress-org
+
 # Miscellaneous
 .DS_Store
 Thumbs.db
@@ -39,4 +46,6 @@ Thumbs.db
 *.log
 *.bak
 *.tmp
-*.zip 
+*.zip
+*~
+._* 

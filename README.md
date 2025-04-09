@@ -1,49 +1,106 @@
 # Plugin Reference Cleaner
-Author: Marcus Quinn
-Author URI: https://www.wpallstars.com
-Version: 1.3.3
-License: GPL-2.0+
+
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/plugin-reference-cleaner)](https://wordpress.org/plugins/plugin-reference-cleaner/)
+[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/plugin-reference-cleaner)](https://wordpress.org/plugins/plugin-reference-cleaner/)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/plugin-reference-cleaner)](https://wordpress.org/plugins/plugin-reference-cleaner/)
+[![License](https://img.shields.io/badge/license-GPL--2.0%2B-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
+
+Easily remove references to deleted plugins that cause "Plugin file does not exist" errors in your WordPress admin.
 
 ## Description
 
-Have you ever deleted a plugin some other way than through the /wp-admin/plugins.php page? If so, you've probably been stuck with this annoying notification that can't be cleared:
+Have you ever deleted a plugin directly from the server or database and then been stuck with annoying error notifications that can't be cleared?
 
 "The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
 
-This small WordPress utility plugin adds a "Remove Reference" button to these plugin deactivation error notices, allowing you to clean up the invalid plugin entries in the database.
+This small utility plugin adds missing plugins to your WordPress plugins list and provides a "Remove Reference" link, allowing you to safely clean up invalid plugin entries with one click.
 
-When WordPress detects a plugin file that no longer exists but is still referenced in the database as active, it displays an error notice. This plugin enhances those notices with a button that allows you to safely remove the invalid reference with a single click.
+### Key Features
 
-You can find these with `SELECT * FROM wp_options WHERE option_name = 'active_plugins';` — but the cleanup involves removing the rogue entry, and renumbering all others. This plugin can simply do that for you at the click of a button added to that WP standard notification.
+* Adds missing plugins directly to your plugins list
+* Provides a simple "Remove Reference" action link
+* Works with both single site and multisite WordPress installations
+* Includes helpful notifications explaining how to fix plugin errors
+* One-click auto-scroll to find missing plugins in large sites
+* Clean, user-friendly interface following WordPress design patterns
 
-It's probably something that should be added to WP core. If anyone from the core team wants to adopt this solution, it's GPL, so feel free.
+### How It Works
 
-Note: This plugin only needs to be installed and active if you have an error notification showing at /wp-admin/plugins.php, like this:
-"The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
+When WordPress detects a plugin file that no longer exists but is still referenced in the database as active, it displays an error notice. This plugin:
 
-If you don't have this notification perpetually showing on your /wp-admin/plugins.php page, then you don't need this, but you might like to save or bookmark it for if ever you do.
+1. Detects all missing plugin references in your database
+2. Adds them to your plugins list with "(File Missing)" indicators
+3. Provides a "Remove Reference" link to safely remove them
+4. Shows clear notifications guiding you through the cleanup process
 
-## Features
+### Use Cases
 
-* Adds a "Remove Reference" button to plugin error notices
-* Works for both single site and multisite WordPress installations
-* Confirms before removing any plugin references
-* Simple, lightweight solution with no settings page required
-* Secure implementation with proper permissions checking
-* Compatible with WordPress 5.0+
+* You've accidentally deleted a plugin via FTP
+* A plugin was removed by another admin but references remain
+* You've migrated from another site and have leftover plugin references
+* Your hosting provider removed a plugin but didn't clean the database
 
 ## Installation
 
-1. Upload the plugin-reference-cleaner.php file to your /wp-content/plugins/ directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. No configuration needed - the plugin works automatically
+### From WordPress.org:
+
+1. Visit Plugins > Add New in your WordPress admin
+2. Search for "Plugin Reference Cleaner"
+3. Click "Install Now" and then "Activate"
+
+### Manual Installation:
+
+1. Download the plugin ZIP file
+2. Go to Plugins > Add New > Upload Plugin
+3. Upload the ZIP file
+4. Activate the plugin
 
 ## Usage
 
-1. Navigate to Plugins > Installed Plugins
-2. If any "Plugin file does not exist" error notices appear, a "Remove Reference" button will be displayed
-3. Click the button and confirm to remove the invalid plugin reference
-4. The page will refresh with the error notice removed
+1. After activation, navigate to Plugins > Installed Plugins
+2. If you have missing plugin errors, you'll see them in your plugins list with "(File Missing)" markers
+3. Click the "Remove Reference" link next to any missing plugin
+4. The reference will be removed, and the error notification will disappear
+
+## Frequently Asked Questions
+
+### Is it safe to remove plugin references?
+
+Yes, this plugin only removes entries from the WordPress active_plugins option, which is safe to modify when a plugin no longer exists. It doesn't modify any other database tables or settings.
+
+### What happens after I remove a reference?
+
+The plugin entry will be removed from your active plugins list, and the corresponding error notification will no longer appear after you refresh the page.
+
+### Can I use this plugin on a multisite installation?
+
+Yes, the plugin works on both single sites and multisite installations. It properly handles network-activated plugins as well.
+
+## Screenshots
+
+1. Error message with explanation notification
+2. Missing plugin shown in the plugins list with "Remove Reference" link
+3. Auto-scroll feature that highlights the missing plugin
+
+## Developers
+
+### Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add some amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Submit a pull request
+
+### Technical Details
+
+The plugin works by:
+1. Filtering the `all_plugins` array to add missing plugins
+2. Adding a custom "Remove Reference" action link via `plugin_action_links`
+3. Adding helpful notifications near error messages
+4. Providing a secure method to remove plugin references from the database
 
 ## Changelog
 
@@ -70,40 +127,12 @@ If you don't have this notification perpetually showing on your /wp-admin/plugin
 * Added "Remove Reference" action link in the plugins list
 * Significantly improved reliability across all WordPress configurations
 
-### 1.2.4
-* Fixed compatibility with more WordPress admin themes
-* Added advanced DOM traversal to find error messages
-* Implemented fallback mechanisms to ensure button appears
-* Added detailed console logging for troubleshooting
+[View full changelog](CHANGELOG.md)
 
-### 1.2.3
-* Fixed button not appearing in some WordPress admin themes
-* Improved error message detection for greater compatibility
-* Enhanced DOM traversal to find notification elements
+## License
 
-### 1.2.2
-* Fixed timeout issue during plugin activation
-* Improved hook management to prevent potential infinite recursion
-* Optimized performance by only loading on plugins page
-
-### 1.2.1
-* Fixed typos in documentation
-* Improved text clarity
-* Added question mark to first sentence for better readability
-
-### 1.2
-* Improved documentation with detailed explanation
-* Added SQL reference for technical users
-* Suggested potential inclusion in WordPress core
-
-### 1.1
-* Improved error handling
-* Added support for multisite installations
-* Enhanced security with proper capability checks
-
-### 1.0
-* Initial release
+This project is licensed under the GPL-2.0+ License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
-For support, please visit https://wpallstars.com 
+For support, please visit [WP All Stars](https://www.wpallstars.com). 
