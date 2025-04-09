@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2023-10-05
+### Added
+- "Click here to scroll" button to automatically find missing plugins
+- Visual arrow pointing from notification to error message
+- Smooth scrolling with highlighting of missing plugin rows
+
+### Improved
+- Notification reliability using multiple injection methods
+- Earlier placement in page load cycle for better visibility
+- Enhanced error detection for all WordPress error message formats
+
 ## [1.3.2] - 2023-10-05
 ### Added
 - Prominent notification that appears directly below WordPress error messages

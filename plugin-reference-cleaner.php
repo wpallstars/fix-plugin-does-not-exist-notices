@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Plugin Reference Cleaner
  * Description: Adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries.
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -156,34 +156,106 @@ class Plugin_Reference_Cleaner {
         // Create a highlighted notice immediately after WordPress error messages
         if (!empty($invalid_plugins)) {
             // Add a notice specifically targeting the WordPress error notification
-            add_action('admin_print_footer_scripts', function() use ($invalid_plugins) {
+            // Use admin_head to ensure it runs early in the page load process
+            add_action('admin_head', function() use ($invalid_plugins) {
                 ?>
+                <style type="text/css">
+                    .prc-notice {
+                        border-left: 4px solid #ffba00;
+                        background-color: #fff8e5;
+                        padding: 10px 12px;
+                        margin: 5px 0 15px;
+                        font-size: 14px;
+                        position: relative;
+                    }
+                    .prc-notice h3 {
+                        margin-top: 0;
+                        color: #826200;
+                    }
+                    .prc-notice::before {
+                        content: "";
+                        position: absolute;
+                        top: -10px;
+                        left: 20px;
+                        width: 0; 
+                        height: 0; 
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-bottom: 10px solid #fff8e5;
+                    }
+                </style>
                 <script type="text/javascript">
-                    document.addEventListener('DOMContentLoaded', function() {
-                        // Find all error notifications about missing plugins
-                        var errorNotices = document.querySelectorAll('.notice-error, .error, .updated.error');
+                    // Function to inject our notice
+                    function injectNotice() {
+                        // Find all notification containers first
+                        var noticeContainers = document.querySelectorAll('.notice, .error, .updated');
                         
-                        errorNotices.forEach(function(notice) {
-                            if (notice.textContent.includes('Plugin file does not exist')) {
+                        // Find all error notifications about missing plugins
+                        noticeContainers.forEach(function(notice) {
+                            if (notice.textContent.includes('Plugin file does not exist') || 
+                                notice.textContent.includes('has been deactivated due to an error')) {
+                                
+                                // Check if we already added our notice
+                                if (notice.nextElementSibling && notice.nextElementSibling.classList.contains('prc-notice')) {
+                                    return;
+                                }
+                                
                                 // Create our custom notice
                                 var ourNotice = document.createElement('div');
-                                ourNotice.className = 'notice notice-warning';
-                                ourNotice.style.borderLeft = '4px solid #ffba00';
-                                ourNotice.style.backgroundColor = '#fff8e5';
-                                ourNotice.style.padding = '10px 12px';
-                                ourNotice.style.margin = '5px 0 15px';
-                                ourNotice.style.fontSize = '14px';
+                                ourNotice.className = 'prc-notice';
                                 
                                 // Add content
                                 ourNotice.innerHTML = '<h3 style="margin-top:0;color:#826200;">👉 Plugin Reference Cleaner Can Fix This</h3>' +
                                     '<p>To remove the above error notification, scroll down to find the plugin marked with "<strong style="color:red">(File Missing)</strong>" and click its "<strong>Remove Reference</strong>" link.</p>' +
-                                    '<p>This will permanently remove the missing plugin reference from your database.</p>';
+                                    '<p>This will permanently remove the missing plugin reference from your database.</p>' +
+                                    '<p><a href="#" id="prc-scroll-to-plugin" style="font-weight:bold;text-decoration:underline;color:#826200;">Click here to scroll to the missing plugin</a></p>';
                                 
                                 // Insert our notice right after the error
                                 notice.parentNode.insertBefore(ourNotice, notice.nextSibling);
+                                
+                                // Add scroll behavior
+                                var scrollLink = document.getElementById('prc-scroll-to-plugin');
+                                if (scrollLink) {
+                                    scrollLink.addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        var missingPlugins = document.querySelectorAll('tr.inactive:not(.plugin-update-tr)');
+                                        for (var i = 0; i < missingPlugins.length; i++) {
+                                            if (missingPlugins[i].textContent.includes('(File Missing)')) {
+                                                missingPlugins[i].style.backgroundColor = '#fff8e5';
+                                                missingPlugins[i].scrollIntoView({behavior: 'smooth', block: 'center'});
+                                                return;
+                                            }
+                                        }
+                                    });
+                                }
                             }
                         });
+                    }
+                    
+                    // Try to inject notices on multiple events to ensure it works
+                    document.addEventListener('DOMContentLoaded', function() {
+                        injectNotice();
+                        
+                        // Also set up a MutationObserver to watch for dynamically added notices
+                        var observer = new MutationObserver(function(mutations) {
+                            mutations.forEach(function(mutation) {
+                                if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+                                    injectNotice();
+                                }
+                            });
+                        });
+                        
+                        // Start observing the body for changes
+                        observer.observe(document.body, { childList: true, subtree: true });
                     });
+                    
+                    // Backup attempt with window.onload
+                    window.onload = function() {
+                        setTimeout(injectNotice, 500);
+                    };
+                    
+                    // Final backup in case other methods fail
+                    setTimeout(injectNotice, 1000);
                 </script>
                 <?php
             });
