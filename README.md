@@ -1,7 +1,7 @@
 # Plugin Reference Cleaner
 Author: Marcus Quinn
-Author URI: https://wpallstars.com
-Version: 1.2.1
+Author URI: https://www.wpallstars.com
+Version: 1.2.2
 License: GPL-2.0+
 
 ## Description
@@ -46,6 +46,11 @@ If you don't have this notification perpetually showing on your /wp-admin/plugin
 4. The page will refresh with the error notice removed
 
 ## Changelog
+
+### 1.2.2
+* Fixed timeout issue during plugin activation
+* Improved hook management to prevent potential infinite recursion
+* Optimized performance by only loading on plugins page
 
 ### 1.2.1
 * Fixed typos in documentation

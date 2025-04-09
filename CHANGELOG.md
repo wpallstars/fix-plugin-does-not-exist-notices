@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2023-10-05
+### Fixed
+- Timeout issue during plugin activation
+- Potential infinite recursion in admin notices handling
+
+### Improved
+- Hook management to prevent performance issues
+- Optimized by only loading on plugins page
+
 ## [1.2.1] - 2025-04-07
 ### Improved
 - Fixed typos in documentation

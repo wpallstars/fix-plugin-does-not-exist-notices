@@ -2,9 +2,9 @@
 /*
  * Plugin Name: Plugin Reference Cleaner
  * Description: Adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: Marcus Quinn
- * Author URI: https://wpallstars.com
+ * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
  */
 
@@ -15,22 +15,21 @@ if (!defined('ABSPATH')) {
 
 class Plugin_Reference_Cleaner {
     public function __construct() {
-        // Hook into admin notices to modify plugin error messages
-        add_action('admin_notices', array($this, 'inject_remove_button'), 100);
-        add_action('network_admin_notices', array($this, 'inject_remove_button'), 100); // Ensure notices in network admin
+        // Only hook into admin actions when on the plugins page
+        add_action('current_screen', function($screen) {
+            if (isset($screen->id) && ($screen->id === 'plugins' || $screen->id === 'plugins-network')) {
+                // Hook into admin notices to modify plugin error messages
+                add_action('admin_notices', array($this, 'inject_remove_button'), 100);
+                add_action('network_admin_notices', array($this, 'inject_remove_button'), 100);
+            }
+        });
+        
         // Handle the AJAX request to remove the plugin reference
         add_action('wp_ajax_remove_plugin_reference', array($this, 'remove_plugin_reference'));
     }
 
     // Inject "Remove Reference" button only if a relevant notice exists
     public function inject_remove_button() {
-        global $pagenow;
-
-        // Only run on plugins.php or network admin plugins page
-        if (!in_array($pagenow, array('plugins.php', 'plugins.php'))) {
-            return;
-        }
-
         // Check if a "Plugin file does not exist" notice exists
         $notices = $this->get_admin_notices();
         $has_error_notice = false;
@@ -47,7 +46,7 @@ class Plugin_Reference_Cleaner {
                 }
             }
         }
-
+        
         // Only proceed if a relevant notice was found
         if (!$has_error_notice || empty($plugin_files)) {
             return;
@@ -117,10 +116,22 @@ class Plugin_Reference_Cleaner {
 
     // Helper function to capture admin notices
     private function get_admin_notices() {
+        // Static flag to prevent infinite recursion
+        static $is_capturing = false;
+        
+        // If already capturing, return empty to break potential loops
+        if ($is_capturing) {
+            return array();
+        }
+        
+        $is_capturing = true;
+        
         ob_start();
         do_action('admin_notices');
         do_action('network_admin_notices');
         $output = ob_get_clean();
+        
+        $is_capturing = false;
         
         if (empty($output)) {
             return array();
