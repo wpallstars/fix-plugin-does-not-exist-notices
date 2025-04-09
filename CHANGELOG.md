@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.3] - 2023-10-05
+### Fixed
+- Button not appearing in some WordPress admin themes
+- Error message detection for greater theme compatibility
+
+### Improved
+- DOM traversal to find notification elements in various themes
+- Added console logging for troubleshooting
+
 ## [1.2.2] - 2023-10-05
 ### Fixed
 - Timeout issue during plugin activation

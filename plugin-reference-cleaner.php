@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Plugin Reference Cleaner
  * Description: Adds a "Remove Reference" button to plugin deactivation error notices, allowing users to clean up invalid plugin entries.
- * Version: 1.2.2
+ * Version: 1.2.3
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -37,8 +37,10 @@ class Plugin_Reference_Cleaner {
 
         if (!empty($notices)) {
             foreach ($notices as $notice) {
-                if (strpos($notice, 'has been deactivated due to an error: Plugin file does not exist') !== false) {
-                    // Extract plugin file from notice
+                // Look for both variations of the error message
+                if (strpos($notice, 'has been deactivated due to an error: Plugin file does not exist') !== false || 
+                    strpos($notice, 'deactivated due to an error: Plugin file does not exist') !== false) {
+                    // Extract plugin file from notice using various patterns
                     if (preg_match('/The plugin ([^ ]+)/', $notice, $match)) {
                         $plugin_files[] = $match[1];
                         $has_error_notice = true;
@@ -57,21 +59,51 @@ class Plugin_Reference_Cleaner {
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
                 var pluginFiles = <?php echo wp_json_encode($plugin_files); ?>;
-                var notices = document.querySelectorAll('.notice-error p');
+                
+                // Try multiple selectors to find error notices
+                var notices = document.querySelectorAll('.notice-error p, .error p, .notice p, .updated p, .update-nag p');
                 
                 if (notices.length === 0) {
+                    // If no p elements found, try the parent elements
+                    notices = document.querySelectorAll('.notice-error, .error, .notice, .updated, .update-nag');
+                }
+                
+                if (notices.length === 0) {
+                    // Try a more generic approach - find any element containing the error text
+                    var allElements = document.querySelectorAll('*');
+                    var errorNotices = [];
+                    
+                    for (var i = 0; i < allElements.length; i++) {
+                        var el = allElements[i];
+                        if (el.childNodes.length === 1 && el.childNodes[0].nodeType === 3) { // Text node
+                            if (el.textContent.includes('has been deactivated due to an error: Plugin file does not exist') ||
+                                el.textContent.includes('deactivated due to an error: Plugin file does not exist')) {
+                                errorNotices.push(el);
+                            }
+                        }
+                    }
+                    
+                    if (errorNotices.length > 0) {
+                        notices = errorNotices;
+                    }
+                }
+                
+                if (notices.length === 0) {
+                    console.log('Plugin Reference Cleaner: No notice elements found');
                     return;
                 }
                 
                 notices.forEach(function(notice) {
                     pluginFiles.forEach(function(pluginFile) {
-                        if (notice.textContent.includes('The plugin ' + pluginFile)) {
+                        if (notice.textContent.includes(pluginFile) || 
+                            notice.textContent.includes('Plugin file does not exist')) {
                             var button = document.createElement('button');
                             button.textContent = 'Remove Reference';
                             button.className = 'button button-secondary remove-plugin-ref';
                             button.dataset.plugin = pluginFile;
                             button.style.marginLeft = '10px';
                             notice.appendChild(button);
+                            console.log('Plugin Reference Cleaner: Added button for ' + pluginFile);
                         }
                     });
                 });
