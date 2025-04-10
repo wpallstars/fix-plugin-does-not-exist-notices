@@ -9,8 +9,8 @@
  *
  * @wordpress-plugin
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
- * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can clean up invalid plugin entries.
- * Version: 1.4.1
+ * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
+ * Version: 1.4.2
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -72,7 +72,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
                 $plugin_name = basename($plugin_path);
                 $plugins[$plugin_path] = array(
                     'Name' => $plugin_name . ' <span class="error">(File Missing)</span>',
-                    'Description' => 'This plugin file does not exist. You can safely remove this reference.',
+                    'Description' => 'This plugin is still marked as "Active" in your database — but its folder and files can\'t be found in /wp-content/plugins/. Click "Remove Reference" to permanently remove it from your active plugins list and eliminate the error notice.',
                     'Version' => 'N/A',
                     'Author' => '',
                     'PluginURI' => '',
