@@ -76,17 +76,27 @@ The plugin entry will be removed from your active plugins list, and the correspo
 
 Yes, the plugin works on both single sites and multisite installations. It properly handles network-activated plugins as well.
 
+### How do I know which plugin references should be removed?
+
+The plugin will only show "Remove Reference" links for plugins that are listed in your database but don't actually exist in your plugins directory. These are safe to remove.
+
+### Will this break my site?
+
+No. Since the plugin is only removing references to plugins that no longer exist, removing these references won't affect your site's functionality. In fact, it's cleaning up remnants that might be causing issues.
+
+### What if I accidentally remove a reference I shouldn't have?
+
+If you remove a reference to a plugin that you later want to reinstall, simply install the plugin again and activate it normally.
+
+### Do I need to keep this plugin installed and active after notices are cleared?
+
+Although this plugin consumes minimal disk space, and doesn't run unless you are on the /wp-admin/plugins.php page, you don't need to keep it active or installed if you don't have this notice to clear — but it is safe to, if you just want it as a part of your overall WordPress stack of enhancements and conveniences.
+
 ## Screenshots
 
 1. Error message with explanation notification
 2. Missing plugin shown in the plugins list with "Remove Reference" link
 3. Auto-scroll feature that highlights the missing plugin
-
-## FAQ
-
-### Do I need to keep this plugin installed and active after notices are cleared?
-
-Although this plugin consumes minimal disk space, and doesn't run unless you are on the /wp-admin/plugins.php page, you don't need to keep it active or installed if you don't have this notice to clear — but it is safe to, if you just want it as a part of your overall WordPress stack of enhancements and conveniences.
 
 ## Developers
 
