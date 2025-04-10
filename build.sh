@@ -10,7 +10,7 @@ if [ -z "$1" ]; then
 fi
 
 VERSION=$1
-PLUGIN_SLUG="plugin-reference-cleaner"
+PLUGIN_SLUG="fix-plugin-does-not-exist-notices"
 BUILD_DIR="build/$PLUGIN_SLUG"
 ZIP_FILE="${PLUGIN_SLUG}-${VERSION}.zip"
 
@@ -20,7 +20,7 @@ mkdir -p $BUILD_DIR
 
 # Copy required files
 echo "Copying plugin files..."
-cp plugin-reference-cleaner.php $BUILD_DIR/
+cp fix-plugin-does-not-exist-notices.php $BUILD_DIR/
 cp readme.txt $BUILD_DIR/
 cp LICENSE $BUILD_DIR/
 cp README.md $BUILD_DIR/

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2023-11-30
+### Changed
+- Updated plugin name and text domain
+- Repository rename from plugin-reference-cleaner to fix-plugin-does-not-exist-notices
+
 ## [1.3.3] - 2023-10-05
 ### Added
 - "Click here to scroll" button to automatically find missing plugins

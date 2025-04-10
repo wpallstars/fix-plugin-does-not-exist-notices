@@ -104,6 +104,10 @@ The plugin works by:
 
 ## Changelog
 
+### 1.4.0
+- Updated plugin name and text domain
+- Repository rename from plugin-reference-cleaner to fix-plugin-does-not-exist-notices
+
 ### 1.3.3
 * Improved notification placement next to WordPress error messages
 * Added "Click here to scroll" button that automatically locates missing plugins

@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,6 +84,10 @@ If you remove a reference to a plugin that you later want to reinstall, simply i
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.4.0 =
+* Updated plugin name and text domain
+* Repository rename from plugin-reference-cleaner to fix-plugin-does-not-exist-notices
 
 = 1.3.3 =
 * Improved notification placement next to WordPress error messages

@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can clean up invalid plugin entries.
- * Version: 1.3.3
+ * Version: 1.4.0
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -103,7 +103,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
             // Add our action
             $nonce = wp_create_nonce('remove_plugin_reference_' . $plugin_file);
             $remove_url = admin_url('plugins.php?action=remove_reference&plugin=' . urlencode($plugin_file) . '&_wpnonce=' . $nonce);
-            $actions['remove_reference'] = '<a href="' . esc_url($remove_url) . '" class="delete" aria-label="' . esc_attr__('Remove Reference', 'plugin-reference-cleaner') . '">Remove Reference</a>';
+            $actions['remove_reference'] = '<a href="' . esc_url($remove_url) . '" class="delete" aria-label="' . esc_attr__('Remove Reference', 'fix-plugin-does-not-exist-notices') . '">Remove Reference</a>';
         }
         
         return $actions;
@@ -120,7 +120,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
         
         // Verify permissions
         if (!current_user_can('activate_plugins')) {
-            wp_die(__('You do not have sufficient permissions to perform this action.', 'plugin-reference-cleaner'));
+            wp_die(__('You do not have sufficient permissions to perform this action.', 'fix-plugin-does-not-exist-notices'));
         }
         
         // Get the plugin file
@@ -231,7 +231,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
                                 ourNotice.className = 'prc-notice';
                                 
                                 // Add content
-                                ourNotice.innerHTML = '<h3 style="margin-top:0;color:#826200;">👉 Plugin Reference Cleaner Can Fix This</h3>' +
+                                ourNotice.innerHTML = '<h3 style="margin-top:0;color:#826200;">👉 Fix Plugin Does Not Exist Notices Can Fix This</h3>' +
                                     '<p>To remove the above error notification, scroll down to find the plugin marked with "<strong style="color:red">(File Missing)</strong>" and click its "<strong>Remove Reference</strong>" link.</p>' +
                                     '<p>This will permanently remove the missing plugin reference from your database.</p>' +
                                     '<p><a href="#" id="prc-scroll-to-plugin" style="font-weight:bold;text-decoration:underline;color:#826200;">Click here to scroll to the missing plugin</a></p>';
@@ -288,7 +288,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
             
             // Also display our standard info notice with more details
             echo '<div class="notice notice-info is-dismissible">';
-            echo '<h3>Plugin Reference Cleaner</h3>';
+            echo '<h3>Fix Plugin Does Not Exist Notices</h3>';
             echo '<p><strong>Missing plugin files detected:</strong> The plugins listed below with <span style="color:red;">(File Missing)</span> tag no longer exist but are still referenced in your database.</p>';
             echo '<p><strong>How to fix:</strong> Click the "Remove Reference" link next to each missing plugin to safely remove it from your active plugins list.</p>';
             echo '<p>This will clean up your database and remove the error notifications.</p>';
