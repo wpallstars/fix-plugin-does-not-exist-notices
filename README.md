@@ -1,8 +1,8 @@
-# Plugin Reference Cleaner
+# Fix 'Plugin file does not exist.' Notices
 
-[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/plugin-reference-cleaner)](https://wordpress.org/plugins/plugin-reference-cleaner/)
-[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/plugin-reference-cleaner)](https://wordpress.org/plugins/plugin-reference-cleaner/)
-[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/plugin-reference-cleaner)](https://wordpress.org/plugins/plugin-reference-cleaner/)
+[![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/fix-plugin-does-not-exist-notices)](https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/)
+[![WordPress Plugin Rating](https://img.shields.io/wordpress/plugin/rating/fix-plugin-does-not-exist-notices)](https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/)
+[![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/fix-plugin-does-not-exist-notices)](https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/)
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-blue.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
 Easily remove references to deleted plugins that cause "Plugin file does not exist" errors in your WordPress admin.
@@ -45,7 +45,7 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 ### From WordPress.org:
 
 1. Visit Plugins > Add New in your WordPress admin
-2. Search for "Plugin Reference Cleaner"
+2. Search for "Fix 'Plugin file does not exist.' Notices"
 3. Click "Install Now" and then "Activate"
 
 ### Manual Installation:

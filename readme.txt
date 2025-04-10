@@ -1,7 +1,7 @@
-=== Plugin Reference Cleaner ===
+=== Fix 'Plugin file does not exist.' Notices ===
 Contributors: marcusquinn
 Donate link: https://www.wpallstars.com
-Tags: plugins, missing plugins, cleanup, error fix, admin tools
+Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file does not exist
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
@@ -46,7 +46,7 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 
 == Installation ==
 
-1. Upload the `plugin-reference-cleaner` folder to the `/wp-content/plugins/` directory
+1. Upload the `fix-plugin-does-not-exist-notices` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. No configuration needed - the plugin works automatically
 4. If you have missing plugin errors, you'll immediately see them in your plugins list with "Remove Reference" links
