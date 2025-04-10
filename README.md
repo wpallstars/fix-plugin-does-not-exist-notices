@@ -82,6 +82,12 @@ Yes, the plugin works on both single sites and multisite installations. It prope
 2. Missing plugin shown in the plugins list with "Remove Reference" link
 3. Auto-scroll feature that highlights the missing plugin
 
+## FAQ
+
+### Do I need to keep this plugin installed and active after notices are cleared?
+
+Although this plugin consumes minimal disk space, and doesn't run unless you are on the /wp-admin/plugins.php page, you don't need to keep it active or installed if you don't have this notice to clear — but it is safe to, if you just want it as a part of your overall WordPress stack of enhancements and conveniences.
+
 ## Developers
 
 ### Contributing
@@ -103,6 +109,9 @@ The plugin works by:
 4. Providing a secure method to remove plugin references from the database
 
 ## Changelog
+
+### 1.4.1
+- Added FAQ about keeping the plugin installed after notices are cleared
 
 ### 1.4.0
 - Updated plugin name and text domain

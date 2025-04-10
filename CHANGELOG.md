@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2023-11-30
+### Added
+- FAQ about keeping the plugin installed after notices are cleared
+
 ## [1.4.0] - 2023-11-30
 ### Changed
 - Updated plugin name and text domain

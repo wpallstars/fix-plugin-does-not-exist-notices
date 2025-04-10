@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can clean up invalid plugin entries.
- * Version: 1.4.0
+ * Version: 1.4.1
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+

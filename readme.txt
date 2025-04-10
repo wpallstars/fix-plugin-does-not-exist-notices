@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,10 @@ No. Since the plugin is only removing references to plugins that no longer exist
 
 If you remove a reference to a plugin that you later want to reinstall, simply install the plugin again and activate it normally.
 
+= Do I need to keep this plugin installed and active after notices are cleared? =
+
+Although this plugin consumes minimal disk space, and doesn't run unless you are on the /wp-admin/plugins.php page, you don't need to keep it active or installed if you don't have this notice to clear — but it is safe to, if you just want it as a part of your overall WordPress stack of enhancements and conveniences.
+
 == Screenshots ==
 
 1. Error message with explanation notification
@@ -84,6 +88,9 @@ If you remove a reference to a plugin that you later want to reinstall, simply i
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.4.1 =
+* Added FAQ about keeping the plugin installed after notices are cleared
 
 = 1.4.0 =
 * Updated plugin name and text domain
