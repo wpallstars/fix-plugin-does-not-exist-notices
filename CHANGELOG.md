@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2024-05-15
+### Added
+- Improved compatibility with WordPress 6.4
+- Enhanced error detection for plugin references
+
+### Fixed
+- Minor UI improvements for better visibility
+- Accessibility enhancements for screen readers
+
 ## [1.4.1] - 2023-11-30
 ### Added
 - FAQ about keeping the plugin installed after notices are cleared
@@ -104,4 +113,4 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial release
 - "Remove Reference" button for plugin deactivation error notices
-- AJAX processing for reference removal 
+- AJAX processing for reference removal

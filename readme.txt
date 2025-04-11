@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.4.1
+Stable tag: 1.5.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,6 +89,12 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Changelog ==
 
+= 1.5.0 =
+* Improved compatibility with WordPress 6.4
+* Enhanced error detection for plugin references
+* Minor UI improvements for better visibility
+* Accessibility enhancements for screen readers
+
 = 1.4.1 =
 * Added FAQ about keeping the plugin installed after notices are cleared
 
@@ -155,6 +161,9 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Upgrade Notice ==
 
+= 1.5.0 =
+Improved compatibility with WordPress 6.4 and accessibility enhancements for screen readers!
+
 = 1.3.3 =
 Major usability improvement with auto-scroll feature to help find missing plugins in your list!
 
@@ -166,4 +175,4 @@ Important stability fix - resolves timeout issues during plugin activation!
 
 == Support ==
 
-For support, please visit https://wpallstars.com 
+For support, please visit https://wpallstars.com
