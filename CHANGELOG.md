@@ -7,6 +7,8 @@ All notable changes to this project will be documented in this file.
 - Updated POT file version for consistency
 - Improved JavaScript localization with proper fallbacks
 - Enhanced code quality for WordPress.org submission
+- Fixed Git Updater configuration with correct Update URI
+- Improved update server URL configuration
 
 ## [1.6.1] - 2024-05-15
 ### Added

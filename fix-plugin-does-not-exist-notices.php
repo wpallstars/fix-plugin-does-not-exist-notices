@@ -20,6 +20,7 @@
  * Domain Path: /languages
  * Requires at least: 5.0
  * Requires PHP: 7.0
+ * Update URI: https://git-updater.wpallstars.com
  * GitHub Plugin URI: wpallstars/fix-plugin-does-not-exist-notices
  * GitHub Branch: main
  * Gitea Plugin URI: wpallstars/fix-plugin-does-not-exist-notices

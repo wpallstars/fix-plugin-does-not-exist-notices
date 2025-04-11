@@ -93,6 +93,8 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Updated POT file version for consistency
 * Improved JavaScript localization with proper fallbacks
 * Enhanced code quality for WordPress.org submission
+* Fixed Git Updater configuration with correct Update URI
+* Improved update server URL configuration
 
 = 1.6.1 =
 * Added AI assistant guide and workflow documentation
@@ -183,7 +185,7 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 == Upgrade Notice ==
 
 = 1.6.2 =
-Improved JavaScript localization and enhanced code quality for WordPress.org submission!
+Improved JavaScript localization, enhanced code quality, and fixed Git Updater configuration for seamless updates!
 
 = 1.6.1 =
 Added comprehensive AI assistant guide and workflow documentation for improved development processes!
