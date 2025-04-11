@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,6 +89,13 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Changelog ==
 
+= 1.6.1 =
+* Added AI assistant guide and workflow documentation
+* Added detailed release process documentation
+* Added feature development guidelines
+* Added bug fixing procedures
+* Added code review standards
+
 = 1.6.0 =
 * Added full translation support with POT file
 * Added JavaScript localization for better multilingual support
@@ -169,6 +176,9 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.1 =
+Added comprehensive AI assistant guide and workflow documentation for improved development processes!
 
 = 1.6.0 =
 Added full translation support and Git Updater compatibility for direct updates from GitHub and Gitea!

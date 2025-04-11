@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.1] - 2024-05-15
+### Added
+- AI assistant guide and workflow documentation
+- Detailed release process documentation
+- Feature development guidelines
+- Bug fixing procedures
+- Code review standards
+
 ## [1.6.0] - 2024-05-15
 ### Added
 - Full translation support with POT file
