@@ -18,11 +18,18 @@
                 var ourNotice = document.createElement('div');
                 ourNotice.className = 'prc-notice';
 
-                // Add content (using localized strings passed via wp_localize_script if needed, but simple for now)
+                // Add content using localized strings passed via wp_localize_script
+                var pluginMissingText = typeof fpdenData !== 'undefined' && fpdenData.i18n && fpdenData.i18n.pluginMissing ?
+                    fpdenData.i18n.pluginMissing : 'Plugin file missing';
+                var removeReferenceText = typeof fpdenData !== 'undefined' && fpdenData.i18n && fpdenData.i18n.removeReference ?
+                    fpdenData.i18n.removeReference : 'Remove Reference';
+                var clickToScrollText = typeof fpdenData !== 'undefined' && fpdenData.i18n && fpdenData.i18n.clickToScroll ?
+                    fpdenData.i18n.clickToScroll : 'Click here to scroll to missing plugins';
+
                 ourNotice.innerHTML = '<h3 style="margin-top:0;color:#826200;">👉 Fix Plugin Does Not Exist Notices Can Fix This</h3>' +
-                    '<p>To remove the above error notification, scroll down to find the plugin marked with "<strong style="color:red">(File Missing)</strong>" and click its "<strong>Remove Reference</strong>" link.</p>' +
+                    '<p>To remove the above error notification, scroll down to find the plugin marked with "<strong style="color:red">(' + pluginMissingText + ')</strong>" and click its "<strong>' + removeReferenceText + '</strong>" link.</p>' +
                     '<p>This will permanently remove the missing plugin reference from your database.</p>' +
-                    '<p><a href="#" id="prc-scroll-to-plugin" style="font-weight:bold;text-decoration:underline;color:#826200;">Click here to scroll to the missing plugin</a></p>';
+                    '<p><a href="#" id="prc-scroll-to-plugin" style="font-weight:bold;text-decoration:underline;color:#826200;">' + clickToScrollText + '</a></p>';
 
                 // Insert our notice right after the error
                 notice.parentNode.insertBefore(ourNotice, notice.nextSibling);
