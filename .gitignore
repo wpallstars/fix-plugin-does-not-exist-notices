@@ -29,6 +29,10 @@ bower_components/
 composer.lock
 package-lock.json
 
+# Composer
+vendor/
+composer.phar
+
 # Build files
 build/
 dist/
@@ -76,4 +80,4 @@ codecov.yml
 webpack.config.js
 gulpfile.js
 Gruntfile.js
-*.zip 
+*.zip

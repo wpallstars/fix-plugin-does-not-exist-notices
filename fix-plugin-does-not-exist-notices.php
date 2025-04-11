@@ -9,8 +9,9 @@
  *
  * @wordpress-plugin
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
+ * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 1.5.0
+ * Version: 1.6.0
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -19,6 +20,10 @@
  * Domain Path: /languages
  * Requires at least: 5.0
  * Requires PHP: 7.0
+ * GitHub Plugin URI: wpallstars/fix-plugin-does-not-exist-notices
+ * GitHub Branch: main
+ * Gitea Plugin URI: wpallstars/fix-plugin-does-not-exist-notices
+ * Gitea Branch: main
  *
  * This plugin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,6 +43,27 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+// Define plugin constants
+define( 'FPDEN_VERSION', '1.6.0' );
+define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'FPDEN_PLUGIN_FILE', __FILE__ );
+define( 'FPDEN_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+
+/**
+ * Load plugin text domain.
+ *
+ * @return void
+ */
+function fpden_load_textdomain() {
+	load_plugin_textdomain(
+		'fix-plugin-does-not-exist-notices',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages/'
+	);
+}
+add_action( 'plugins_loaded', 'fpden_load_textdomain' );
 
 /**
  * Main class for the plugin.
@@ -82,28 +108,33 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			return; // No missing plugins, no need for the special notice JS/CSS.
 		}
 
-		$plugin_url = plugin_dir_url( __FILE__ );
-
 		wp_enqueue_style(
 			'fpden-admin-styles',
-			$plugin_url . 'assets/css/admin-styles.css',
+			FPDEN_PLUGIN_URL . 'assets/css/admin-styles.css',
 			array(),
-			filemtime( plugin_dir_path( __FILE__ ) . 'assets/css/admin-styles.css' ) // Versioning based on file modification time.
+			FPDEN_VERSION
 		);
 
 		wp_enqueue_script(
 			'fpden-admin-scripts',
-			$plugin_url . 'assets/js/admin-scripts.js',
+			FPDEN_PLUGIN_URL . 'assets/js/admin-scripts.js',
 			array( 'jquery' ), // Add dependencies if needed, e.g., jQuery.
-			filemtime( plugin_dir_path( __FILE__ ) . 'assets/js/admin-scripts.js' ), // Versioning.
+			FPDEN_VERSION,
 			true // Load in footer.
 		);
 
-		// Optional: Pass localized data to script if needed.
-		// wp_localize_script('fpden-admin-scripts', 'fpdenData', array(
-		//  'ajax_url' => admin_url('admin-ajax.php'),
-		//  'nonce'    => wp_create_nonce('fpden_ajax_nonce'),
-		// ));
+		// Add translation strings for JavaScript
+		wp_localize_script(
+			'fpden-admin-scripts',
+			'fpdenData',
+			array(
+				'i18n' => array(
+					'clickToScroll' => esc_html__( 'Click here to scroll to missing plugins', 'fix-plugin-does-not-exist-notices' ),
+					'pluginMissing' => esc_html__( 'Plugin file missing', 'fix-plugin-does-not-exist-notices' ),
+					'removeReference' => esc_html__( 'Remove Reference', 'fix-plugin-does-not-exist-notices' ),
+				),
+			)
+		);
 	}
 
 	/**
@@ -369,3 +400,14 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 // Initialize the plugin class.
 new Fix_Plugin_Does_Not_Exist_Notices();
+
+// Initialize the updater if composer autoload exists
+$autoloader = __DIR__ . '/vendor/autoload.php';
+if (file_exists($autoloader)) {
+    require_once $autoloader;
+
+    // Initialize the updater if the class exists
+    if (class_exists('\WPAllStars\FixPluginDoesNotExistNotices\Updater')) {
+        new \WPAllStars\FixPluginDoesNotExistNotices\Updater(__FILE__);
+    }
+}

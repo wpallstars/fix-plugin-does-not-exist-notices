@@ -18,6 +18,10 @@ ZIP_FILE="${PLUGIN_SLUG}-${VERSION}.zip"
 echo "Creating build directory..."
 mkdir -p $BUILD_DIR
 
+# Install composer dependencies
+echo "Installing composer dependencies..."
+composer install --no-dev --optimize-autoloader
+
 # Copy required files
 echo "Copying plugin files..."
 cp fix-plugin-does-not-exist-notices.php $BUILD_DIR/
@@ -25,6 +29,18 @@ cp readme.txt $BUILD_DIR/
 cp LICENSE $BUILD_DIR/
 cp README.md $BUILD_DIR/
 cp CHANGELOG.md $BUILD_DIR/
+cp composer.json $BUILD_DIR/
+
+# Copy directories
+echo "Copying directories..."
+mkdir -p $BUILD_DIR/includes
+cp -r includes/* $BUILD_DIR/includes/
+mkdir -p $BUILD_DIR/languages
+cp -r languages/* $BUILD_DIR/languages/
+mkdir -p $BUILD_DIR/assets
+cp -r assets/* $BUILD_DIR/assets/
+mkdir -p $BUILD_DIR/vendor
+cp -r vendor/* $BUILD_DIR/vendor/
 
 # Create ZIP file
 echo "Creating ZIP file..."
@@ -39,4 +55,4 @@ if [ -f "$ZIP_FILE" ]; then
 else
   echo "❌ Build failed: ZIP file was not created"
   exit 1
-fi 
+fi
