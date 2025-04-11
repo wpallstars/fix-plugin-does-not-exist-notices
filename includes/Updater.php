@@ -9,7 +9,7 @@ namespace WPAllStars\FixPluginDoesNotExistNotices;
 
 /**
  * Class Updater
- * 
+ *
  * Handles plugin updates from different sources based on installation origin.
  */
 class Updater {
@@ -59,7 +59,7 @@ class Updater {
     private function determine_installation_source() {
         // Default to WordPress.org
         $source = 'wordpress.org';
-        
+
         // Check if the plugin was installed from GitHub
         if ($this->is_github_installation()) {
             $source = 'github';
@@ -68,7 +68,7 @@ class Updater {
         elseif ($this->is_gitea_installation()) {
             $source = 'gitea';
         }
-        
+
         return $source;
     }
 
@@ -80,7 +80,7 @@ class Updater {
     private function is_github_installation() {
         // Check for GitHub-specific markers in the plugin directory
         $plugin_dir = plugin_dir_path($this->plugin_file);
-        
+
         // Look for .git directory with GitHub remote
         if (file_exists($plugin_dir . '.git')) {
             $git_config = @file_get_contents($plugin_dir . '.git/config');
@@ -88,12 +88,12 @@ class Updater {
                 return true;
             }
         }
-        
+
         // Check for GitHub-specific files that might indicate it was downloaded from GitHub
         if (file_exists($plugin_dir . '.github')) {
             return true;
         }
-        
+
         return false;
     }
 
@@ -105,7 +105,7 @@ class Updater {
     private function is_gitea_installation() {
         // Check for Gitea-specific markers in the plugin directory
         $plugin_dir = plugin_dir_path($this->plugin_file);
-        
+
         // Look for .git directory with Gitea remote
         if (file_exists($plugin_dir . '.git')) {
             $git_config = @file_get_contents($plugin_dir . '.git/config');
@@ -113,7 +113,7 @@ class Updater {
                 return true;
             }
         }
-        
+
         return false;
     }
 
@@ -137,9 +137,9 @@ class Updater {
         // Set the update server based on the installation source
         add_filter('gul_update_server', function() {
             if ($this->source === 'github') {
-                return 'https://wpallstars.com'; // GitHub update server
+                return 'https://github.com/wpallstars/fix-plugin-does-not-exist-notices'; // GitHub repository URL
             } elseif ($this->source === 'gitea') {
-                return 'https://wpallstars.com'; // Gitea update server
+                return 'https://gitea.wpallstars.com/wpallstars/fix-plugin-does-not-exist-notices'; // Gitea repository URL
             }
             return '';
         });

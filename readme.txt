@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,10 +89,17 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Changelog ==
 
+= 1.6.3 =
+* Fixed Git Updater repository URLs to use full repository paths
+* Corrected Update URI configuration for proper update detection
+* Improved version management following semantic versioning
+
 = 1.6.2 =
 * Updated POT file version for consistency
 * Improved JavaScript localization with proper fallbacks
 * Enhanced code quality for WordPress.org submission
+* Added Git Updater configuration with Update URI
+* Added update server URL configuration
 
 = 1.6.1 =
 * Added AI assistant guide and workflow documentation
@@ -182,8 +189,11 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Upgrade Notice ==
 
+= 1.6.3 =
+Fixed Git Updater repository URLs for proper update detection from GitHub and Gitea sources!
+
 = 1.6.2 =
-Improved JavaScript localization and enhanced code quality for WordPress.org submission!
+Improved JavaScript localization, enhanced code quality, and added Git Updater configuration for seamless updates!
 
 = 1.6.1 =
 Added comprehensive AI assistant guide and workflow documentation for improved development processes!
