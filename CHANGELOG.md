@@ -2,13 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.3] - 2024-05-15
+### Fixed
+- Git Updater repository URLs to use full repository paths
+- Update URI configuration for proper update detection
+- Version management following semantic versioning
+
 ## [1.6.2] - 2024-05-15
 ### Changed
 - Updated POT file version for consistency
 - Improved JavaScript localization with proper fallbacks
 - Enhanced code quality for WordPress.org submission
-- Fixed Git Updater configuration with correct Update URI
-- Improved update server URL configuration
+### Added
+- Git Updater configuration with Update URI
+- Update server URL configuration
 
 ## [1.6.1] - 2024-05-15
 ### Added
