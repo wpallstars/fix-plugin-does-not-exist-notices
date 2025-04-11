@@ -11,7 +11,7 @@
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 1.6.2
+ * Version: 1.6.3
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'FPDEN_VERSION', '1.6.2' );
+define( 'FPDEN_VERSION', '1.6.3' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FPDEN_PLUGIN_FILE', __FILE__ );

@@ -136,8 +136,10 @@ class Updater {
 
         // Set the update server based on the installation source
         add_filter('gul_update_server', function() {
-            if ($this->source === 'github' || $this->source === 'gitea') {
-                return 'https://git-updater.wpallstars.com'; // Update server for both GitHub and Gitea
+            if ($this->source === 'github') {
+                return 'https://github.com/wpallstars/fix-plugin-does-not-exist-notices'; // GitHub repository URL
+            } elseif ($this->source === 'gitea') {
+                return 'https://gitea.wpallstars.com/wpallstars/fix-plugin-does-not-exist-notices'; // Gitea repository URL
             }
             return '';
         });
