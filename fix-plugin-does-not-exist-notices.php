@@ -9,6 +9,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
+ * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
  * Version: 1.6.0
  * Author: Marcus Quinn
@@ -19,6 +20,10 @@
  * Domain Path: /languages
  * Requires at least: 5.0
  * Requires PHP: 7.0
+ * GitHub Plugin URI: wpallstars/fix-plugin-does-not-exist-notices
+ * GitHub Branch: main
+ * Gitea Plugin URI: wpallstars/fix-plugin-does-not-exist-notices
+ * Gitea Branch: main
  *
  * This plugin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -395,3 +400,14 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 // Initialize the plugin class.
 new Fix_Plugin_Does_Not_Exist_Notices();
+
+// Initialize the updater if composer autoload exists
+$autoloader = __DIR__ . '/vendor/autoload.php';
+if (file_exists($autoloader)) {
+    require_once $autoloader;
+
+    // Initialize the updater if the class exists
+    if (class_exists('\WPAllStars\FixPluginDoesNotExistNotices\Updater')) {
+        new \WPAllStars\FixPluginDoesNotExistNotices\Updater(__FILE__);
+    }
+}

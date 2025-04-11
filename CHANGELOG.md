@@ -7,10 +7,12 @@ All notable changes to this project will be documented in this file.
 - Full translation support with POT file
 - JavaScript localization for better multilingual support
 - Plugin constants for improved code organization
+- Git Updater support for updates from GitHub and Gitea
 
 ### Changed
 - Updated code to follow WordPress internationalization best practices
 - Improved asset loading with version constants
+- Smart update detection based on installation source
 
 ## [1.5.0] - 2024-05-15
 ### Added
