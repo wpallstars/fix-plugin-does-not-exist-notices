@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0] - 2024-05-15
+### Added
+- Full translation support with POT file
+- JavaScript localization for better multilingual support
+- Plugin constants for improved code organization
+
+### Changed
+- Updated code to follow WordPress internationalization best practices
+- Improved asset loading with version constants
+
 ## [1.5.0] - 2024-05-15
 ### Added
 - Improved compatibility with WordPress 6.4
