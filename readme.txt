@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.4.1
+Stable tag: 1.6.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,6 +89,28 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Changelog ==
 
+= 1.6.1 =
+* Added AI assistant guide and workflow documentation
+* Added detailed release process documentation
+* Added feature development guidelines
+* Added bug fixing procedures
+* Added code review standards
+
+= 1.6.0 =
+* Added full translation support with POT file
+* Added JavaScript localization for better multilingual support
+* Added plugin constants for improved code organization
+* Added Git Updater support for updates from GitHub and Gitea
+* Updated code to follow WordPress internationalization best practices
+* Improved asset loading with version constants
+* Added smart update detection based on installation source
+
+= 1.5.0 =
+* Improved compatibility with WordPress 6.4
+* Enhanced error detection for plugin references
+* Minor UI improvements for better visibility
+* Accessibility enhancements for screen readers
+
 = 1.4.1 =
 * Added FAQ about keeping the plugin installed after notices are cleared
 
@@ -155,6 +177,15 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Upgrade Notice ==
 
+= 1.6.1 =
+Added comprehensive AI assistant guide and workflow documentation for improved development processes!
+
+= 1.6.0 =
+Added full translation support and Git Updater compatibility for direct updates from GitHub and Gitea!
+
+= 1.5.0 =
+Improved compatibility with WordPress 6.4 and accessibility enhancements for screen readers!
+
 = 1.3.3 =
 Major usability improvement with auto-scroll feature to help find missing plugins in your list!
 
@@ -166,4 +197,4 @@ Important stability fix - resolves timeout issues during plugin activation!
 
 == Support ==
 
-For support, please visit https://wpallstars.com 
+For support, please visit https://wpallstars.com

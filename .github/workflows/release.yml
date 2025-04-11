@@ -28,6 +28,7 @@ jobs:
           cp readme.txt build/fix-plugin-does-not-exist-notices/
           cp LICENSE build/fix-plugin-does-not-exist-notices/
           cp README.md build/fix-plugin-does-not-exist-notices/
+          cp -r assets build/fix-plugin-does-not-exist-notices/
 
       - name: Create ZIP file
         run: |
@@ -65,4 +66,4 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: fix-plugin-does-not-exist-notices 
+          SLUG: fix-plugin-does-not-exist-notices
