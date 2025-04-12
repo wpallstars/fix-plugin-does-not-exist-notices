@@ -5,7 +5,7 @@
  * @package FixPluginDoesNotExistNotices
  */
 
-namespace WPAllStars\FixPluginDoesNotExistNotices;
+namespace WPALLSTARS\FixPluginDoesNotExistNotices;
 
 /**
  * Class Updater

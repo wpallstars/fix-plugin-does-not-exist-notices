@@ -93,6 +93,8 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Fixed Git Updater repository URLs to use full repository paths
 * Corrected Update URI configuration for proper update detection
 * Improved version management following semantic versioning
+* Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+* Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
 = 1.6.2 =
 * Updated POT file version for consistency
@@ -190,7 +192,7 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 == Upgrade Notice ==
 
 = 1.6.3 =
-Fixed Git Updater repository URLs for proper update detection from GitHub and Gitea sources!
+Fixed Git Updater repository URLs and updated organization naming for consistent branding across all platforms!
 
 = 1.6.2 =
 Improved JavaScript localization, enhanced code quality, and added Git Updater configuration for seamless updates!

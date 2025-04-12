@@ -124,6 +124,8 @@ The plugin works by:
 * Fixed Git Updater repository URLs to use full repository paths
 * Corrected Update URI configuration for proper update detection
 * Improved version management following semantic versioning
+* Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+* Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
 ### 1.6.2
 * Updated POT file version for consistency

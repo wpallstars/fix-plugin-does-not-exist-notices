@@ -408,7 +408,7 @@ if (file_exists($autoloader)) {
     require_once $autoloader;
 
     // Initialize the updater if the class exists
-    if (class_exists('\WPAllStars\FixPluginDoesNotExistNotices\Updater')) {
-        new \WPAllStars\FixPluginDoesNotExistNotices\Updater(__FILE__);
+    if (class_exists('\WPALLSTARS\FixPluginDoesNotExistNotices\Updater')) {
+        new \WPALLSTARS\FixPluginDoesNotExistNotices\Updater(__FILE__);
     }
 }

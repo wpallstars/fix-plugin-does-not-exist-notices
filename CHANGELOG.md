@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 - Update URI configuration for proper update detection
 - Version management following semantic versioning
 
+### Changed
+- Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+- Updated namespace from 'WPAllStars' to 'WPALLSTARS'
+
 ## [1.6.2] - 2024-05-15
 ### Changed
 - Updated POT file version for consistency
