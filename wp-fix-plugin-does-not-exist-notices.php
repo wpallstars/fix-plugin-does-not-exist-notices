@@ -179,7 +179,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 						__( 'This plugin is still marked as "Active" in your database — but its folder and files can\'t be found in %s. Click "Remove Notice" to permanently remove it from your active plugins list and eliminate the error notice.', 'wp-fix-plugin-does-not-exist-notices' ),
 						'<code>/wp-content/plugins/</code>'
 					),
-					'Version'     => __( 'N/A', 'wp-fix-plugin-does-not-exist-notices' ),
+					'Version'     => FPDEN_VERSION, // Use our plugin version instead of 'N/A'
 					'Author'      => '',
 					'PluginURI'   => '',
 					'AuthorURI'   => '',
