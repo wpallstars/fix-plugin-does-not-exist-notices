@@ -1,15 +1,5 @@
 # Windsurf ignore file
 # Additional patterns beyond .gitignore for Windsurf's context
 
-# Windsurf-specific files
-.windsurf/
-.windsurf-cache/
-
-# IDE and editor files not in .gitignore
-*.code-workspace
-.history/
-
-# AI-specific files
-.ai-prompts/
-.completions/
-.chat-history/
+# Windsurf-specific temporary files
+.windsurf-tmp/

@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.18
+Stable tag: 1.6.19
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,12 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.19 =
+* Consolidated common ignore patterns into .gitignore
+* Simplified AI IDE configuration files to only include tool-specific patterns
+* Improved organization of ignore patterns for better maintainability
+* Added more file types to .gitignore for comprehensive coverage
 
 = 1.6.18 =
 * Optimized AI IDE configuration files to only include patterns not in .gitignore
@@ -287,6 +293,9 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.19 =
+Improved organization of ignore patterns with consolidated .gitignore and simplified AI IDE configuration files.
 
 = 1.6.18 =
 Optimized AI IDE configuration files for better efficiency and compatibility.

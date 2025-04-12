@@ -3,15 +3,7 @@
   "description": "WordPress plugin to fix 'Plugin file does not exist' notices",
   "schema_version": "1.0.0",
   "ignore_patterns": [
-    "*.code-workspace",
-    ".history/",
-    ".ionide/",
-    ".ai-prompts/",
-    ".completions/",
-    ".chat-history/",
-    "*.docx",
-    "*.xlsx",
-    "*.pptx"
+    ".ai-tmp/"
   ],
   "models": {
     "default": "gpt-4",

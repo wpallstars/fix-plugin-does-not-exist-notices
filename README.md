@@ -122,6 +122,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.19
+* Consolidated common ignore patterns into .gitignore
+* Simplified AI IDE configuration files to only include tool-specific patterns
+* Improved organization of ignore patterns for better maintainability
+* Added more file types to .gitignore for comprehensive coverage
+
 ### 1.6.18
 * Optimized AI IDE configuration files to only include patterns not in .gitignore
 * Improved efficiency of ignore files for better AI context management

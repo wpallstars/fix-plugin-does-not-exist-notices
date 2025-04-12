@@ -81,6 +81,33 @@ debug.log
 *.3ds
 *.fbx
 
+# Office documents
+*.docx
+*.xlsx
+*.pptx
+*.ppt
+*.doc
+*.xls
+*.pdf
+
+# IDE specific
+*.code-workspace
+.history/
+.ionide/
+
+# AI tools
+.ai-prompts/
+.completions/
+.chat-history/
+.cursor/
+.cursor-cache/
+.v0/
+.v0-cache/
+.windsurf/
+.windsurf-cache/
+.cline/
+.cline-cache/
+
 # WordPress testing
 .phpunit.result.cache
 .phpcs.cache

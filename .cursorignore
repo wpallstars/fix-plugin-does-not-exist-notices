@@ -1,15 +1,5 @@
 # Cursor ignore file
 # Additional patterns beyond .gitignore for Cursor's AI context
 
-# Cursor-specific files
-.cursor/
-.cursor-cache/
-
-# IDE and editor files not in .gitignore
-*.code-workspace
-.history/
-
-# AI-specific files
-.ai-prompts/
-.completions/
-.chat-history/
+# Cursor-specific temporary files
+.cursor-tmp/

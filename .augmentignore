@@ -1,26 +1,14 @@
 # Augment ignore file
 # Additional patterns beyond .gitignore that should be ignored by Augment's context engine
 
-# IDE and editor files not in .gitignore
-*.code-workspace
-.history/
-.ionide/
-
-# Temporary files that might not be in .gitignore
+# Temporary files
 .temp-*
 
-# WordPress specific files that might not be in .gitignore
+# WordPress specific files
 wp-content/advanced-cache.php
 wp-content/object-cache.php
 wp-content/db.php
 wp-content/debug.log
 
-# Large files that might be missed by .gitignore
-*.docx
-*.xlsx
-*.pptx
-
-# AI-specific files
-.ai-prompts/
-.completions/
-.chat-history/
+# Augment specific
+.augment-cache/

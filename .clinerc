@@ -1,12 +1,6 @@
 {
   "ignore": [
-    ".cline/",
-    ".cline-cache/",
-    "*.code-workspace",
-    ".history/",
-    ".ai-prompts/",
-    ".completions/",
-    ".chat-history/"
+    ".cline-tmp/"
   ],
   "model": "gpt-4",
   "temperature": 0.2

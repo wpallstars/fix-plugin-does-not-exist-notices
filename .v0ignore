@@ -1,15 +1,5 @@
 # v0 ignore file
 # Additional patterns beyond .gitignore for v0's context
 
-# v0-specific files
-.v0/
-.v0-cache/
-
-# IDE and editor files not in .gitignore
-*.code-workspace
-.history/
-
-# AI-specific files
-.ai-prompts/
-.completions/
-.chat-history/
+# v0-specific temporary files
+.v0-tmp/
