@@ -15,10 +15,12 @@
 
         // Find all error notifications about missing plugins
         noticeContainers.forEach(function(notice) {
-            if (notice.textContent.includes('Plugin file does not exist') ||
-                notice.textContent.includes('has been deactivated due to an error')) {
+            if ((notice.textContent.includes('Plugin file does not exist') ||
+                notice.textContent.includes('has been deactivated due to an error')) &&
+                notice.classList.contains('error')) {
                 // We'll use the last matching notice as our target
                 targetNotice = notice;
+                console.log('Found WordPress error notice:', notice.textContent);
             }
         });
 
@@ -43,11 +45,17 @@
 
             ourNotice.innerHTML = '<h3 style="margin-top:0;color:#826200;">Fix Plugin Does Not Exist Notices ☝️</h3>' +
                 '<p>To remove these notices, scroll down to each plugin .php showing "<strong style="color:red">(' + pluginMissingText + ')</strong>", and click "<strong>' + removeNoticeText + '</strong>".</p>' +
-                '<p>This safely removes the missing active plugin reference from your database, using the standard WordPress function to update your active plugin options table with only the correct remaining installed and active plugins.</p>' +
+                '<p>This safely removes the missing active plugin reference from your database.</p>' +
+                '<p>We\'re using the standard WordPress function to update your active plugin options table — to leave only the correct remaining plugins installed and active.</p>' +
                 '<p><a href="#" id="prc-scroll-to-plugin" style="font-weight:bold;text-decoration:underline;color:#826200;">' + clickToScrollText + '</a></p>';
 
             // Insert our notice right after the error
             targetNotice.parentNode.insertBefore(ourNotice, targetNotice.nextSibling);
+
+            // Make sure our notice has the same width as the WordPress error notice
+            ourNotice.style.width = targetNotice.offsetWidth + 'px';
+            ourNotice.style.maxWidth = '100%';
+            ourNotice.style.boxSizing = 'border-box';
 
             // Mark that we've added our notice
             noticeAdded = true;

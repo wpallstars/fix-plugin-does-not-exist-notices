@@ -120,6 +120,13 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.8
+* Fixed notice positioning to appear directly below WordPress error messages
+* Improved notice width to match WordPress error messages
+* Updated explanatory text for better clarity
+* Fixed issue with notices not appearing in some cases
+* Improved JavaScript detection of WordPress error messages
+
 ### 1.6.7
 * Fixed duplicate notices issue by removing PHP-generated notice
 * Simplified notice system to only show one notice below WordPress error
