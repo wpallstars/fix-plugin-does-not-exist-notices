@@ -3,6 +3,8 @@
  * Plugin Updater
  *
  * @package FixPluginDoesNotExistNotices
+ * @noinspection PhpUndefinedFunctionInspection
+ * @noinspection PhpUndefinedClassInspection
  */
 
 namespace WPALLSTARS\FixPluginDoesNotExistNotices;
@@ -76,6 +78,7 @@ class Updater {
      * Check if the plugin was installed from GitHub
      *
      * @return bool
+     * @noinspection PhpUndefinedFunctionInspection
      */
     private function is_github_installation() {
         // Check for GitHub-specific markers in the plugin directory
@@ -101,6 +104,7 @@ class Updater {
      * Check if the plugin was installed from Gitea
      *
      * @return bool
+     * @noinspection PhpUndefinedFunctionInspection
      */
     private function is_gitea_installation() {
         // Check for Gitea-specific markers in the plugin directory
@@ -121,6 +125,8 @@ class Updater {
      * Initialize Git Updater Lite
      *
      * @return void
+     * @noinspection PhpUndefinedFunctionInspection
+     * @noinspection PhpUndefinedClassInspection
      */
     private function init_git_updater() {
         // Check if the Git Updater Lite class exists (composer autoload)
