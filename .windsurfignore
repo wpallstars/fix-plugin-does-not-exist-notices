@@ -1,35 +1,15 @@
 # Windsurf ignore file
-# Files and directories to exclude from Windsurf's context
+# Additional patterns beyond .gitignore for Windsurf's context
 
-# Dependencies and package managers
-node_modules/
-vendor/
-bower_components/
+# Windsurf-specific files
+.windsurf/
+.windsurf-cache/
 
-# Build outputs
-build/
-dist/
+# IDE and editor files not in .gitignore
+*.code-workspace
+.history/
 
-# Large binary files
-*.zip
-*.tar.gz
-*.mp4
-*.pdf
-
-# Design files
-*.psd
-*.ai
-*.sketch
-*.fig
-*.xd
-*.pxd
-*.afdesign
-*.afphoto
-*.afpub
-
-# WordPress specific
-wp-content/uploads/
-wp-content/upgrade/
-wp-content/backup-db/
-wp-content/cache/
-wp-content/backups/
+# AI-specific files
+.ai-prompts/
+.completions/
+.chat-history/

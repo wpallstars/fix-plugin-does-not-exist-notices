@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.18] - 2024-05-17
+### Changed
+- Optimized AI IDE configuration files to only include patterns not in .gitignore
+- Improved efficiency of ignore files for better AI context management
+- Enhanced compatibility with various AI-powered development tools
+
 ## [1.6.17] - 2024-05-17
 ### Added
 - .augmentignore file with best practices

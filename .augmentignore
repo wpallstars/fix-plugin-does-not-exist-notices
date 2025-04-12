@@ -1,96 +1,26 @@
 # Augment ignore file
-# Patterns for files and directories that should be ignored by Augment's context engine
+# Additional patterns beyond .gitignore that should be ignored by Augment's context engine
 
-# Dependencies and package managers
-node_modules/
-vendor/
-bower_components/
-.pnp/
-.pnp.js
-package-lock.json
-composer.lock
-yarn.lock
+# IDE and editor files not in .gitignore
+*.code-workspace
+.history/
+.ionide/
 
-# Build outputs
-build/
-dist/
-out/
-.next/
-.nuxt/
-.output/
-.cache/
-.parcel-cache/
+# Temporary files that might not be in .gitignore
+.temp-*
 
-# Environment and configuration
-.env
-.env.*
-!.env.example
-.venv/
-venv/
-ENV/
-.serverless/
-.fusebox/
+# WordPress specific files that might not be in .gitignore
+wp-content/advanced-cache.php
+wp-content/object-cache.php
+wp-content/db.php
+wp-content/debug.log
 
-# IDE and editor files
-.idea/
-.vscode/
-*.sublime-*
-*.swp
-*.swo
-*~
-.DS_Store
+# Large files that might be missed by .gitignore
+*.docx
+*.xlsx
+*.pptx
 
-# Large binary files
-*.zip
-*.tar.gz
-*.tgz
-*.rar
-*.7z
-*.mp4
-*.mov
-*.avi
-*.mp3
-*.wav
-*.ogg
-*.pdf
-
-# Design files
-*.psd
-*.ai
-*.sketch
-*.fig
-*.xd
-*.pxd
-*.afdesign
-*.afphoto
-*.afpub
-
-# Logs and debugging
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-debug.log
-
-# Testing and coverage
-coverage/
-.nyc_output/
-.jest/
-.cypress/
-cypress/videos/
-cypress/screenshots/
-
-# Temporary files
-tmp/
-temp/
-.tmp/
-.temp/
-
-# WordPress specific
-wp-content/uploads/
-wp-content/upgrade/
-wp-content/backup-db/
-wp-content/cache/
-wp-content/backups/
+# AI-specific files
+.ai-prompts/
+.completions/
+.chat-history/

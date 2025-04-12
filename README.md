@@ -122,6 +122,11 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.18
+* Optimized AI IDE configuration files to only include patterns not in .gitignore
+* Improved efficiency of ignore files for better AI context management
+* Enhanced compatibility with various AI-powered development tools
+
 ### 1.6.17
 * Added .augmentignore file with best practices
 * Added configuration files for Cursor, Windsurf, v0, and Cline IDEs
