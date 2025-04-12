@@ -13,7 +13,7 @@
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 1.6.9
+ * Version: 1.6.10
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'FPDEN_VERSION', '1.6.9' );
+define( 'FPDEN_VERSION', '1.6.10' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FPDEN_PLUGIN_FILE', __FILE__ );
@@ -396,34 +396,44 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	}
 
 	/**
-	 * Prevent WordPress from automatically deactivating missing plugins.
+	 * Safely prevent WordPress from automatically deactivating missing plugins.
 	 *
 	 * WordPress normally deactivates plugins that don't exist and adds them to the
-	 * 'recently_activated' option. This filter prevents that behavior so we can
-	 * handle the deactivation ourselves through our UI.
+	 * 'recently_activated' option. This filter modifies that behavior so we can
+	 * handle the deactivation ourselves through our UI, but only on the plugins page.
 	 *
 	 * @param mixed $pre_option The value to return instead of the option value.
 	 * @return mixed The original value (null) to let WordPress proceed, or an array to override.
 	 */
 	public function prevent_auto_deactivation( $pre_option ) {
-		// Only run on the plugins page
-		if ( ! $this->is_plugins_page() ) {
+		// Safety check - if we're not in admin or if this isn't the plugins page, don't interfere
+		if ( ! is_admin() || ! function_exists( 'get_current_screen' ) ) {
 			return $pre_option;
 		}
 
-		// Get our invalid plugins
-		$invalid_plugins = $this->get_invalid_plugins();
-
-		// If we have invalid plugins and we're on the plugins page, return an empty array
-		// to prevent WordPress from auto-deactivating the plugins
-		if ( ! empty( $invalid_plugins ) ) {
-			// Return the current value of the option to prevent WordPress from modifying it
-			$recently_activated = get_option( 'recently_activated', array() );
-			return $recently_activated;
+		// Get current screen - only proceed if we're on the plugins page
+		$screen = get_current_screen();
+		if ( ! $screen || 'plugins' !== $screen->base ) {
+			return $pre_option;
 		}
 
-		// Otherwise, let WordPress handle it normally
-		return $pre_option;
+		// Only apply our logic if we're on an admin page and specifically the plugins.php page
+		global $pagenow;
+		if ( 'plugins.php' !== $pagenow ) {
+			return $pre_option;
+		}
+
+		// We're on the plugins page, so let's try to preserve the current state
+		try {
+			// Get the current value of recently_activated
+			$recently_activated = get_option( 'recently_activated', array() );
+
+			// Return the current value to prevent WordPress from modifying it
+			return $recently_activated;
+		} catch ( Exception $e ) {
+			// If anything goes wrong, let WordPress handle it normally
+			return $pre_option;
+		}
 	}
 } // End class Fix_Plugin_Does_Not_Exist_Notices
 

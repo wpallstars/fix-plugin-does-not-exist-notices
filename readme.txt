@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.9
+Stable tag: 1.6.10
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,13 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.10 =
+* Fixed critical error that could occur when a plugin folder is deleted
+* Improved error handling with try/catch blocks
+* Added more specific checks for the plugins page
+* Enhanced compatibility with various WordPress configurations
+* Made the code more defensive to prevent potential issues
 
 = 1.6.9 =
 * Fixed issue with notices not appearing below WordPress error messages
@@ -234,8 +241,8 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Upgrade Notice ==
 
-= 1.6.9 =
-Fixed critical issue with WordPress automatically clearing error notices on page refresh and improved notice positioning!
+= 1.6.10 =
+CRITICAL FIX: Resolves an issue that could cause a fatal error when a plugin folder is deleted. Upgrade immediately if you're experiencing the "critical error" message.
 
 = 1.6.3 =
 Fixed Git Updater repository URLs and updated organization naming for consistent branding across all platforms!

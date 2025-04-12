@@ -120,6 +120,13 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.10
+* Fixed critical error that could occur when a plugin folder is deleted
+* Improved error handling with try/catch blocks
+* Added more specific checks for the plugins page
+* Enhanced compatibility with various WordPress configurations
+* Made the code more defensive to prevent potential issues
+
 ### 1.6.9
 * Fixed issue with notices not appearing below WordPress error messages
 * Improved JavaScript detection of WordPress error notices
