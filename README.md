@@ -120,35 +120,46 @@ The plugin works by:
 
 ## Changelog
 
-### 1.4.1
-- Added FAQ about keeping the plugin installed after notices are cleared
+### 1.6.4
+* Updated version management to ensure consistent patch version increments
+* Improved documentation for version update process
+* Enhanced AI workflow files with detailed version increment instructions
 
-### 1.4.0
-- Updated plugin name and text domain
-- Repository rename from plugin-reference-cleaner to fix-plugin-does-not-exist-notices
+### 1.6.3
+* Fixed Git Updater repository URLs to use full repository paths
+* Corrected Update URI configuration for proper update detection
+* Improved version management following semantic versioning
+* Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+* Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
-### 1.3.3
-* Improved notification placement next to WordPress error messages
-* Added "Click here to scroll" button that automatically locates missing plugins
-* Enhanced reliability with multiple injection methods
-* Added visual arrow pointing from notification to error message
+### 1.6.2
+* Updated POT file version for consistency
+* Improved JavaScript localization with proper fallbacks
+* Enhanced code quality for WordPress.org submission
+* Added Git Updater configuration with Update URI
+* Added update server URL configuration
 
-### 1.3.2
-* Added prominent notification directly below WordPress error messages
-* Improved user guidance with visual cues to connect error and solution
-* Added eye-catching styling to help users understand how to fix errors
+### 1.6.1
+* Added AI assistant guide and workflow documentation
+* Added detailed release process documentation
+* Added feature development guidelines
+* Added bug fixing procedures
+* Added code review standards
 
-### 1.3.1
-* Added instructional notification explaining how to use the plugin
-* Improved user guidance with step-by-step instructions
-* Enhanced visual identification of missing plugins
+### 1.6.0
+* Added full translation support with POT file
+* Added JavaScript localization for better multilingual support
+* Added plugin constants for improved code organization
+* Added Git Updater support for updates from GitHub and Gitea
+* Updated code to follow WordPress internationalization best practices
+* Improved asset loading with version constants
+* Added smart update detection based on installation source
 
-### 1.3.0
-* Complete redesign for maximum compatibility with all WordPress themes
-* Now adds missing plugins directly to the plugins list table
-* Uses standard WordPress admin UI patterns instead of DOM manipulation
-* Added "Remove Reference" action link in the plugins list
-* Significantly improved reliability across all WordPress configurations
+### 1.5.0
+* Improved compatibility with WordPress 6.4
+* Enhanced error detection for plugin references
+* Minor UI improvements for better visibility
+* Accessibility enhancements for screen readers
 
 [View full changelog](CHANGELOG.md)
 
@@ -158,4 +169,4 @@ This project is licensed under the GPL-2.0+ License - see the [LICENSE](LICENSE)
 
 ## Support
 
-For support, please visit [WP All Stars](https://www.wpallstars.com). 
+For support, please visit [WP ALLSTARS](https://www.wpallstars.com).

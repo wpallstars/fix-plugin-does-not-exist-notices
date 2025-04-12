@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.4] - 2024-05-16
+### Improved
+- Version management to ensure consistent patch version increments
+- Documentation for version update process
+- AI workflow files with detailed version increment instructions
+
+## [1.6.3] - 2024-05-15
+### Fixed
+- Git Updater repository URLs to use full repository paths
+- Update URI configuration for proper update detection
+- Version management following semantic versioning
+
+### Changed
+- Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+- Updated namespace from 'WPAllStars' to 'WPALLSTARS'
+
+## [1.6.2] - 2024-05-15
+### Changed
+- Updated POT file version for consistency
+- Improved JavaScript localization with proper fallbacks
+- Enhanced code quality for WordPress.org submission
+### Added
+- Git Updater configuration with Update URI
+- Update server URL configuration
+
+## [1.6.1] - 2024-05-15
+### Added
+- AI assistant guide and workflow documentation
+- Detailed release process documentation
+- Feature development guidelines
+- Bug fixing procedures
+- Code review standards
+
+## [1.6.0] - 2024-05-15
+### Added
+- Full translation support with POT file
+- JavaScript localization for better multilingual support
+- Plugin constants for improved code organization
+- Git Updater support for updates from GitHub and Gitea
+
+### Changed
+- Updated code to follow WordPress internationalization best practices
+- Improved asset loading with version constants
+- Smart update detection based on installation source
+
+## [1.5.0] - 2024-05-15
+### Added
+- Improved compatibility with WordPress 6.4
+- Enhanced error detection for plugin references
+
+### Fixed
+- Minor UI improvements for better visibility
+- Accessibility enhancements for screen readers
+
 ## [1.4.1] - 2023-11-30
 ### Added
 - FAQ about keeping the plugin installed after notices are cleared
@@ -104,4 +158,4 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Initial release
 - "Remove Reference" button for plugin deactivation error notices
-- AJAX processing for reference removal 
+- AJAX processing for reference removal
