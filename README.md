@@ -120,10 +120,17 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.4
+* Updated version management to ensure consistent patch version increments
+* Improved documentation for version update process
+* Enhanced AI workflow files with detailed version increment instructions
+
 ### 1.6.3
 * Fixed Git Updater repository URLs to use full repository paths
 * Corrected Update URI configuration for proper update detection
 * Improved version management following semantic versioning
+* Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+* Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
 ### 1.6.2
 * Updated POT file version for consistency
@@ -162,4 +169,4 @@ This project is licensed under the GPL-2.0+ License - see the [LICENSE](LICENSE)
 
 ## Support
 
-For support, please visit [WP All Stars](https://www.wpallstars.com).
+For support, please visit [WP ALLSTARS](https://www.wpallstars.com).

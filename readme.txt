@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -89,10 +89,17 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Changelog ==
 
+= 1.6.4 =
+* Updated version management to ensure consistent patch version increments
+* Improved documentation for version update process
+* Enhanced AI workflow files with detailed version increment instructions
+
 = 1.6.3 =
 * Fixed Git Updater repository URLs to use full repository paths
 * Corrected Update URI configuration for proper update detection
 * Improved version management following semantic versioning
+* Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+* Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
 = 1.6.2 =
 * Updated POT file version for consistency
@@ -189,8 +196,11 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Upgrade Notice ==
 
+= 1.6.4 =
+Improved version management with consistent patch version increments and enhanced documentation for development workflows!
+
 = 1.6.3 =
-Fixed Git Updater repository URLs for proper update detection from GitHub and Gitea sources!
+Fixed Git Updater repository URLs and updated organization naming for consistent branding across all platforms!
 
 = 1.6.2 =
 Improved JavaScript localization, enhanced code quality, and added Git Updater configuration for seamless updates!
