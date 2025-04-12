@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.10
+Stable tag: 1.6.11
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,12 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.11 =
+* CRITICAL FIX: Completely removed auto-deactivation prevention code that was causing fatal errors
+* Simplified plugin functionality to focus on core features only
+* Improved compatibility with various WordPress configurations
+* Ensured plugin works correctly when other plugins are deleted
 
 = 1.6.10 =
 * Fixed critical error that could occur when a plugin folder is deleted
@@ -241,8 +247,8 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Upgrade Notice ==
 
-= 1.6.10 =
-CRITICAL FIX: Resolves an issue that could cause a fatal error when a plugin folder is deleted. Upgrade immediately if you're experiencing the "critical error" message.
+= 1.6.11 =
+URGENT CRITICAL FIX: Completely removes code that was causing fatal errors. If you're experiencing the "critical error" message, this update will resolve it.
 
 = 1.6.3 =
 Fixed Git Updater repository URLs and updated organization naming for consistent branding across all platforms!

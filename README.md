@@ -120,6 +120,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.11
+* CRITICAL FIX: Completely removed auto-deactivation prevention code that was causing fatal errors
+* Simplified plugin functionality to focus on core features only
+* Improved compatibility with various WordPress configurations
+* Ensured plugin works correctly when other plugins are deleted
+
 ### 1.6.10
 * Fixed critical error that could occur when a plugin folder is deleted
 * Improved error handling with try/catch blocks
