@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2024-05-17
+### Added
+- Contributing section to readme.txt
+- reference-plugins directory for plugin development inspiration
+
+### Changed
+- Updated "tested up to" version to WordPress 6.7.2
+- Improved .gitattributes with comprehensive file handling
+- Enhanced documentation organization
+
 ## [2.0.0] - 2024-05-17
 ### Added
 - Note clarifying that the plugin has no settings page

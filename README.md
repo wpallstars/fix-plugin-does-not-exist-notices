@@ -136,15 +136,14 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This repository is configured to work with various AI-powered development tools. You can use any of the following AI IDEs to contribute to this project:
 
-- [Augment](https://augment.dev/) - AI-powered coding assistant
-- [Cursor](https://cursor.sh/) - AI-first code editor
+- [Augment Code](https://www.augmentcode.com/) - AI-powered coding assistant
+- [Cursor](https://cursor.com/) - AI-first code editor
 - [v0](https://v0.dev/) - AI-powered design and development tool
-- [Windsurf](https://www.windsurf.io/) - AI coding assistant
-- [Cline](https://cline.tools/) - AI terminal assistant
-- [Roo](https://roo.ai/) - AI pair programmer
-- [Gemini Code Assist](https://ai.google.dev/gemini-api) - Google's AI coding assistant
-- [Loveable](https://www.loveable.ai/) - AI development environment
-- [Bolt](https://www.bolt.dev/) - AI-powered code editor
+- [Windsurf](https://www.windsurf.com/) - AI coding assistant
+- [Cline](https://cline.bot/) - AI terminal assistant
+- [Roo Code](https://roocode.com/) - AI pair programmer
+- [Loveable](https://lovable.dev/) - AI development environment
+- [Bolt](https://www.bolt.new/) - AI-powered code editor
 - [Cody](https://sourcegraph.com/cody) - Sourcegraph's AI coding assistant
 - [Continue](https://continue.dev/) - Open-source AI coding assistant
 
@@ -159,6 +158,13 @@ The plugin works by:
 4. Providing a secure method to remove plugin references from the database
 
 ## Changelog
+
+### 2.0.1
+* Added Contributing section to readme.txt
+* Updated "tested up to" version to WordPress 6.7.2
+* Added reference-plugins directory for plugin development inspiration
+* Improved .gitattributes with comprehensive file handling
+* Enhanced documentation organization
 
 ### 2.0.0
 * Major version release for WordPress.org submission

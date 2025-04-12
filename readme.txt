@@ -3,9 +3,9 @@ Contributors: marcusquinn, wpallstars
 Donate link: https://www.marcusquinn.com
 Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file does not exist, wordpress error, plugin error, deactivated plugin, remove plugin reference, fix plugin error, plugin does not exist, plugin file does not exist error
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,13 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.0.1 =
+* Added Contributing section to readme.txt
+* Updated "tested up to" version to WordPress 6.7.2
+* Added reference-plugins directory for plugin development inspiration
+* Improved .gitattributes with comprehensive file handling
+* Enhanced documentation organization
 
 = 2.0.0 =
 * Major version release for WordPress.org submission
@@ -372,6 +379,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 
 == Upgrade Notice ==
 
+= 2.0.1 =
+Improved documentation with Contributing section and updated WordPress compatibility to 6.7.2.
+
 = 2.0.0 =
 Major version release for WordPress.org submission with improved documentation and clarification about plugin functionality.
 
@@ -452,6 +462,18 @@ Completely redesigned for better compatibility with all WordPress themes - now w
 
 = 1.2.2 =
 Important stability fix - resolves timeout issues during plugin activation!
+
+== Contributing ==
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository on [GitHub](https://github.com/wpallstars/fix-plugin-does-not-exist-notices/) or [Gitea](https://gitea.wpallstars.com/wpallstars/fix-plugin-does-not-exist-notices/)
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add some amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Submit a pull request
+
+The plugin is designed to be a best-practice example for WordPress plugin development and can be used as a boilerplate for your own plugins.
 
 == Support ==
 
