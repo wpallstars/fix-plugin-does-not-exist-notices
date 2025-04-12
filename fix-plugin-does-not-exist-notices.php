@@ -6,6 +6,8 @@
  * @author            Marcus Quinn
  * @copyright         2023 WP ALLSTARS
  * @license           GPL-2.0+
+ * @noinspection      PhpUndefinedFunctionInspection
+ * @noinspection      PhpUndefinedConstantInspection
  *
  * @wordpress-plugin
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
@@ -191,6 +193,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	 * @param array  $plugin_data An array of plugin data.
 	 * @param string $context     The plugin context (e.g., 'all', 'active', 'inactive').
 	 * @return array The potentially modified array of plugin action links.
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function add_remove_reference_action( $actions, $plugin_file, $plugin_data, $context ) {
 		// Only run on the plugins page.
