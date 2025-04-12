@@ -1,4 +1,5 @@
 {
+  "_comment": "You can use the ! prefix to include files that are excluded by .gitignore. Example: !important-file.log",
   "ignore": [
     ".cline-tmp/"
   ],

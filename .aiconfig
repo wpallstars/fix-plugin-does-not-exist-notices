@@ -2,6 +2,7 @@
   "name": "fix-plugin-does-not-exist-notices",
   "description": "WordPress plugin to fix 'Plugin file does not exist' notices",
   "schema_version": "1.0.0",
+  "_comment": "You can use the ! prefix to include files that are excluded by .gitignore. Example: !important-file.log",
   "ignore_patterns": [
     ".ai-tmp/"
   ],

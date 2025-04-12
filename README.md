@@ -122,6 +122,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.20
+* Added explanations about the ! prefix in ignore files
+* Moved WordPress-specific patterns to .gitignore
+* Further improved organization of ignore patterns
+* Added examples of how to include files excluded by .gitignore
+
 ### 1.6.19
 * Consolidated common ignore patterns into .gitignore
 * Simplified AI IDE configuration files to only include tool-specific patterns

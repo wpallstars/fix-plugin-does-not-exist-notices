@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.20] - 2024-05-17
+### Changed
+- Added explanations about the ! prefix in ignore files
+- Moved WordPress-specific patterns to .gitignore
+- Further improved organization of ignore patterns
+- Added examples of how to include files excluded by .gitignore
+
 ## [1.6.19] - 2024-05-17
 ### Changed
 - Consolidated common ignore patterns into .gitignore
