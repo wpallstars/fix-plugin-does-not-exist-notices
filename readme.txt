@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.4
+Stable tag: 1.6.6
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,23 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.6 =
+* Fixed issue with "Remove Notice" link not appearing on missing plugin rows
+* Fixed issue with automatic removal of plugin references without user action
+* Fixed notice positioning to ensure it appears below error messages
+* Restored pointer triangle to indicate relationship with error message
+* Improved detection of missing plugins in the plugin list
+* Enhanced scroll functionality to work with all plugin types
+
+= 1.6.5 =
+* Fixed duplicate notices issue - now only one notice appears below error messages
+* Changed notice heading to "Fix Plugin Does Not Exist Notices ☝️"
+* Updated explanatory text to be more clear about the removal process
+* Changed "Remove Reference" link text to "Remove Notice" for better clarity
+* Made "(File Missing)" text bold and red for better visibility
+* Fixed scroll functionality to work with all plugin rows
+* Improved JavaScript to prevent multiple notices from appearing
 
 = 1.6.4 =
 * Updated version management to ensure consistent patch version increments
@@ -196,8 +213,8 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Upgrade Notice ==
 
-= 1.6.4 =
-Improved version management with consistent patch version increments and enhanced documentation for development workflows!
+= 1.6.6 =
+Critical fix for "Remove Notice" link not appearing and automatic plugin reference removal issues!
 
 = 1.6.3 =
 Fixed Git Updater repository URLs and updated organization naming for consistent branding across all platforms!

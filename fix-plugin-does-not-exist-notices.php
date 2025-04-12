@@ -13,7 +13,7 @@
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 1.6.4
+ * Version: 1.6.6
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'FPDEN_VERSION', '1.6.4' );
+define( 'FPDEN_VERSION', '1.6.6' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FPDEN_PLUGIN_FILE', __FILE__ );
@@ -183,10 +183,10 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	}
 
 	/**
-	 * Add the Remove Reference action link to invalid plugins.
+	 * Add the Remove Notice action link to invalid plugins.
 	 *
 	 * Filters the action links displayed for each plugin on the plugins page.
-	 * Adds a "Remove Reference" link for plugins identified as missing.
+	 * Adds a "Remove Notice" link for plugins identified as missing.
 	 *
 	 * @param array  $actions     An array of plugin action links.
 	 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
@@ -201,8 +201,11 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			return $actions;
 		}
 
-		// Check if this is a missing plugin identified by our previous filter.
-		if ( isset( $plugin_data['Name'] ) && strpos( $plugin_data['Name'], '<span class="error">(File Missing)</span>' ) !== false ) {
+		// Get our list of invalid plugins
+		$invalid_plugins = $this->get_invalid_plugins();
+
+		// Check if this plugin file is in our list of invalid plugins
+		if ( in_array( $plugin_file, $invalid_plugins, true ) ) {
 			// Clear existing actions like "Activate", "Deactivate", "Edit".
 			$actions = array();
 
@@ -211,7 +214,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			$remove_url = admin_url( 'plugins.php?action=remove_reference&plugin=' . urlencode( $plugin_file ) . '&_wpnonce=' . $nonce );
 			/* translators: %s: Plugin file path */
 			$aria_label                 = sprintf( __( 'Remove reference to missing plugin %s', 'fix-plugin-does-not-exist-notices' ), esc_attr( $plugin_file ) );
-			$actions['remove_reference'] = '<a href="' . esc_url( $remove_url ) . '" class="delete" aria-label="' . $aria_label . '">' . esc_html__( 'Remove Reference', 'fix-plugin-does-not-exist-notices' ) . '</a>';
+			$actions['remove_reference'] = '<a href="' . esc_url( $remove_url ) . '" class="delete" aria-label="' . $aria_label . '">' . esc_html__( 'Remove Notice', 'fix-plugin-does-not-exist-notices' ) . '</a>';
 		}
 
 		return $actions;

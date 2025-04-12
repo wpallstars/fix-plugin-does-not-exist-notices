@@ -120,6 +120,23 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.6
+* Fixed issue with "Remove Notice" link not appearing on missing plugin rows
+* Fixed issue with automatic removal of plugin references without user action
+* Fixed notice positioning to ensure it appears below error messages
+* Restored pointer triangle to indicate relationship with error message
+* Improved detection of missing plugins in the plugin list
+* Enhanced scroll functionality to work with all plugin types
+
+### 1.6.5
+* Fixed duplicate notices issue - now only one notice appears below error messages
+* Changed notice heading to "Fix Plugin Does Not Exist Notices ☝️"
+* Updated explanatory text to be more clear about the removal process
+* Changed "Remove Reference" link text to "Remove Notice" for better clarity
+* Made "(File Missing)" text bold and red for better visibility
+* Fixed scroll functionality to work with all plugin rows
+* Improved JavaScript to prevent multiple notices from appearing
+
 ### 1.6.4
 * Updated version management to ensure consistent patch version increments
 * Improved documentation for version update process
