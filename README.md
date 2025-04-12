@@ -122,6 +122,11 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.16
+* Updated CI configuration files with correct plugin slugs
+* Updated CHANGELOG.md with all recent versions
+* Fixed outdated references to plugin-reference-cleaner
+
 ### 1.6.15
 * Moved AI workflow documentation to root directory for better visibility
 * Consolidated duplicate workflow files

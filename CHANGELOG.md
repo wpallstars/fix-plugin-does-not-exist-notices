@@ -2,6 +2,78 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.16] - 2024-05-17
+### Fixed
+- Updated CI configuration files with correct plugin slugs
+- Updated CHANGELOG.md with all recent versions
+- Fixed outdated references to plugin-reference-cleaner
+
+## [1.6.15] - 2024-05-17
+### Changed
+- Moved AI workflow documentation to root directory for better visibility
+- Consolidated duplicate workflow files
+- Improved organization of development documentation
+- Updated CI configuration files with correct plugin slugs
+
+## [1.6.14] - 2024-05-17
+### Changed
+- Updated documentation to consistently use "Remove Notice" instead of "Remove Reference"
+- Added design file extensions to .gitignore (.pxd, .afdesign, .afphoto, .afpub)
+- Improved explanation of how the plugin works
+- Ensured consistent terminology across all documentation
+
+## [1.6.13] - 2024-05-17
+### Changed
+- Code cleanup and optimization
+- Improved Git Updater integration
+- Fixed author display in plugin information
+- Ensured compatibility with WordPress 6.4
+
+## [1.6.12] - 2024-05-17
+### Added
+- Added WP ALLSTARS as a co-author
+- Updated author information and links
+- Added author websites to plugin description
+- Fixed issue with multiple author URLs
+
+## [1.6.11] - 2024-05-17
+### Fixed
+- Improved Git Updater integration
+- Fixed plugin header information
+- Updated author information
+
+## [1.6.10] - 2024-05-17
+### Fixed
+- Corrected plugin header information
+- Improved Git Updater compatibility
+- Updated documentation
+
+## [1.6.9] - 2024-05-17
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+- Improved documentation
+
+## [1.6.8] - 2024-05-17
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+
+## [1.6.7] - 2024-05-17
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+
+## [1.6.6] - 2024-05-17
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+
+## [1.6.5] - 2024-05-16
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+
 ## [1.6.4] - 2024-05-16
 ### Improved
 - Version management to ensure consistent patch version increments

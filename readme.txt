@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.15
+Stable tag: 1.6.16
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,11 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.16 =
+* Updated CI configuration files with correct plugin slugs
+* Updated CHANGELOG.md with all recent versions
+* Fixed outdated references to plugin-reference-cleaner
 
 = 1.6.15 =
 * Moved AI workflow documentation to root directory for better visibility
@@ -271,6 +276,9 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.16 =
+Updated CI configuration files and fixed outdated references to the previous plugin name.
 
 = 1.6.15 =
 Improved organization of development documentation with consolidated AI workflow files.
