@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,11 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.0.2 =
+* Consolidated WordPress.org assets into .wordpress-org directory
+* Improved organization of assets for WordPress.org submission
+* Updated .wordpress-org/README.md with comprehensive information
 
 = 2.0.1 =
 * Added Contributing section to readme.txt
@@ -378,6 +383,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.0.2 =
+Improved organization of assets for WordPress.org submission.
 
 = 2.0.1 =
 Improved documentation with Contributing section and updated WordPress compatibility to 6.7.2.

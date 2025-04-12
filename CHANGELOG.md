@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.2] - 2024-05-17
+### Changed
+- Consolidated WordPress.org assets into .wordpress-org directory
+- Improved organization of assets for WordPress.org submission
+- Updated .wordpress-org/README.md with comprehensive information
+
 ## [2.0.1] - 2024-05-17
 ### Added
 - Contributing section to readme.txt

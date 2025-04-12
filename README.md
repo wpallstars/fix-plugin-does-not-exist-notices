@@ -159,6 +159,11 @@ The plugin works by:
 
 ## Changelog
 
+### 2.0.2
+* Consolidated WordPress.org assets into .wordpress-org directory
+* Improved organization of assets for WordPress.org submission
+* Updated .wordpress-org/README.md with comprehensive information
+
 ### 2.0.1
 * Added Contributing section to readme.txt
 * Updated "tested up to" version to WordPress 6.7.2
