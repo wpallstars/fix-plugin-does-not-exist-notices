@@ -120,6 +120,11 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.4
+* Updated version management to ensure consistent patch version increments
+* Improved documentation for version update process
+* Enhanced AI workflow files with detailed version increment instructions
+
 ### 1.6.3
 * Fixed Git Updater repository URLs to use full repository paths
 * Corrected Update URI configuration for proper update detection
