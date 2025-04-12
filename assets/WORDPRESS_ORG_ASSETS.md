@@ -1,6 +1,6 @@
 # WordPress.org Plugin Submission Assets Guide
 
-This document explains how to prepare and upload assets for WordPress.org plugin submission.
+This document explains how to prepare and upload assets for WordPress.org plugin submission. This is the main reference document for all asset-related information.
 
 ## WordPress.org SVN Repository Structure
 
@@ -14,9 +14,9 @@ When submitting a plugin to WordPress.org, you'll work with an SVN repository th
     banner-1544x500.png
     screenshot-1.png
 /tags/           # Contains tagged releases
-    /1.0.0/
+    /1.6.27/
         [plugin files]
-    /1.0.1/
+    /1.6.26/
         [plugin files]
 /trunk/          # Contains the current version of the plugin
     [plugin files]
@@ -92,6 +92,33 @@ Note: `-rtl` is specifically for Right-to-Left language support, not for dark th
    # Commit changes
    svn commit -m "Initial plugin submission"
    ```
+
+## Image Conversion Tools
+
+For converting SVG to PNG or creating different sizes of images, you can use:
+
+- **Graphic Design Software**:
+  - Adobe Photoshop
+  - Adobe Illustrator
+  - Affinity Designer
+  - Affinity Photo
+  - GIMP (free, open-source)
+  - Inkscape (free, open-source)
+  - Pixelmator
+
+- **Online Converters**:
+  - [SVG to PNG Converter](https://svgtopng.com/)
+  - [Convertio](https://convertio.co/svg-png/)
+  - [CloudConvert](https://cloudconvert.com/svg-to-png)
+
+- **Command Line** (using ImageMagick):
+  ```bash
+  # For 256x256 icon
+  convert -background none -size 256x256 assets/icon/icon.svg assets/icon/icon-256x256.png
+
+  # For 128x128 icon
+  convert -background none -size 128x128 assets/icon/icon.svg assets/icon/icon-128x128.png
+  ```
 
 ## Resources
 

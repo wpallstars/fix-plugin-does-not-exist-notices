@@ -7,7 +7,7 @@ This directory contains assets for the WordPress.org plugin repository.
 - `banner/` - Banner images for the plugin page header
   - `banner-772x250.jpg` - Standard banner (772x250px)
   - `banner-1544x500.jpg` - Retina banner (1544x500px)
-  
+
 - `icon/` - Plugin icon images
   - `icon-128x128.jpg` - Standard icon (128x128px)
   - `icon-256x256.jpg` - Retina icon (256x256px)
@@ -32,7 +32,8 @@ This directory contains assets for the WordPress.org plugin repository.
 
 - Screenshots should be numbered sequentially starting with 1
 - They should match the descriptions in the `readme.txt` file
-- Dark theme versions of banners and icons can be provided by appending `-rtl` to the filename
+- Right-to-Left (RTL) language versions of banners and icons can be provided by appending `-rtl` to the filename
+- There is no official support for dark mode versions of assets in the WordPress.org repository
 
 ## Example Filenames
 
@@ -46,4 +47,4 @@ assets/
 │   └── icon-256x256.jpg
 └── screenshots/
     ├── screenshot-1.jpg
-``` 
+```

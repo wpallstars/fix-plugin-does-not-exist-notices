@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.28] - 2024-05-17
+### Changed
+- Consolidated asset documentation into a single comprehensive guide
+- Clarified that `-rtl` suffix is for Right-to-Left languages, not dark mode
+- Updated all asset README files to point to the main documentation
+- Improved file organization and documentation structure
+
 ## [1.6.27] - 2024-05-17
 ### Changed
 - Clarified RTL support in WordPress.org asset documentation

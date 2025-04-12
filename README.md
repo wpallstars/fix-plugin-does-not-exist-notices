@@ -160,6 +160,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.28
+* Consolidated asset documentation into a single comprehensive guide
+* Clarified that `-rtl` suffix is for Right-to-Left languages, not dark mode
+* Updated all asset README files to point to the main documentation
+* Improved file organization and documentation structure
+
 ### 1.6.27
 * Clarified RTL support in WordPress.org asset documentation
 * Corrected information about `-rtl` suffix for assets (for right-to-left languages, not dark themes)

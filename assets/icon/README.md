@@ -1,32 +1,16 @@
-# WordPress.org Icon Requirements
+# WordPress.org Icon Files
 
-For WordPress.org plugin submission, you need to:
+This directory contains icon files for the WordPress.org plugin repository.
 
-1. Convert the SVG icon to PNG format
-2. Create a 256x256 and 128x128 pixel version
-3. Name them `icon-256x256.png` and `icon-128x128.png`
-4. Place them in the `/assets/` directory of your WordPress.org SVN repository
+## Files in this Directory
 
-## How to Convert
+- `icon.svg` - Source SVG icon
+- `icon-256x256.png` - 256x256 pixel PNG icon (required for WordPress.org)
+- `icon-128x128.png` - 128x128 pixel PNG icon (optional for WordPress.org)
+- `icon-1024x1024.pxd` - Source file for editing in Pixelmator
 
-You can use tools like:
-- Inkscape (free, open-source)
-- Adobe Illustrator
-- Adobe Photoshop
-- Affinity Designer
-- Affinity Photo
-- GIMP
-- Pixelmator
-- Online converters like https://svgtopng.com/
+## WordPress.org Submission
 
-## Command Line Conversion (if you have ImageMagick installed)
+For detailed information about WordPress.org icon requirements and submission process, please see the main asset documentation:
 
-```bash
-# For 256x256 icon
-convert -background none -size 256x256 assets/icon/fix-plugin-does-not-exist-notices-icon.svg assets/icon/icon-256x256.png
-
-# For 128x128 icon
-convert -background none -size 128x128 assets/icon/fix-plugin-does-not-exist-notices-icon.svg assets/icon/icon-128x128.png
-```
-
-After creating the PNG file, it should be uploaded to the WordPress.org SVN repository in the assets directory.
+[WordPress.org Plugin Submission Assets Guide](../WORDPRESS_ORG_ASSETS.md)

@@ -30,17 +30,16 @@ This document outlines the requirements for assets when submitting a plugin to t
 ## Current Status
 
 ### Icon
-- ✅ SVG source available
-- ✅ PNG files created (`icon-256x256.png` and `icon-128x128.png`)
+- ✅ SVG source available in `assets/icon/icon.svg`
+- ✅ PNG files created in `assets/icon/icon-256x256.png` and `assets/icon/icon-128x128.png`
 
 ### Banner
-- ✅ Both sizes available
-- ✅ Properly renamed versions created in `assets/banner-png/`
+- ✅ Both sizes available in `assets/banner/`
+- ✅ Properly named files: `banner-772x250.png` and `banner-1544x500.png`
 
 ### Screenshots
-- ❌ Only 1 of 3 referenced screenshots available
-- ❌ Need to create `screenshot-2.png` and `screenshot-3.png`
-- ✅ Properly renamed version of the first screenshot created in `assets/screenshots-png/`
+- ✅ One screenshot available in `assets/screenshots/screenshot-1.png`
+- ✅ Screenshot description in readme.txt updated to reference only one screenshot
 
 ## SVN Directory Structure
 
@@ -49,15 +48,14 @@ When submitting to WordPress.org, your SVN repository will have this structure:
 ```
 /assets/
     icon-256x256.png
+    icon-128x128.png
     banner-772x250.png
     banner-1544x500.png
     screenshot-1.png
-    screenshot-2.png
-    screenshot-3.png
 /tags/
-    /1.0.0/
+    /1.6.27/
         [plugin files]
-    /1.0.1/
+    /1.6.26/
         [plugin files]
 /trunk/
     [current plugin files]
@@ -65,10 +63,17 @@ When submitting to WordPress.org, your SVN repository will have this structure:
 
 ## Action Items
 
-1. Convert the SVG icon to a 256x256 PNG file
-2. Create the missing screenshots (2 and 3)
-3. Ensure all files follow the proper naming convention
-4. Upload all assets to the WordPress.org SVN repository in the `/assets` directory
+1. Ensure all files follow the proper naming convention
+2. Upload all assets to the WordPress.org SVN repository in the `/assets` directory using these commands:
+
+```bash
+# Copy assets to WordPress.org SVN assets directory
+cp assets/icon/icon-256x256.png /path/to/wordpress-svn/assets/
+cp assets/icon/icon-128x128.png /path/to/wordpress-svn/assets/
+cp assets/banner/banner-772x250.png /path/to/wordpress-svn/assets/
+cp assets/banner/banner-1544x500.png /path/to/wordpress-svn/assets/
+cp assets/screenshots/screenshot-1.png /path/to/wordpress-svn/assets/
+```
 
 ## Resources
 

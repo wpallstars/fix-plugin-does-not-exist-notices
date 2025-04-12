@@ -1,11 +1,15 @@
-# WordPress.org Banner Requirements
+# WordPress.org Banner Files
 
-For WordPress.org plugin submission, you need:
+This directory contains banner files for the WordPress.org plugin repository.
 
-1. Banner images in PNG format
-2. Two sizes:
-   - `banner-772x250.png` (for regular display)
-   - `banner-1544x500.png` (for high-resolution/retina displays)
-3. Place them in the `/assets/` directory of your WordPress.org SVN repository
+## Files in this Directory
 
-These files have been renamed from the original files to match WordPress.org's naming-convention and file format requirements.
+- `banner-772x250.png` - 772x250 pixel PNG banner (required for WordPress.org)
+- `banner-1544x500.png` - 1544x500 pixel PNG banner for high-DPI displays (optional for WordPress.org)
+- `banner-1544x500.pxd` - Source file for editing in Pixelmator
+
+## WordPress.org Submission
+
+For detailed information about WordPress.org banner requirements and submission process, please see the main asset documentation:
+
+[WordPress.org Plugin Submission Assets Guide](../WORDPRESS_ORG_ASSETS.md)
