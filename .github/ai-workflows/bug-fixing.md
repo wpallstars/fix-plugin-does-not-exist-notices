@@ -64,26 +64,59 @@ git commit -m "Fix #123: Brief description of the bug fix"
 
 If there's an issue number, reference it in the commit message.
 
-### 7. Push to Remote
+### 7. Prepare for Release
 
-Push the bug fix branch to the remote repositories:
+When the bug fix is ready to be released:
+
+1. Create a version branch for the release:
+
+```bash
+git checkout -b v{MAJOR}.{MINOR}.{PATCH}
+```
+
+2. Merge your bug fix branch into the version branch:
+
+```bash
+git merge fix/bug-description --no-ff
+```
+
+3. Update version numbers and changelog entries
+
+4. Follow the standard release process from this point
+
+### 8. Push to Remote (Optional for Collaboration)
+
+If you need to collaborate with others on the bug fix before it's ready for release:
 
 ```bash
 git push github HEAD:fix/bug-description
 git push gitea HEAD:fix/bug-description
 ```
 
-### 8. Create Pull Request (Optional)
+### 9. Create Pull Request (Optional)
 
-If the repository uses pull requests for code review, create a pull request from the bug fix branch to the main branch.
+If the repository uses pull requests for code review, create a pull request from the bug fix branch to the version branch.
 
 ## Determining Version Increment
 
 After fixing a bug, determine the appropriate version increment:
 
 - **PATCH** (e.g., 1.6.0 → 1.6.1): For most bug fixes that don't change functionality
+  - **IMPORTANT**: Always increment the patch version for every change, even small ones, to make rollbacks easier if issues are found in testing
 - **MINOR** (e.g., 1.6.0 → 1.7.0): For bug fixes that introduce new features or significant changes
 - **MAJOR** (e.g., 1.6.0 → 2.0.0): For bug fixes that introduce breaking changes
+
+## Testing Previous Versions
+
+To test a previous version of the plugin:
+
+```bash
+# Checkout a specific tag for testing
+git checkout v{MAJOR}.{MINOR}.{PATCH}
+
+# Or create a test branch from a specific tag
+git checkout v{MAJOR}.{MINOR}.{PATCH} -b test/some-feature
+```
 
 ## Hotfix Process
 
@@ -108,6 +141,8 @@ Increment the PATCH version and update all version numbers:
 - FPDEN_VERSION constant
 - CHANGELOG.md
 - readme.txt
+- README.md
+- languages/fix-plugin-does-not-exist-notices.pot (Project-Id-Version)
 
 ### 4. Commit and Push
 
