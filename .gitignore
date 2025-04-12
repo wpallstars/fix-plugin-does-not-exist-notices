@@ -1,0 +1,172 @@
+# Operating System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.komodotools
+*.tmproj
+*.tmproject
+.project
+.settings/
+
+# Dependency directories
+node_modules/
+vendor/
+bower_components/
+composer.lock
+package-lock.json
+
+# Composer
+vendor/
+composer.phar
+
+# Build files
+build/
+dist/
+
+# WordPress specific
+wp-config.php
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/cache/
+wp-content/backups/
+
+# Reference plugins
+reference-plugins/
+
+# Log files
+*.log
+error_log
+debug.log
+
+# Misc
+.env
+.env.*
+!.env.example
+
+# Design files
+*.pxd
+*.afdesign
+*.afphoto
+*.afpub
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+*.indd
+*.aep
+*.prproj
+*.psb
+*.xcf
+*.cdr
+*.eps
+*.svg.bak
+*.blend
+*.blend1
+*.blend2
+*.c4d
+*.max
+*.3ds
+*.fbx
+
+# Office documents
+*.docx
+*.xlsx
+*.pptx
+*.ppt
+*.doc
+*.xls
+*.pdf
+
+# IDE specific
+*.code-workspace
+.history/
+.ionide/
+
+# AI tools
+.ai-prompts/
+.completions/
+.chat-history/
+.cursor/
+.cursor-cache/
+.cursor-tmp/
+.v0/
+.v0-cache/
+.v0-tmp/
+.windsurf/
+.windsurf-cache/
+.windsurf-tmp/
+.cline/
+.cline-cache/
+.cline-tmp/
+.roo/
+.roo-cache/
+.roo-tmp/
+.gemini/
+.gemini-cache/
+.gemini-tmp/
+.loveable/
+.loveable-cache/
+.loveable-tmp/
+.bolt/
+.bolt-cache/
+.bolt-tmp/
+.cody/
+.cody-cache/
+.cody-tmp/
+.continue/
+.continue-cache/
+.continue-tmp/
+.ai-tmp/
+.augment-cache/
+
+# WordPress testing
+.phpunit.result.cache
+.phpcs.cache
+phpunit.xml
+phpcs.xml
+
+# WordPress specific files
+wp-content/advanced-cache.php
+wp-content/object-cache.php
+wp-content/db.php
+wp-content/debug.log
+
+# Temporary files
+.temp-*
+
+# Development tools
+.git/
+.github/
+.gitlab/
+.gitattributes
+.travis.yml
+.drone.yml
+.woodpecker.yml
+codecov.yml
+.babelrc
+.browserslistrc
+.editorconfig
+.eslintignore
+.eslintrc
+.prettierrc
+.stylelintrc
+webpack.config.js
+gulpfile.js
+Gruntfile.js
+*.zip
