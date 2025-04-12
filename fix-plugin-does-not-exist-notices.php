@@ -13,8 +13,8 @@
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 1.6.4
- * Author: Marcus Quinn
+ * Version: 1.6.28
+ * Author: Marcus Quinn & WP ALLSTARS
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'FPDEN_VERSION', '1.6.4' );
+define( 'FPDEN_VERSION', '1.6.28' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FPDEN_PLUGIN_FILE', __FILE__ );
@@ -74,6 +74,13 @@ add_action( 'plugins_loaded', 'fpden_load_textdomain' );
 class Fix_Plugin_Does_Not_Exist_Notices {
 
 	/**
+	 * Cached list of invalid plugins.
+	 *
+	 * @var array
+	 */
+	private $invalid_plugins = null;
+
+	/**
 	 * Constructor. Hooks into WordPress actions and filters.
 	 */
 	public function __construct() {
@@ -91,6 +98,9 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 		// Enqueue admin scripts and styles.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+
+		// We're no longer trying to prevent WordPress from auto-deactivating plugins
+		// as it was causing critical errors in some environments
 	}
 
 	/**
@@ -133,8 +143,8 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			array(
 				'i18n' => array(
 					'clickToScroll' => esc_html__( 'Click here to scroll to missing plugins', 'fix-plugin-does-not-exist-notices' ),
-					'pluginMissing' => esc_html__( 'Plugin file missing', 'fix-plugin-does-not-exist-notices' ),
-					'removeReference' => esc_html__( 'Remove Reference', 'fix-plugin-does-not-exist-notices' ),
+					'pluginMissing' => esc_html__( 'File Missing', 'fix-plugin-does-not-exist-notices' ),
+					'removeNotice' => esc_html__( 'Remove Notice', 'fix-plugin-does-not-exist-notices' ),
 				),
 			)
 		);
@@ -166,7 +176,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 					'Name'        => $plugin_name . ' <span class="error">(File Missing)</span>',
 					/* translators: %s: Path to wp-content/plugins */
 					'Description' => sprintf(
-						__( 'This plugin is still marked as "Active" in your database — but its folder and files can\'t be found in %s. Click "Remove Reference" to permanently remove it from your active plugins list and eliminate the error notice.', 'fix-plugin-does-not-exist-notices' ),
+						__( 'This plugin is still marked as "Active" in your database — but its folder and files can\'t be found in %s. Click "Remove Notice" to permanently remove it from your active plugins list and eliminate the error notice.', 'fix-plugin-does-not-exist-notices' ),
 						'<code>/wp-content/plugins/</code>'
 					),
 					'Version'     => __( 'N/A', 'fix-plugin-does-not-exist-notices' ),
@@ -183,10 +193,10 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	}
 
 	/**
-	 * Add the Remove Reference action link to invalid plugins.
+	 * Add the Remove Notice action link to invalid plugins.
 	 *
 	 * Filters the action links displayed for each plugin on the plugins page.
-	 * Adds a "Remove Reference" link for plugins identified as missing.
+	 * Adds a "Remove Notice" link for plugins identified as missing.
 	 *
 	 * @param array  $actions     An array of plugin action links.
 	 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
@@ -201,8 +211,11 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			return $actions;
 		}
 
-		// Check if this is a missing plugin identified by our previous filter.
-		if ( isset( $plugin_data['Name'] ) && strpos( $plugin_data['Name'], '<span class="error">(File Missing)</span>' ) !== false ) {
+		// Get our list of invalid plugins
+		$invalid_plugins = $this->get_invalid_plugins();
+
+		// Check if this plugin file is in our list of invalid plugins
+		if ( in_array( $plugin_file, $invalid_plugins, true ) ) {
 			// Clear existing actions like "Activate", "Deactivate", "Edit".
 			$actions = array();
 
@@ -211,7 +224,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			$remove_url = admin_url( 'plugins.php?action=remove_reference&plugin=' . urlencode( $plugin_file ) . '&_wpnonce=' . $nonce );
 			/* translators: %s: Plugin file path */
 			$aria_label                 = sprintf( __( 'Remove reference to missing plugin %s', 'fix-plugin-does-not-exist-notices' ), esc_attr( $plugin_file ) );
-			$actions['remove_reference'] = '<a href="' . esc_url( $remove_url ) . '" class="delete" aria-label="' . $aria_label . '">' . esc_html__( 'Remove Reference', 'fix-plugin-does-not-exist-notices' ) . '</a>';
+			$actions['remove_reference'] = '<a href="' . esc_url( $remove_url ) . '" class="delete" aria-label="' . $aria_label . '">' . esc_html__( 'Remove Notice', 'fix-plugin-does-not-exist-notices' ) . '</a>';
 		}
 
 		return $actions;
@@ -299,8 +312,9 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	/**
 	 * Display admin notices on the plugins page.
 	 *
-	 * Shows informational notices about missing plugins and feedback
-	 * messages after attempting to remove a reference.
+	 * Shows feedback messages after attempting to remove a reference.
+	 * The main informational notice is handled by JavaScript to position it
+	 * directly below the WordPress error message.
 	 *
 	 * @return void
 	 */
@@ -326,34 +340,8 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			</div>
 			<?php
 		}
-
-		// Get invalid plugins to display the main informational notice.
-		// Note: We don't need to call get_invalid_plugins() again if enqueue_admin_assets already did,
-		// but calling it here ensures the notice shows even if assets weren't enqueued (e.g., JS disabled).
-		// Consider caching the result in a class property if performance is critical.
-		$invalid_plugins = $this->get_invalid_plugins();
-
-		// Display the main informational notice if there are missing plugins.
-		if ( ! empty( $invalid_plugins ) ) {
-			?>
-			<div class="notice notice-info is-dismissible">
-				<h3><?php esc_html_e( 'Fix Plugin Does Not Exist Notices', 'fix-plugin-does-not-exist-notices' ); ?></h3>
-				<p>
-					<strong><?php esc_html_e( 'Missing plugin files detected:', 'fix-plugin-does-not-exist-notices' ); ?></strong>
-					<?php esc_html_e( 'The plugins listed below with a', 'fix-plugin-does-not-exist-notices' ); ?>
-					<span style="color:red;">(<?php esc_html_e( 'File Missing', 'fix-plugin-does-not-exist-notices' ); ?>)</span>
-					<?php esc_html_e( 'tag no longer exist but are still referenced in your database.', 'fix-plugin-does-not-exist-notices' ); ?>
-				</p>
-				<p>
-					<strong><?php esc_html_e( 'How to fix:', 'fix-plugin-does-not-exist-notices' ); ?></strong>
-					<?php esc_html_e( 'Click the "Remove Reference" link next to each missing plugin to safely remove it from your active plugins list.', 'fix-plugin-does-not-exist-notices' ); ?>
-				</p>
-				<p><?php esc_html_e( 'This will clean up your database and remove the error notifications.', 'fix-plugin-does-not-exist-notices' ); ?></p>
-			</div>
-			<?php
-			// The JavaScript enqueued by enqueue_admin_assets() will handle adding the contextual notice
-			// near the actual WordPress error message.
-		}
+		// The main informational notice is now handled entirely by JavaScript
+		// to position it directly below the WordPress error message.
 	}
 
 	/**
@@ -372,11 +360,17 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	 * Get a list of active plugin file paths that do not exist on the filesystem.
 	 *
 	 * Checks both single site and network active plugins based on the context.
+	 * Uses caching to avoid repeated filesystem checks.
 	 *
 	 * @return array An array of plugin file paths (relative to WP_PLUGIN_DIR) that are missing.
 	 */
 	private function get_invalid_plugins() {
-		$invalid_plugins = array();
+		// Return cached result if available
+		if ( null !== $this->invalid_plugins ) {
+			return $this->invalid_plugins;
+		}
+
+		$this->invalid_plugins = array();
 		$active_plugins  = array();
 
 		// Determine which option to check based on context (Network Admin or single site).
@@ -394,12 +388,14 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			$plugin_path = WP_PLUGIN_DIR . '/' . $plugin_file;
 			// Use validate_file to prevent directory traversal issues, although less likely here.
 			if ( validate_file( $plugin_file ) === 0 && ! file_exists( $plugin_path ) ) {
-				$invalid_plugins[] = $plugin_file;
+				$this->invalid_plugins[] = $plugin_file;
 			}
 		}
 
-		return $invalid_plugins;
+		return $this->invalid_plugins;
 	}
+
+// We've removed the prevent_auto_deactivation method as it was causing critical errors
 } // End class Fix_Plugin_Does_Not_Exist_Notices
 
 // Initialize the plugin class.
