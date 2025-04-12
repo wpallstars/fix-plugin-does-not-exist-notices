@@ -160,6 +160,11 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.24
+* Added properly named icon PNG files for WordPress.org submission
+* Created icon-256x256.png and icon-128x128.png files
+* Updated asset preparation documentation
+
 ### 1.6.23
 * Prepared assets for WordPress.org plugin submission
 * Added properly named icon, banner, and screenshot files

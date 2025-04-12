@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.24] - 2024-05-17
+### Added
+- Properly named icon PNG files (icon-256x256.png and icon-128x128.png)
+
+### Changed
+- Updated asset preparation documentation
+- Improved WordPress.org submission readiness
+
 ## [1.6.23] - 2024-05-17
 ### Added
 - Properly named icon, banner, and screenshot files for WordPress.org submission

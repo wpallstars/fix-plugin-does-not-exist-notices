@@ -31,7 +31,7 @@ This document outlines the requirements for assets when submitting a plugin to t
 
 ### Icon
 - ✅ SVG source available
-- ❌ Need to create `icon-256x256.png` from the SVG
+- ✅ PNG files created (`icon-256x256.png` and `icon-128x128.png`)
 
 ### Banner
 - ✅ Both sizes available
