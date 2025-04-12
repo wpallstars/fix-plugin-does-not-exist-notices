@@ -1,0 +1,96 @@
+# Augment ignore file
+# Patterns for files and directories that should be ignored by Augment's context engine
+
+# Dependencies and package managers
+node_modules/
+vendor/
+bower_components/
+.pnp/
+.pnp.js
+package-lock.json
+composer.lock
+yarn.lock
+
+# Build outputs
+build/
+dist/
+out/
+.next/
+.nuxt/
+.output/
+.cache/
+.parcel-cache/
+
+# Environment and configuration
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+ENV/
+.serverless/
+.fusebox/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Large binary files
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.mp4
+*.mov
+*.avi
+*.mp3
+*.wav
+*.ogg
+*.pdf
+
+# Design files
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+*.pxd
+*.afdesign
+*.afphoto
+*.afpub
+
+# Logs and debugging
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+debug.log
+
+# Testing and coverage
+coverage/
+.nyc_output/
+.jest/
+.cypress/
+cypress/videos/
+cypress/screenshots/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+
+# WordPress specific
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/cache/
+wp-content/backups/

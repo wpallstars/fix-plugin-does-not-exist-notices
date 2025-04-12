@@ -60,6 +60,26 @@ debug.log
 *.afdesign
 *.afphoto
 *.afpub
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+*.indd
+*.aep
+*.prproj
+*.psb
+*.xcf
+*.cdr
+*.eps
+*.svg.bak
+*.blend
+*.blend1
+*.blend2
+*.c4d
+*.max
+*.3ds
+*.fbx
 
 # WordPress testing
 .phpunit.result.cache

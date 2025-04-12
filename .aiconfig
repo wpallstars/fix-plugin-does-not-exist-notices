@@ -1,0 +1,40 @@
+{
+  "name": "fix-plugin-does-not-exist-notices",
+  "description": "WordPress plugin to fix 'Plugin file does not exist' notices",
+  "schema_version": "1.0.0",
+  "ignore_patterns": [
+    "node_modules/",
+    "vendor/",
+    "bower_components/",
+    "build/",
+    "dist/",
+    "*.zip",
+    "*.tar.gz",
+    "*.mp4",
+    "*.pdf",
+    "*.psd",
+    "*.ai",
+    "*.sketch",
+    "*.fig",
+    "*.xd",
+    "*.pxd",
+    "*.afdesign",
+    "*.afphoto",
+    "*.afpub",
+    "wp-content/uploads/",
+    "wp-content/upgrade/",
+    "wp-content/backup-db/",
+    "wp-content/cache/",
+    "wp-content/backups/"
+  ],
+  "models": {
+    "default": "gpt-4",
+    "code_generation": "gpt-4",
+    "code_explanation": "gpt-4",
+    "documentation": "gpt-4"
+  },
+  "settings": {
+    "temperature": 0.2,
+    "max_tokens": 4000
+  }
+}

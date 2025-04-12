@@ -122,6 +122,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.17
+* Added .augmentignore file with best practices
+* Added configuration files for Cursor, Windsurf, v0, and Cline IDEs
+* Added more design file formats to .gitignore
+* Added .aiconfig file for general AI IDE compatibility
+
 ### 1.6.16
 * Updated CI configuration files with correct plugin slugs
 * Updated CHANGELOG.md with all recent versions

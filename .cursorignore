@@ -1,0 +1,35 @@
+# Cursor ignore file
+# Similar to .gitignore but for Cursor's AI context
+
+# Dependencies and package managers
+node_modules/
+vendor/
+bower_components/
+
+# Build outputs
+build/
+dist/
+
+# Large binary files
+*.zip
+*.tar.gz
+*.mp4
+*.pdf
+
+# Design files
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xd
+*.pxd
+*.afdesign
+*.afphoto
+*.afpub
+
+# WordPress specific
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/cache/
+wp-content/backups/

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.17] - 2024-05-17
+### Added
+- .augmentignore file with best practices
+- Configuration files for Cursor, Windsurf, v0, and Cline IDEs
+- More design file formats to .gitignore
+- .aiconfig file for general AI IDE compatibility
+
 ## [1.6.16] - 2024-05-17
 ### Fixed
 - Updated CI configuration files with correct plugin slugs

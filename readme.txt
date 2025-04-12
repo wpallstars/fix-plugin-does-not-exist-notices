@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.16
+Stable tag: 1.6.17
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,12 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.17 =
+* Added .augmentignore file with best practices
+* Added configuration files for Cursor, Windsurf, v0, and Cline IDEs
+* Added more design file formats to .gitignore
+* Added .aiconfig file for general AI IDE compatibility
 
 = 1.6.16 =
 * Updated CI configuration files with correct plugin slugs
@@ -276,6 +282,9 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.17 =
+Added configuration files for AI-powered IDEs and improved compatibility with development tools.
 
 = 1.6.16 =
 Updated CI configuration files and fixed outdated references to the previous plugin name.
