@@ -122,6 +122,11 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.15
+* Moved AI workflow documentation to root directory for better visibility
+* Consolidated duplicate workflow files
+* Improved organization of development documentation
+
 ### 1.6.14
 * Updated documentation to consistently use "Remove Notice" instead of "Remove Reference"
 * Added design file extensions to .gitignore (.pxd, .afdesign, .afphoto, .afpub)
