@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.21] - 2024-05-17
+### Added
+- Support for more AI-powered development tools (Roo, Gemini, Loveable, Bolt, Cody, Continue)
+- Links to supported AI IDEs in documentation
+- Additional FAQs for better SEO
+
+### Changed
+- Updated AI configuration files with modern models (gpt-4o)
+- Made documentation more generic for boilerplate use
+- Enhanced explanations in configuration files
+- Added more keywords for better SEO
+
 ## [1.6.20] - 2024-05-17
 ### Changed
 - Added explanations about the ! prefix in ignore files

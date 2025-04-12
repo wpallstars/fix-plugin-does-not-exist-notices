@@ -1,3 +1,7 @@
+# This file is used by WordPress.org plugin deployment scripts
+# It determines which files/directories should be excluded from the plugin zip
+# Note: Many patterns are already in .gitignore - this file focuses on deployment-specific exclusions
+
 # Git
 .git
 .github
@@ -48,4 +52,4 @@ Thumbs.db
 *.tmp
 *.zip
 *~
-._* 
+._*

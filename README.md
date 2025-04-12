@@ -94,6 +94,26 @@ If you remove a reference to a plugin that you later want to reinstall, simply i
 
 Although this plugin consumes minimal disk space, and doesn't run unless you are on the /wp-admin/plugins.php page, you don't need to keep it active or installed if you don't have this notice to clear — but it is safe to, if you just want it as a part of your overall WordPress stack of enhancements and conveniences.
 
+### How do I fix the "Plugin file does not exist" error in WordPress?
+
+This error occurs when WordPress has a reference to a plugin in its database, but the actual plugin files are missing. Our plugin provides a simple one-click solution: it adds these missing plugins to your plugins list with a "Remove Notice" button that lets you safely remove the database reference.
+
+### Why do I see "The plugin has been deactivated due to an error: Plugin file does not exist"?
+
+This error appears when you've deleted a plugin's files (via FTP or file manager) without properly deactivating it first through the WordPress admin. WordPress still thinks the plugin should be active but can't find its files. Our plugin helps you clean up these references.
+
+### Can this plugin fix errors after migrating a WordPress site?
+
+Yes! After migrating a site, you might see plugin errors if some plugins weren't transferred correctly. This plugin will help you identify and clean up those references without having to edit the database directly.
+
+### Is it safe to remove plugin references that show "Plugin file does not exist"?
+
+Absolutely. If WordPress is showing this error, it means the plugin files are already gone, and you're just cleaning up a database reference. Our plugin uses WordPress's standard functions to safely remove these references without affecting other plugins or site functionality.
+
+### How is this different from manually editing the database?
+
+Manually editing the WordPress database is risky and requires technical knowledge. Our plugin provides a safe, user-friendly way to remove plugin references directly from the WordPress admin interface without any SQL knowledge or database access.
+
 ## Screenshots
 
 1. Error message with explanation notification
@@ -112,6 +132,24 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch: `git push origin feature/amazing-feature`
 5. Submit a pull request
 
+### AI-Powered Development
+
+This repository is configured to work with various AI-powered development tools. You can use any of the following AI IDEs to contribute to this project:
+
+- [Augment](https://augment.dev/) - AI-powered coding assistant
+- [Cursor](https://cursor.sh/) - AI-first code editor
+- [v0](https://v0.dev/) - AI-powered design and development tool
+- [Windsurf](https://www.windsurf.io/) - AI coding assistant
+- [Cline](https://cline.tools/) - AI terminal assistant
+- [Roo](https://roo.ai/) - AI pair programmer
+- [Gemini Code Assist](https://ai.google.dev/gemini-api) - Google's AI coding assistant
+- [Loveable](https://www.loveable.ai/) - AI development environment
+- [Bolt](https://www.bolt.dev/) - AI-powered code editor
+- [Cody](https://sourcegraph.com/cody) - Sourcegraph's AI coding assistant
+- [Continue](https://continue.dev/) - Open-source AI coding assistant
+
+The repository includes configuration files for all these tools to ensure a consistent development experience.
+
 ### Technical Details
 
 The plugin works by:
@@ -121,6 +159,13 @@ The plugin works by:
 4. Providing a secure method to remove plugin references from the database
 
 ## Changelog
+
+### 1.6.21
+* Added support for more AI-powered development tools (Roo, Gemini, Loveable, Bolt, Cody, Continue)
+* Updated documentation with links to supported AI IDEs
+* Enhanced SEO with additional FAQs and keywords
+* Made documentation more generic for boilerplate use
+* Updated AI configuration files with modern models and better explanations
 
 ### 1.6.20
 * Added explanations about the ! prefix in ignore files

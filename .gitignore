@@ -101,12 +101,36 @@ debug.log
 .chat-history/
 .cursor/
 .cursor-cache/
+.cursor-tmp/
 .v0/
 .v0-cache/
+.v0-tmp/
 .windsurf/
 .windsurf-cache/
+.windsurf-tmp/
 .cline/
 .cline-cache/
+.cline-tmp/
+.roo/
+.roo-cache/
+.roo-tmp/
+.gemini/
+.gemini-cache/
+.gemini-tmp/
+.loveable/
+.loveable-cache/
+.loveable-tmp/
+.bolt/
+.bolt-cache/
+.bolt-tmp/
+.cody/
+.cody-cache/
+.cody-tmp/
+.continue/
+.continue-cache/
+.continue-tmp/
+.ai-tmp/
+.augment-cache/
 
 # WordPress testing
 .phpunit.result.cache

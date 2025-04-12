@@ -1,11 +1,11 @@
 === Fix 'Plugin file does not exist.' Notices ===
 Contributors: marcusquinn, wpallstars
 Donate link: https://www.marcusquinn.com
-Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file does not exist
+Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file does not exist, wordpress error, plugin error, deactivated plugin, remove plugin reference, fix plugin error, plugin does not exist, plugin file does not exist error
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.20
+Stable tag: 1.6.21
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,6 +83,26 @@ If you remove a reference to a plugin that you later want to reinstall, simply i
 
 Although this plugin consumes minimal disk space, and doesn't run unless you are on the /wp-admin/plugins.php page, you don't need to keep it active or installed if you don't have this notice to clear — but it is safe to, if you just want it as a part of your overall WordPress stack of enhancements and conveniences.
 
+= How do I fix the "Plugin file does not exist" error in WordPress? =
+
+This error occurs when WordPress has a reference to a plugin in its database, but the actual plugin files are missing. Our plugin provides a simple one-click solution: it adds these missing plugins to your plugins list with a "Remove Notice" button that lets you safely remove the database reference.
+
+= Why do I see "The plugin has been deactivated due to an error: Plugin file does not exist"? =
+
+This error appears when you've deleted a plugin's files (via FTP or file manager) without properly deactivating it first through the WordPress admin. WordPress still thinks the plugin should be active but can't find its files. Our plugin helps you clean up these references.
+
+= Can this plugin fix errors after migrating a WordPress site? =
+
+Yes! After migrating a site, you might see plugin errors if some plugins weren't transferred correctly. This plugin will help you identify and clean up those references without having to edit the database directly.
+
+= Is it safe to remove plugin references that show "Plugin file does not exist"? =
+
+Absolutely. If WordPress is showing this error, it means the plugin files are already gone, and you're just cleaning up a database reference. Our plugin uses WordPress's standard functions to safely remove these references without affecting other plugins or site functionality.
+
+= How is this different from manually editing the database? =
+
+Manually editing the WordPress database is risky and requires technical knowledge. Our plugin provides a safe, user-friendly way to remove plugin references directly from the WordPress admin interface without any SQL knowledge or database access.
+
 == Screenshots ==
 
 1. Error message with explanation notification
@@ -90,6 +110,13 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.21 =
+* Added support for more AI-powered development tools (Roo, Gemini, Loveable, Bolt, Cody, Continue)
+* Updated documentation with links to supported AI IDEs
+* Enhanced SEO with additional FAQs and keywords
+* Made documentation more generic for boilerplate use
+* Updated AI configuration files with modern models and better explanations
 
 = 1.6.20 =
 * Added explanations about the ! prefix in ignore files
@@ -299,6 +326,9 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.21 =
+Added support for more AI-powered development tools and enhanced documentation with links to supported AI IDEs.
 
 = 1.6.20 =
 Added explanations about using the ! prefix in ignore files to include files excluded by .gitignore.
