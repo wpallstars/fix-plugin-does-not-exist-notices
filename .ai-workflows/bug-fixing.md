@@ -129,7 +129,7 @@ git checkout v{MAJOR}.{MINOR}.{PATCH}
 git checkout -b hotfix/v{MAJOR}.{MINOR}.{PATCH+1}
 ```
 
-### 2. Fix the Bug
+### 2. Fix the Issues
 
 Apply the minimal fix necessary to address the critical issue.
 

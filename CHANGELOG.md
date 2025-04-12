@@ -2,6 +2,123 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.22] - 2024-05-17
+### Changed
+- Enhanced support section with multiple support channel options
+- Added encouragement for users to leave reviews on WordPress.org
+- Improved documentation with clearer support instructions
+
+## [1.6.21] - 2024-05-17
+### Added
+- Support for more AI-powered development tools (Roo, Gemini, Loveable, Bolt, Cody, Continue)
+- Links to supported AI IDEs in documentation
+- Additional FAQs for better SEO
+
+### Changed
+- Updated AI configuration files with modern models (gpt-4o)
+- Made documentation more generic for boilerplate use
+- Enhanced explanations in configuration files
+- Added more keywords for better SEO
+
+## [1.6.20] - 2024-05-17
+### Changed
+- Added explanations about the ! prefix in ignore files
+- Moved WordPress-specific patterns to .gitignore
+- Further improved organization of ignore patterns
+- Added examples of how to include files excluded by .gitignore
+
+## [1.6.19] - 2024-05-17
+### Changed
+- Consolidated common ignore patterns into .gitignore
+- Simplified AI IDE configuration files to only include tool-specific patterns
+- Improved organization of ignore patterns for better maintainability
+- Added more file types to .gitignore for comprehensive coverage
+
+## [1.6.18] - 2024-05-17
+### Changed
+- Optimized AI IDE configuration files to only include patterns not in .gitignore
+- Improved efficiency of ignore files for better AI context management
+- Enhanced compatibility with various AI-powered development tools
+
+## [1.6.17] - 2024-05-17
+### Added
+- .augmentignore file with best practices
+- Configuration files for Cursor, Windsurf, v0, and Cline IDEs
+- More design file formats to .gitignore
+- .aiconfig file for general AI IDE compatibility
+
+## [1.6.16] - 2024-05-17
+### Fixed
+- Updated CI configuration files with correct plugin slugs
+- Updated CHANGELOG.md with all recent versions
+- Fixed outdated references to plugin-reference-cleaner
+
+## [1.6.15] - 2024-05-17
+### Changed
+- Moved AI workflow documentation to root directory for better visibility
+- Consolidated duplicate workflow files
+- Improved organization of development documentation
+- Updated CI configuration files with correct plugin slugs
+
+## [1.6.14] - 2024-05-17
+### Changed
+- Updated documentation to consistently use "Remove Notice" instead of "Remove Reference"
+- Added design file extensions to .gitignore (.pxd, .afdesign, .afphoto, .afpub)
+- Improved explanation of how the plugin works
+- Ensured consistent terminology across all documentation
+
+## [1.6.13] - 2024-05-17
+### Changed
+- Code cleanup and optimization
+- Improved Git Updater integration
+- Fixed author display in plugin information
+- Ensured compatibility with WordPress 6.4
+
+## [1.6.12] - 2024-05-17
+### Added
+- Added WP ALLSTARS as a co-author
+- Updated author information and links
+- Added author websites to plugin description
+- Fixed issue with multiple author URLs
+
+## [1.6.11] - 2024-05-17
+### Fixed
+- Improved Git Updater integration
+- Fixed plugin header information
+- Updated author information
+
+## [1.6.10] - 2024-05-17
+### Fixed
+- Corrected plugin header information
+- Improved Git Updater compatibility
+- Updated documentation
+
+## [1.6.9] - 2024-05-17
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+- Improved documentation
+
+## [1.6.8] - 2024-05-17
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+
+## [1.6.7] - 2024-05-17
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+
+## [1.6.6] - 2024-05-17
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+
+## [1.6.5] - 2024-05-16
+### Fixed
+- Fixed Git Updater integration
+- Updated plugin header information
+
 ## [1.6.4] - 2024-05-16
 ### Improved
 - Version management to ensure consistent patch version increments

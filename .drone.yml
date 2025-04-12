@@ -14,16 +14,16 @@ steps:
     commands:
       - apk add --no-cache bash zip
       - VERSION=${DRONE_TAG#v}
-      - mkdir -p build/plugin-reference-cleaner
-      - cp plugin-reference-cleaner.php build/plugin-reference-cleaner/
-      - cp readme.txt build/plugin-reference-cleaner/
-      - cp LICENSE build/plugin-reference-cleaner/
-      - cp README.md build/plugin-reference-cleaner/
-      - cp CHANGELOG.md build/plugin-reference-cleaner/
+      - mkdir -p build/fix-plugin-does-not-exist-notices
+      - cp fix-plugin-does-not-exist-notices.php build/fix-plugin-does-not-exist-notices/
+      - cp readme.txt build/fix-plugin-does-not-exist-notices/
+      - cp LICENSE build/fix-plugin-does-not-exist-notices/
+      - cp README.md build/fix-plugin-does-not-exist-notices/
+      - cp CHANGELOG.md build/fix-plugin-does-not-exist-notices/
       - cd build
-      - zip -r ../plugin-reference-cleaner-$VERSION.zip plugin-reference-cleaner
+      - zip -r ../fix-plugin-does-not-exist-notices-$VERSION.zip fix-plugin-does-not-exist-notices
       - cd ..
-      
+
   - name: release
     image: plugins/gitea-release
     settings:
@@ -31,9 +31,9 @@ steps:
         from_secret: gitea_token
       base_url: https://gitea.wpallstars.com
       files:
-        - plugin-reference-cleaner-*.zip
+        - fix-plugin-does-not-exist-notices-*.zip
       title: Release ${DRONE_TAG}
       note: |
-        Plugin Reference Cleaner ${DRONE_TAG}
-        
-        See [CHANGELOG.md](https://gitea.wpallstars.com/wpallstars/plugin-reference-cleaner/src/branch/main/CHANGELOG.md) for details. 
+        Fix 'Plugin file does not exist.' Notices ${DRONE_TAG}
+
+        See [CHANGELOG.md](https://gitea.wpallstars.com/wpallstars/fix-plugin-does-not-exist-notices/src/branch/main/CHANGELOG.md) for details.

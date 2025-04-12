@@ -5,6 +5,9 @@
     margin: 5px 0 15px;
     font-size: 14px;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: none;
 }
 .prc-notice h3 {
     margin-top: 0;
@@ -23,6 +26,13 @@
 }
 
 /* Style for highlighting the missing plugin row */
-tr.inactive.prc-highlight-missing {
+tr.inactive.prc-highlight-missing,
+tr.active.prc-highlight-missing {
     background-color: #fff8e5 !important; /* Use !important to override default styles */
+}
+
+/* Make File Missing text bold and red */
+span.error {
+    font-weight: bold !important;
+    color: #dc3232 !important;
 }
