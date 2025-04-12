@@ -79,7 +79,7 @@ class Updater {
      */
     private function is_github_installation() {
         // Check for GitHub-specific markers in the plugin directory
-        $plugin_dir = plugin_dir_path($this->plugin_file);
+        $plugin_dir = \plugin_dir_path($this->plugin_file);
 
         // Look for .git directory with GitHub remote
         if (file_exists($plugin_dir . '.git')) {
@@ -104,7 +104,7 @@ class Updater {
      */
     private function is_gitea_installation() {
         // Check for Gitea-specific markers in the plugin directory
-        $plugin_dir = plugin_dir_path($this->plugin_file);
+        $plugin_dir = \plugin_dir_path($this->plugin_file);
 
         // Look for .git directory with Gitea remote
         if (file_exists($plugin_dir . '.git')) {
@@ -135,7 +135,7 @@ class Updater {
         }
 
         // Set the update server based on the installation source
-        add_filter('gul_update_server', function() {
+        \add_filter('gul_update_server', function() {
             if ($this->source === 'github') {
                 return 'https://github.com/wpallstars/fix-plugin-does-not-exist-notices'; // GitHub repository URL
             } elseif ($this->source === 'gitea') {
