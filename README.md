@@ -118,9 +118,7 @@ Manually editing the WordPress database is risky and requires technical knowledg
 
 ## Screenshots
 
-1. Error message with explanation notification
-2. Missing plugin shown in the plugins list with "Remove Notice" link
-3. Auto-scroll feature that highlights the missing plugin
+1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 ## Developers
 
