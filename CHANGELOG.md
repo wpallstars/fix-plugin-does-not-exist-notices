@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.22] - 2024-05-17
+### Changed
+- Enhanced support section with multiple support channel options
+- Added encouragement for users to leave reviews on WordPress.org
+- Improved documentation with clearer support instructions
+
 ## [1.6.21] - 2024-05-17
 ### Added
 - Support for more AI-powered development tools (Roo, Gemini, Loveable, Bolt, Cody, Continue)

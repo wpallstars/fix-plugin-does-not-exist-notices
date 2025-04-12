@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.21
+Stable tag: 1.6.22
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,11 @@ Manually editing the WordPress database is risky and requires technical knowledg
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.22 =
+* Enhanced support section with multiple support channel options
+* Added encouragement for users to leave reviews on WordPress.org
+* Improved documentation with clearer support instructions
 
 = 1.6.21 =
 * Added support for more AI-powered development tools (Roo, Gemini, Loveable, Bolt, Cody, Continue)
@@ -327,6 +332,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 
 == Upgrade Notice ==
 
+= 1.6.22 =
+Improved support documentation with multiple support channel options and encouragement for users to leave reviews.
+
 = 1.6.21 =
 Added support for more AI-powered development tools and enhanced documentation with links to supported AI IDEs.
 
@@ -386,4 +394,10 @@ Important stability fix - resolves timeout issues during plugin activation!
 
 == Support ==
 
-For support, please visit https://wpallstars.com
+If you need help with this plugin, there are several ways to get support:
+
+* [WordPress.org Support Forums](https://wordpress.org/support/plugin/fix-plugin-does-not-exist-notices/)
+* [GitHub Issues](https://github.com/wpallstars/fix-plugin-does-not-exist-notices/issues)
+* [Gitea Issues](https://gitea.wpallstars.com/wpallstars/fix-plugin-does-not-exist-notices/issues)
+
+If you find this plugin helpful, please consider [leaving a review](https://wordpress.org/support/plugin/fix-plugin-does-not-exist-notices/reviews/) on WordPress.org. Your feedback helps others discover the plugin and encourages continued development and support.
