@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.8
+Stable tag: 1.6.9
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,13 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.9 =
+* Fixed issue with notices not appearing below WordPress error messages
+* Improved JavaScript detection of WordPress error notices
+* Prevented WordPress from automatically clearing error notices on page refresh
+* Added multiple timing attempts to ensure notices appear correctly
+* Enhanced error notice targeting for better compatibility
 
 = 1.6.8 =
 * Fixed notice positioning to appear directly below WordPress error messages
@@ -227,8 +234,8 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 
 == Upgrade Notice ==
 
-= 1.6.8 =
-Improved notice positioning and appearance, with better explanatory text and more reliable error detection!
+= 1.6.9 =
+Fixed critical issue with WordPress automatically clearing error notices on page refresh and improved notice positioning!
 
 = 1.6.3 =
 Fixed Git Updater repository URLs and updated organization naming for consistent branding across all platforms!

@@ -13,7 +13,7 @@
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 1.6.8
+ * Version: 1.6.9
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'FPDEN_VERSION', '1.6.8' );
+define( 'FPDEN_VERSION', '1.6.9' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FPDEN_PLUGIN_FILE', __FILE__ );
@@ -98,6 +98,9 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 		// Enqueue admin scripts and styles.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+
+		// Prevent WordPress from automatically deactivating missing plugins
+		add_filter( 'pre_option_recently_activated', array( $this, 'prevent_auto_deactivation' ) );
 	}
 
 	/**
@@ -390,6 +393,37 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 		}
 
 		return $this->invalid_plugins;
+	}
+
+	/**
+	 * Prevent WordPress from automatically deactivating missing plugins.
+	 *
+	 * WordPress normally deactivates plugins that don't exist and adds them to the
+	 * 'recently_activated' option. This filter prevents that behavior so we can
+	 * handle the deactivation ourselves through our UI.
+	 *
+	 * @param mixed $pre_option The value to return instead of the option value.
+	 * @return mixed The original value (null) to let WordPress proceed, or an array to override.
+	 */
+	public function prevent_auto_deactivation( $pre_option ) {
+		// Only run on the plugins page
+		if ( ! $this->is_plugins_page() ) {
+			return $pre_option;
+		}
+
+		// Get our invalid plugins
+		$invalid_plugins = $this->get_invalid_plugins();
+
+		// If we have invalid plugins and we're on the plugins page, return an empty array
+		// to prevent WordPress from auto-deactivating the plugins
+		if ( ! empty( $invalid_plugins ) ) {
+			// Return the current value of the option to prevent WordPress from modifying it
+			$recently_activated = get_option( 'recently_activated', array() );
+			return $recently_activated;
+		}
+
+		// Otherwise, let WordPress handle it normally
+		return $pre_option;
 	}
 } // End class Fix_Plugin_Does_Not_Exist_Notices
 
