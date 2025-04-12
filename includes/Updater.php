@@ -3,9 +3,11 @@
  * Plugin Updater
  *
  * @package FixPluginDoesNotExistNotices
+ * @noinspection PhpUndefinedFunctionInspection
+ * @noinspection PhpUndefinedClassInspection
  */
 
-namespace WPAllStars\FixPluginDoesNotExistNotices;
+namespace WPALLSTARS\FixPluginDoesNotExistNotices;
 
 /**
  * Class Updater
@@ -76,10 +78,11 @@ class Updater {
      * Check if the plugin was installed from GitHub
      *
      * @return bool
+     * @noinspection PhpUndefinedFunctionInspection
      */
     private function is_github_installation() {
         // Check for GitHub-specific markers in the plugin directory
-        $plugin_dir = plugin_dir_path($this->plugin_file);
+        $plugin_dir = \plugin_dir_path($this->plugin_file);
 
         // Look for .git directory with GitHub remote
         if (file_exists($plugin_dir . '.git')) {
@@ -101,10 +104,11 @@ class Updater {
      * Check if the plugin was installed from Gitea
      *
      * @return bool
+     * @noinspection PhpUndefinedFunctionInspection
      */
     private function is_gitea_installation() {
         // Check for Gitea-specific markers in the plugin directory
-        $plugin_dir = plugin_dir_path($this->plugin_file);
+        $plugin_dir = \plugin_dir_path($this->plugin_file);
 
         // Look for .git directory with Gitea remote
         if (file_exists($plugin_dir . '.git')) {
@@ -121,6 +125,8 @@ class Updater {
      * Initialize Git Updater Lite
      *
      * @return void
+     * @noinspection PhpUndefinedFunctionInspection
+     * @noinspection PhpUndefinedClassInspection
      */
     private function init_git_updater() {
         // Check if the Git Updater Lite class exists (composer autoload)
@@ -135,7 +141,7 @@ class Updater {
         }
 
         // Set the update server based on the installation source
-        add_filter('gul_update_server', function() {
+        \add_filter('gul_update_server', function() {
             if ($this->source === 'github') {
                 return 'https://github.com/wpallstars/fix-plugin-does-not-exist-notices'; // GitHub repository URL
             } elseif ($this->source === 'gitea') {

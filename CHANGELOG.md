@@ -2,11 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.4] - 2024-05-16
+### Improved
+- Version management to ensure consistent patch version increments
+- Documentation for version update process
+- AI workflow files with detailed version increment instructions
+
 ## [1.6.3] - 2024-05-15
 ### Fixed
 - Git Updater repository URLs to use full repository paths
 - Update URI configuration for proper update detection
 - Version management following semantic versioning
+
+### Changed
+- Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+- Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
 ## [1.6.2] - 2024-05-15
 ### Changed

@@ -4,14 +4,16 @@
  *
  * @package           FixPluginDoesNotExistNotices
  * @author            Marcus Quinn
- * @copyright         2023 WP All Stars
+ * @copyright         2023 WP ALLSTARS
  * @license           GPL-2.0+
+ * @noinspection      PhpUndefinedFunctionInspection
+ * @noinspection      PhpUndefinedConstantInspection
  *
  * @wordpress-plugin
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 1.6.3
+ * Version: 1.6.4
  * Author: Marcus Quinn
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -46,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'FPDEN_VERSION', '1.6.3' );
+define( 'FPDEN_VERSION', '1.6.4' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FPDEN_PLUGIN_FILE', __FILE__ );
@@ -191,6 +193,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	 * @param array  $plugin_data An array of plugin data.
 	 * @param string $context     The plugin context (e.g., 'all', 'active', 'inactive').
 	 * @return array The potentially modified array of plugin action links.
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function add_remove_reference_action( $actions, $plugin_file, $plugin_data, $context ) {
 		// Only run on the plugins page.
@@ -408,7 +411,7 @@ if (file_exists($autoloader)) {
     require_once $autoloader;
 
     // Initialize the updater if the class exists
-    if (class_exists('\WPAllStars\FixPluginDoesNotExistNotices\Updater')) {
-        new \WPAllStars\FixPluginDoesNotExistNotices\Updater(__FILE__);
+    if (class_exists('\WPALLSTARS\FixPluginDoesNotExistNotices\Updater')) {
+        new \WPALLSTARS\FixPluginDoesNotExistNotices\Updater(__FILE__);
     }
 }
