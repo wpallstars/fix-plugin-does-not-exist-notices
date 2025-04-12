@@ -33,6 +33,7 @@ Update relevant documentation to reflect the new feature:
 - Add a description to CHANGELOG.md under an "Unreleased" section
 - Update readme.txt if the feature affects user-facing functionality
 - Update inline documentation/comments
+- Remember that any feature addition will require a version increment in all relevant files
 
 ### 4. Testing
 
@@ -52,18 +53,38 @@ git add .
 git commit -m "Add feature: descriptive name"
 ```
 
-### 6. Push to Remote
+### 6. Prepare for Release
 
-Push the feature branch to the remote repositories:
+When the feature is ready to be released:
+
+1. Create a version branch for the release:
+
+```bash
+git checkout -b v{MAJOR}.{MINOR}.{PATCH}
+```
+
+2. Merge your feature branch into the version branch:
+
+```bash
+git merge feature/descriptive-name --no-ff
+```
+
+3. Update version numbers and changelog entries
+
+4. Follow the standard release process from this point
+
+### 7. Push to Remote (Optional for Collaboration)
+
+If you need to collaborate with others on the feature before it's ready for release:
 
 ```bash
 git push github HEAD:feature/descriptive-name
 git push gitea HEAD:feature/descriptive-name
 ```
 
-### 7. Create Pull Request (Optional)
+### 8. Create Pull Request (Optional)
 
-If the repository uses pull requests for code review, create a pull request from the feature branch to the main branch.
+If the repository uses pull requests for code review, create a pull request from the feature branch to the version branch.
 
 ## Code Standards and Best Practices
 
