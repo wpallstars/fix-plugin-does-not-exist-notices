@@ -120,6 +120,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.13
+* Code cleanup and optimization
+* Improved Git Updater integration
+* Fixed author display in plugin information
+* Ensured compatibility with WordPress 6.4
+
 ### 1.6.12
 * Added WP ALLSTARS as a co-author
 * Updated author information and links
