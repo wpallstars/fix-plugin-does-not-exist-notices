@@ -13,8 +13,6 @@ When submitting a plugin to WordPress.org, you'll work with an SVN repository th
     banner-772x250.png
     banner-1544x500.png
     screenshot-1.png
-    screenshot-2.png
-    screenshot-3.png
 /tags/           # Contains tagged releases
     /1.0.0/
         [plugin files]
@@ -47,11 +45,10 @@ When submitting a plugin to WordPress.org, you'll work with an SVN repository th
 ### Screenshots
 
 - **Format**: PNG
-- **Naming**: Sequential numbers (`screenshot-1.png`, `screenshot-2.png`, etc.)
+- **Naming**: `screenshot-1.png`
 - **Location**: Upload to the `/assets/` directory in the WordPress.org SVN repository
-- **Status**: ⚠️ PARTIALLY READY
+- **Status**: ✅ READY
   - `screenshot-1.png` is available in `assets/screenshots/`
-  - Need to create `screenshot-2.png` and `screenshot-3.png` to match readme.txt descriptions
 
 ## Submission Process
 
@@ -68,24 +65,22 @@ When submitting a plugin to WordPress.org, you'll work with an SVN repository th
    ```bash
    # Check out the repository
    svn checkout https://plugins.svn.wordpress.org/fix-plugin-does-not-exist-notices/
-   
+
    # Copy plugin files to trunk
    cp -r [your-local-plugin-files]/* fix-plugin-does-not-exist-notices/trunk/
-   
+
    # Copy assets to assets directory
    cp assets/icon/icon-256x256.png fix-plugin-does-not-exist-notices/assets/
    cp assets/icon/icon-128x128.png fix-plugin-does-not-exist-notices/assets/
    cp assets/banner/banner-772x250.png fix-plugin-does-not-exist-notices/assets/
    cp assets/banner/banner-1544x500.png fix-plugin-does-not-exist-notices/assets/
    cp assets/screenshots/screenshot-1.png fix-plugin-does-not-exist-notices/assets/
-   cp assets/screenshots/screenshot-2.png fix-plugin-does-not-exist-notices/assets/
-   cp assets/screenshots/screenshot-3.png fix-plugin-does-not-exist-notices/assets/
-   
+
    # Add new files
    cd fix-plugin-does-not-exist-notices
    svn add --force trunk/*
    svn add --force assets/*
-   
+
    # Commit changes
    svn commit -m "Initial plugin submission"
    ```

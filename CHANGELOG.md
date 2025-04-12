@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.26] - 2024-05-17
+### Changed
+- Updated screenshot references to use a single comprehensive screenshot
+- Fixed asset directory paths in documentation
+- Improved ImageMagick conversion commands for icon generation
+- Clarified WordPress.org SVN repository structure
+
 ## [1.6.25] - 2024-05-17
 ### Added
 - Comprehensive WordPress.org submission guide with SVN structure explanation

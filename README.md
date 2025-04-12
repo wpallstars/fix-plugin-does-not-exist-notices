@@ -160,6 +160,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.26
+* Updated screenshot references to use a single comprehensive screenshot
+* Fixed asset directory paths in documentation
+* Improved ImageMagick conversion commands for icon generation
+* Clarified WordPress.org SVN repository structure
+
 ### 1.6.25
 * Consolidated asset files into their respective directories
 * Created comprehensive WordPress.org submission guide

@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.25
+Stable tag: 1.6.26
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,11 +105,15 @@ Manually editing the WordPress database is risky and requires technical knowledg
 
 == Screenshots ==
 
-1. Error message with explanation notification
-2. Missing plugin shown in the plugins list with "Remove Notice" link
-3. Auto-scroll feature that highlights the missing plugin
+1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 1.6.26 =
+* Updated screenshot references to use a single comprehensive screenshot
+* Fixed asset directory paths in documentation
+* Improved ImageMagick conversion commands for icon generation
+* Clarified WordPress.org SVN repository structure
 
 = 1.6.25 =
 * Consolidated asset files into their respective directories
@@ -348,6 +352,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.26 =
+Updated screenshot references and improved WordPress.org submission documentation.
 
 = 1.6.25 =
 Improved organization of asset files and created comprehensive WordPress.org submission guide.
