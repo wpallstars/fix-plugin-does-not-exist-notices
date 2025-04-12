@@ -9,6 +9,8 @@
 
 namespace WPALLSTARS\FixPluginDoesNotExistNotices;
 
+use function add_filter;
+
 /**
  * Class Updater
  *
