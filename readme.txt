@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.13
+Stable tag: 1.6.14
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,12 +17,12 @@ Have you ever deleted a plugin directly from the server or database and then bee
 
 "The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
 
-This small utility plugin adds missing plugins to your WordPress plugins list and provides a "Remove Reference" link, allowing you to safely clean up invalid plugin entries with one click.
+This small utility plugin adds missing plugins to your WordPress plugins list and provides a "Remove Notice" link, allowing you to safely clean up invalid plugin entries with one click.
 
 = Key Features =
 
 * Adds missing plugins directly to your plugins list
-* Provides a simple "Remove Reference" action link
+* Provides a simple "Remove Notice" action link
 * Works with both single site and multisite WordPress installations
 * Includes helpful notifications explaining how to fix plugin errors
 * One-click auto-scroll to find missing plugins in large sites
@@ -34,8 +34,10 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 
 1. Detects all missing plugin references in your database
 2. Adds them to your plugins list with "(File Missing)" indicators
-3. Provides a "Remove Reference" link to safely remove them
+3. Provides a "Remove Notice" link to safely remove them
 4. Shows clear notifications guiding you through the cleanup process
+5. Safely removes the missing active plugin reference from your database using standard WordPress functions
+6. Leaves all remaining plugins installed and active
 
 = Use Cases =
 
@@ -49,7 +51,7 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 1. Upload the `fix-plugin-does-not-exist-notices` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. No configuration needed - the plugin works automatically
-4. If you have missing plugin errors, you'll immediately see them in your plugins list with "Remove Reference" links
+4. If you have missing plugin errors, you'll immediately see them in your plugins list with "Remove Notice" links
 
 == Frequently Asked Questions ==
 
@@ -67,7 +69,7 @@ Yes, the plugin works on both single sites and multisite installations. It prope
 
 = How do I know which plugin references should be removed? =
 
-The plugin will only show "Remove Reference" links for plugins that are listed in your database but don't actually exist in your plugins directory. These are safe to remove.
+The plugin will only show "Remove Notice" links for plugins that are listed in your database but don't actually exist in your plugins directory. These are safe to remove.
 
 = Will this break my site? =
 
@@ -84,10 +86,16 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 == Screenshots ==
 
 1. Error message with explanation notification
-2. Missing plugin shown in the plugins list with "Remove Reference" link
+2. Missing plugin shown in the plugins list with "Remove Notice" link
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.14 =
+* Updated documentation to consistently use "Remove Notice" instead of "Remove Reference"
+* Added design file extensions to .gitignore (.pxd, .afdesign, .afphoto, .afpub)
+* Improved explanation of how the plugin works
+* Ensured consistent terminology across all documentation
 
 = 1.6.13 =
 * Code cleanup and optimization
@@ -258,6 +266,9 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.14 =
+Improved documentation with consistent terminology and better explanation of how the plugin works.
 
 = 1.6.13 =
 Code cleanup, improved Git Updater integration, and ensured compatibility with WordPress 6.4.

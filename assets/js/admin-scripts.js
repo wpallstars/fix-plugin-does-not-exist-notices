@@ -54,9 +54,8 @@
                 fpdenData.i18n.clickToScroll : 'Click here to scroll to and highlight missing plugins';
 
             ourNotice.innerHTML = '<h3 style="margin-top:0;color:#826200;">Fix Plugin Does Not Exist Notices 👆</h3>' +
-                '<p>To remove these notices, scroll down to each plugin\'s name.php row, followed by: "<strong style="color:red">(' + pluginMissingText + ')</strong>". Then, click the "<strong>' + removeNoticeText + '</strong>" link for that plugin.</p>' +
-                '<p>This safely removes the missing active plugin reference from your database.</p>' +
-                '<p>Calls the standard WordPress function to update your active plugin options table, leaving only the remaining plugins installed and active.</p>' +
+                '<p>To remove these notices, scroll down to each plugin\'s row showing: plugin-name.php "<strong style="color:red">(' + pluginMissingText + ')</strong>". Then, click the "<strong>' + removeNoticeText + '</strong>" link for that plugin.</p>' +
+                '<p>This safely removes the missing active plugin reference from your database, using the standard WordPress function to update your active plugin options table, to leave the remaining plugins installed and active.</p>' +
                 '<p><a href="#" id="prc-scroll-to-plugin" style="font-weight:bold;text-decoration:underline;color:#826200;">' + clickToScrollText + '</a></p>';
 
             // Insert our notice right after the error

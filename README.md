@@ -13,12 +13,12 @@ Have you ever deleted a plugin directly from the server or database and then bee
 
 "The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
 
-This small utility plugin adds missing plugins to your WordPress plugins list and provides a "Remove Reference" link, allowing you to safely clean up invalid plugin entries with one click.
+This small utility plugin adds missing plugins to your WordPress plugins list and provides a "Remove Notice" link, allowing you to safely clean up invalid plugin entries with one click.
 
 ### Key Features
 
 * Adds missing plugins directly to your plugins list
-* Provides a simple "Remove Reference" action link
+* Provides a simple "Remove Notice" action link
 * Works with both single site and multisite WordPress installations
 * Includes helpful notifications explaining how to fix plugin errors
 * One-click auto-scroll to find missing plugins in large sites
@@ -30,8 +30,10 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 
 1. Detects all missing plugin references in your database
 2. Adds them to your plugins list with "(File Missing)" indicators
-3. Provides a "Remove Reference" link to safely remove them
+3. Provides a "Remove Notice" link to safely remove them
 4. Shows clear notifications guiding you through the cleanup process
+5. Safely removes the missing active plugin reference from your database using standard WordPress functions
+6. Leaves all remaining plugins installed and active
 
 ### Use Cases
 
@@ -59,7 +61,7 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 
 1. After activation, navigate to Plugins > Installed Plugins
 2. If you have missing plugin errors, you'll see them in your plugins list with "(File Missing)" markers
-3. Click the "Remove Reference" link next to any missing plugin
+3. Click the "Remove Notice" link next to any missing plugin
 4. The reference will be removed, and the error notification will disappear
 
 ## Frequently Asked Questions
@@ -78,7 +80,7 @@ Yes, the plugin works on both single sites and multisite installations. It prope
 
 ### How do I know which plugin references should be removed?
 
-The plugin will only show "Remove Reference" links for plugins that are listed in your database but don't actually exist in your plugins directory. These are safe to remove.
+The plugin will only show "Remove Notice" links for plugins that are listed in your database but don't actually exist in your plugins directory. These are safe to remove.
 
 ### Will this break my site?
 
@@ -95,7 +97,7 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 ## Screenshots
 
 1. Error message with explanation notification
-2. Missing plugin shown in the plugins list with "Remove Reference" link
+2. Missing plugin shown in the plugins list with "Remove Notice" link
 3. Auto-scroll feature that highlights the missing plugin
 
 ## Developers
@@ -114,11 +116,17 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 The plugin works by:
 1. Filtering the `all_plugins` array to add missing plugins
-2. Adding a custom "Remove Reference" action link via `plugin_action_links`
+2. Adding a custom "Remove Notice" action link via `plugin_action_links`
 3. Adding helpful notifications near error messages
 4. Providing a secure method to remove plugin references from the database
 
 ## Changelog
+
+### 1.6.14
+* Updated documentation to consistently use "Remove Notice" instead of "Remove Reference"
+* Added design file extensions to .gitignore (.pxd, .afdesign, .afphoto, .afpub)
+* Improved explanation of how the plugin works
+* Ensured consistent terminology across all documentation
 
 ### 1.6.13
 * Code cleanup and optimization

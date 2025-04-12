@@ -55,6 +55,12 @@ debug.log
 .env.*
 !.env.example
 
+# Design files
+*.pxd
+*.afdesign
+*.afphoto
+*.afpub
+
 # WordPress testing
 .phpunit.result.cache
 .phpcs.cache
