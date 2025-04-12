@@ -159,6 +159,9 @@ The plugin works by:
 
 ## Changelog
 
+### 2.0.4
+* Fixed: Display actual plugin version instead of 'N/A' for missing plugins in plugin details view
+
 ### 2.0.2
 * Consolidated WordPress.org assets into .wordpress-org directory
 * Improved organization of assets for WordPress.org submission

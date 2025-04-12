@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.4] - 2024-05-17
+### Fixed
+- Display actual plugin version instead of 'N/A' for missing plugins in plugin details view
+
 ## [2.0.2] - 2024-05-17
 ### Changed
 - Consolidated WordPress.org assets into .wordpress-org directory
