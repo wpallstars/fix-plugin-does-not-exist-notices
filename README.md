@@ -160,6 +160,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.25
+* Consolidated asset files into their respective directories
+* Created comprehensive WordPress.org submission guide
+* Clarified SVN repository structure and asset requirements
+* Improved organization of asset files
+
 ### 1.6.24
 * Added properly named icon PNG files for WordPress.org submission
 * Created icon-256x256.png and icon-128x128.png files

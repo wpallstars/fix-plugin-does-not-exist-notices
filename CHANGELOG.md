@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.25] - 2024-05-17
+### Added
+- Comprehensive WordPress.org submission guide with SVN structure explanation
+
+### Changed
+- Consolidated asset files into their respective directories
+- Clarified asset requirements and submission process
+- Improved organization of asset files
+
 ## [1.6.24] - 2024-05-17
 ### Added
 - Properly named icon PNG files (icon-256x256.png and icon-128x128.png)

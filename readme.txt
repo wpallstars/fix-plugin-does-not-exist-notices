@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.24
+Stable tag: 1.6.25
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,12 @@ Manually editing the WordPress database is risky and requires technical knowledg
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.25 =
+* Consolidated asset files into their respective directories
+* Created comprehensive WordPress.org submission guide
+* Clarified SVN repository structure and asset requirements
+* Improved organization of asset files
 
 = 1.6.24 =
 * Added properly named icon PNG files for WordPress.org submission
@@ -342,6 +348,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.25 =
+Improved organization of asset files and created comprehensive WordPress.org submission guide.
 
 = 1.6.24 =
 Added properly named icon PNG files for WordPress.org submission.

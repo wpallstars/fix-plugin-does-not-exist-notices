@@ -3,8 +3,8 @@
 For WordPress.org plugin submission, you need to:
 
 1. Convert the SVG icon to PNG format
-2. Create a 256x256 pixel version
-3. Name it `icon-256x256.png`
+2. Create a 256x256 and 128x128 pixel version
+3. Name them `icon-256x256.png` and `icon-128x128.png`
 4. Place it in the root of your SVN assets directory
 
 ## How to Convert
@@ -12,7 +12,11 @@ For WordPress.org plugin submission, you need to:
 You can use tools like:
 - Inkscape (free, open-source)
 - Adobe Illustrator
+- Adobe Photoshop
+- Affinity Designer
+- Affinity Photo
 - GIMP
+- Pixelmator
 - Online converters like https://svgtopng.com/
 
 ## Command Line Conversion (if you have ImageMagick installed)
