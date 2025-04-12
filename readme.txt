@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.28
+Stable tag: 2.0.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,8 @@ Have you ever deleted a plugin directly from the server or database and then bee
 "The plugin folder-name/file-name.php has been deactivated due to an error: Plugin file does not exist."
 
 This small utility plugin adds missing plugins to your WordPress plugins list and provides a "Remove Notice" link, allowing you to safely clean up invalid plugin entries with one click.
+
+**Note:** This plugin doesn't have a settings page. Its functionality is limited to running on the WordPress admin plugins page only.
 
 = Key Features =
 
@@ -108,6 +110,12 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.0.0 =
+* Major version release for WordPress.org submission
+* Added note clarifying that the plugin has no settings page
+* Clarified that functionality is limited to the admin plugins page only
+* Finalized all assets and documentation for public release
 
 = 1.6.28 =
 * Consolidated asset documentation into a single comprehensive guide
@@ -363,6 +371,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.0.0 =
+Major version release for WordPress.org submission with improved documentation and clarification about plugin functionality.
 
 = 1.6.28 =
 Improved asset documentation and clarified that `-rtl` suffix is for Right-to-Left languages, not dark mode.

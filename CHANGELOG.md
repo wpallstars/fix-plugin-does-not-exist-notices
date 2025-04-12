@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2024-05-17
+### Added
+- Note clarifying that the plugin has no settings page
+- Clarification that functionality is limited to the admin plugins page only
+
+### Changed
+- Major version release for WordPress.org submission
+- Finalized all assets and documentation for public release
+
 ## [1.6.28] - 2024-05-17
 ### Changed
 - Consolidated asset documentation into a single comprehensive guide

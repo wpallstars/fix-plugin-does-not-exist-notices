@@ -15,6 +15,8 @@ Have you ever deleted a plugin directly from the server or database and then bee
 
 This small utility plugin adds missing plugins to your WordPress plugins list and provides a "Remove Notice" link, allowing you to safely clean up invalid plugin entries with one click.
 
+**Note:** This plugin doesn't have a settings page. Its functionality is limited to running on the WordPress admin plugins page only.
+
 ### Key Features
 
 * Adds missing plugins directly to your plugins list
@@ -159,6 +161,12 @@ The plugin works by:
 4. Providing a secure method to remove plugin references from the database
 
 ## Changelog
+
+### 2.0.0
+* Major version release for WordPress.org submission
+* Added note clarifying that the plugin has no settings page
+* Clarified that functionality is limited to the admin plugins page only
+* Finalized all assets and documentation for public release
 
 ### 1.6.28
 * Consolidated asset documentation into a single comprehensive guide
