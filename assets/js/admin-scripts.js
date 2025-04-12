@@ -35,14 +35,14 @@
 
             // Add content using localized strings passed via wp_localize_script
             var pluginMissingText = typeof fpdenData !== 'undefined' && fpdenData.i18n && fpdenData.i18n.pluginMissing ?
-                fpdenData.i18n.pluginMissing : 'Plugin file missing';
-            var removeReferenceText = typeof fpdenData !== 'undefined' && fpdenData.i18n && fpdenData.i18n.removeReference ?
-                fpdenData.i18n.removeReference : 'Remove Notice';
+                fpdenData.i18n.pluginMissing : 'File Missing';
+            var removeNoticeText = typeof fpdenData !== 'undefined' && fpdenData.i18n && fpdenData.i18n.removeNotice ?
+                fpdenData.i18n.removeNotice : 'Remove Notice';
             var clickToScrollText = typeof fpdenData !== 'undefined' && fpdenData.i18n && fpdenData.i18n.clickToScroll ?
                 fpdenData.i18n.clickToScroll : 'Click here to scroll to missing plugins';
 
             ourNotice.innerHTML = '<h3 style="margin-top:0;color:#826200;">Fix Plugin Does Not Exist Notices ☝️</h3>' +
-                '<p>To remove these notices, scroll down to each plugin .php showing "<strong style="color:red">(File Missing)</strong>", and click "<strong>' + removeReferenceText + '</strong>".</p>' +
+                '<p>To remove these notices, scroll down to each plugin .php showing "<strong style="color:red">(' + pluginMissingText + ')</strong>", and click "<strong>' + removeNoticeText + '</strong>".</p>' +
                 '<p>This safely removes the missing active plugin reference from your database, using the standard WordPress function to update your active plugin options table with only the correct remaining installed and active plugins.</p>' +
                 '<p><a href="#" id="prc-scroll-to-plugin" style="font-weight:bold;text-decoration:underline;color:#826200;">' + clickToScrollText + '</a></p>';
 

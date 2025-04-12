@@ -120,6 +120,13 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.7
+* Fixed duplicate notices issue by removing PHP-generated notice
+* Simplified notice system to only show one notice below WordPress error
+* Ensured consistent terminology with "Remove Notice" text
+* Optimized plugin detection with caching to improve performance
+* Fixed JavaScript to correctly handle multiple error messages
+
 ### 1.6.6
 * Fixed issue with "Remove Notice" link not appearing on missing plugin rows
 * Fixed issue with automatic removal of plugin references without user action
