@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.27] - 2024-05-17
+### Changed
+- Clarified RTL support in WordPress.org asset documentation
+- Corrected information about `-rtl` suffix for assets (for right-to-left languages, not dark themes)
+- Consolidated asset files and improved documentation
+
 ## [1.6.26] - 2024-05-17
 ### Changed
 - Updated screenshot references to use a single comprehensive screenshot

@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.26
+Stable tag: 1.6.27
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,6 +108,11 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 1.6.27 =
+* Clarified RTL support in WordPress.org asset documentation
+* Corrected information about `-rtl` suffix for assets (for right-to-left languages, not dark themes)
+* Consolidated asset files and improved documentation
 
 = 1.6.26 =
 * Updated screenshot references to use a single comprehensive screenshot
@@ -352,6 +357,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.27 =
+Clarified RTL support in WordPress.org asset documentation and improved asset organization.
 
 = 1.6.26 =
 Updated screenshot references and improved WordPress.org submission documentation.

@@ -160,6 +160,11 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.27
+* Clarified RTL support in WordPress.org asset documentation
+* Corrected information about `-rtl` suffix for assets (for right-to-left languages, not dark themes)
+* Consolidated asset files and improved documentation
+
 ### 1.6.26
 * Updated screenshot references to use a single comprehensive screenshot
 * Fixed asset directory paths in documentation

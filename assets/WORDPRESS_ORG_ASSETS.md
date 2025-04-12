@@ -22,6 +22,14 @@ When submitting a plugin to WordPress.org, you'll work with an SVN repository th
     [plugin files]
 ```
 
+## Right-to-Left (RTL) Support
+
+For languages that read from right to left (like Hebrew and Arabic), you can provide RTL-specific versions of your assets by appending `-rtl` to the filename. For example:
+- `banner-772x250-rtl.png`
+- `icon-256x256-rtl.png`
+
+Note: `-rtl` is specifically for Right-to-Left language support, not for dark theme versions.
+
 ## Asset Requirements
 
 ### Icon

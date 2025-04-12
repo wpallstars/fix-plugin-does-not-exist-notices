@@ -14,8 +14,6 @@ This directory contains assets for the WordPress.org plugin repository.
 
 - `screenshots/` - Screenshots shown on the plugin page
   - `screenshot-1.jpg` - Error message with explanation notification
-  - `screenshot-2.jpg` - Missing plugin shown in the plugins list with "Remove Reference" link
-  - `screenshot-3.jpg` - Auto-scroll feature that highlights the missing plugin
 
 ## WordPress.org Requirements
 
@@ -48,6 +46,4 @@ assets/
 │   └── icon-256x256.jpg
 └── screenshots/
     ├── screenshot-1.jpg
-    ├── screenshot-2.jpg
-    └── screenshot-3.jpg
 ``` 
