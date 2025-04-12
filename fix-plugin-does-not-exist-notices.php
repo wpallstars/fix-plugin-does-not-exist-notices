@@ -4,7 +4,7 @@
  *
  * @package           FixPluginDoesNotExistNotices
  * @author            Marcus Quinn
- * @copyright         2023 WP All Stars
+ * @copyright         2023 WP ALLSTARS
  * @license           GPL-2.0+
  *
  * @wordpress-plugin

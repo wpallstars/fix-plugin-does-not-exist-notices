@@ -162,4 +162,4 @@ This project is licensed under the GPL-2.0+ License - see the [LICENSE](LICENSE)
 
 ## Support
 
-For support, please visit [WP All Stars](https://www.wpallstars.com).
+For support, please visit [WP ALLSTARS](https://www.wpallstars.com).
