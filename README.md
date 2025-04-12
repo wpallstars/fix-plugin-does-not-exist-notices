@@ -160,6 +160,12 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.23
+* Prepared assets for WordPress.org plugin submission
+* Added properly named icon, banner, and screenshot files
+* Created comprehensive guide for WordPress.org asset requirements
+* Fixed file naming to comply with WordPress.org standards
+
 ### 1.6.22
 * Enhanced support section with multiple support channel options
 * Added encouragement for users to leave reviews on WordPress.org

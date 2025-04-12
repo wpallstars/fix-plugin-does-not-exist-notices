@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.23] - 2024-05-17
+### Added
+- Properly named icon, banner, and screenshot files for WordPress.org submission
+- Comprehensive guide for WordPress.org asset requirements
+
+### Changed
+- Fixed file naming to comply with WordPress.org standards
+- Organized assets in separate directories for better management
+
 ## [1.6.22] - 2024-05-17
 ### Changed
 - Enhanced support section with multiple support channel options
