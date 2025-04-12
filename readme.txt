@@ -1,11 +1,11 @@
 === Fix 'Plugin file does not exist.' Notices ===
-Contributors: marcusquinn
-Donate link: https://www.wpallstars.com
+Contributors: marcusquinn, wpallstars
+Donate link: https://www.marcusquinn.com
 Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file does not exist
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.6.11
+Stable tag: 1.6.12
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,11 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 3. Auto-scroll feature that highlights the missing plugin
 
 == Changelog ==
+
+= 1.6.12 =
+* Added WP ALLSTARS as a co-author
+* Updated author information and links
+* Minor documentation improvements
 
 = 1.6.11 =
 * CRITICAL FIX: Completely removed auto-deactivation prevention code that was causing fatal errors
@@ -246,6 +251,9 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 * Initial release
 
 == Upgrade Notice ==
+
+= 1.6.12 =
+Added WP ALLSTARS as a co-author and updated author information.
 
 = 1.6.11 =
 URGENT CRITICAL FIX: Completely removes code that was causing fatal errors. If you're experiencing the "critical error" message, this update will resolve it.

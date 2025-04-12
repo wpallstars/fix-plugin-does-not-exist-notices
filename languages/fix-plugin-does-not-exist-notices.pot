@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Fix 'Plugin file does not exist.' Notices 1.6.11\n"
+"Project-Id-Version: Fix 'Plugin file does not exist.' Notices 1.6.12\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/fix-plugin-does-not-exist-notices\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"

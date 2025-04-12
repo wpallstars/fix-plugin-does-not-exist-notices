@@ -120,6 +120,11 @@ The plugin works by:
 
 ## Changelog
 
+### 1.6.12
+* Added WP ALLSTARS as a co-author
+* Updated author information and links
+* Minor documentation improvements
+
 ### 1.6.11
 * CRITICAL FIX: Completely removed auto-deactivation prevention code that was causing fatal errors
 * Simplified plugin functionality to focus on core features only
