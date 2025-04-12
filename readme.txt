@@ -9,7 +9,7 @@ Stable tag: 1.6.12
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily remove references to deleted plugins that cause "Plugin file does not exist" errors in your WordPress admin.
+Easily remove references to deleted plugins that cause "Plugin file does not exist" errors in your WordPress admin. By Marcus Quinn (marcusquinn.com) & WP ALLSTARS (wpallstars.com).
 
 == Description ==
 
@@ -92,7 +92,8 @@ Although this plugin consumes minimal disk space, and doesn't run unless you are
 = 1.6.12 =
 * Added WP ALLSTARS as a co-author
 * Updated author information and links
-* Minor documentation improvements
+* Added author websites to plugin description
+* Fixed issue with multiple author URLs
 
 = 1.6.11 =
 * CRITICAL FIX: Completely removed auto-deactivation prevention code that was causing fatal errors

@@ -12,10 +12,10 @@
  * @wordpress-plugin
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
- * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
+ * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices. By Marcus Quinn (marcusquinn.com) & WP ALLSTARS (wpallstars.com).
  * Version: 1.6.12
- * Author: Marcus Quinn, WP ALLSTARS
- * Author URI: https://www.marcusquinn.com, https://www.wpallstars.com
+ * Author: Marcus Quinn & WP ALLSTARS
+ * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: fix-plugin-does-not-exist-notices

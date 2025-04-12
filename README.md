@@ -123,7 +123,8 @@ The plugin works by:
 ### 1.6.12
 * Added WP ALLSTARS as a co-author
 * Updated author information and links
-* Minor documentation improvements
+* Added author websites to plugin description
+* Fixed issue with multiple author URLs
 
 ### 1.6.11
 * CRITICAL FIX: Completely removed auto-deactivation prevention code that was causing fatal errors
