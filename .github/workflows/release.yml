@@ -1,0 +1,69 @@
+name: Build Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build and Create Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create build directory
+        run: mkdir -p build/wp-fix-plugin-does-not-exist-notices
+
+      - name: Copy plugin files
+        run: |
+          cp wp-fix-plugin-does-not-exist-notices.php build/wp-fix-plugin-does-not-exist-notices/
+          cp readme.txt build/wp-fix-plugin-does-not-exist-notices/
+          cp LICENSE build/wp-fix-plugin-does-not-exist-notices/
+          cp README.md build/wp-fix-plugin-does-not-exist-notices/
+          cp -r assets build/wp-fix-plugin-does-not-exist-notices/
+
+      - name: Create ZIP file
+        run: |
+          cd build
+          zip -r ../wp-fix-plugin-does-not-exist-notices-${{ steps.get_version.outputs.VERSION }}.zip wp-fix-plugin-does-not-exist-notices
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Release v${{ steps.get_version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          files: |
+            wp-fix-plugin-does-not-exist-notices-${{ steps.get_version.outputs.VERSION }}.zip
+          body: |
+            Fix 'Plugin file does not exist.' Notices v${{ steps.get_version.outputs.VERSION }}
+            
+            See [CHANGELOG.md](https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/blob/main/CHANGELOG.md) for details.
+
+  # Deploy to WordPress.org
+  wordpress:
+    name: Deploy to WordPress.org
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: WordPress Plugin Deploy
+        id: deploy
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        with:
+          generate-zip: true
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: wp-fix-plugin-does-not-exist-notices
