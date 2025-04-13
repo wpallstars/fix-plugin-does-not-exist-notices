@@ -16,9 +16,15 @@ echo "Cleaning up target directory..."
 rm -rf "$TARGET_DIR/$MAIN_PLUGIN_NAME"/*
 
 # Remove the separate branch fix plugin if it exists
-if [ -d "$TARGET_DIR/gu-branch-fix" ]; then
+if [ -f "$TARGET_DIR/gu-branch-fix.php" ]; then
     echo "Removing separate branch fix plugin..."
-    rm -rf "$TARGET_DIR/gu-branch-fix"
+    rm -f "$TARGET_DIR/gu-branch-fix.php"
+fi
+
+# Remove the old plugin directory if it exists
+if [ -d "$TARGET_DIR/wp-fix-plugin-does-not-exist-notices" ]; then
+    echo "Removing old plugin directory..."
+    rm -rf "$TARGET_DIR/wp-fix-plugin-does-not-exist-notices"
 fi
 
 # Copy main plugin files
