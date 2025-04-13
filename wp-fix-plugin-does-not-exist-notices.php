@@ -1,82 +1,42 @@
 <?php
 /**
- * Fix 'Plugin file does not exist.' Notices
- *
- * @package           FixPluginDoesNotExistNotices
- * @author            Marcus Quinn & The WP ALLSTARS Team
- * @contributor       WP ALLSTARS
- * @copyright         2025 WP ALLSTARS
- * @license           GPL-2.0+
- * @noinspection      PhpUndefinedFunctionInspection
- * @noinspection      PhpUndefinedConstantInspection
- *
- * @wordpress-plugin
- * Plugin Name: Fix 'Plugin file does not exist.' Notices
- * Plugin URI: https://wordpress.org/plugins/wp-fix-plugin-does-not-exist-notices/
- * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
+ * Plugin Name: Fix 'Plugin file does not exist' Notices
+ * Plugin URI: https://www.wpallstars.com
+ * Description: Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.
  * Version: 2.0.8
  * Author: Marcus Quinn & WP ALLSTARS
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: wp-fix-plugin-does-not-exist-notices
  * Domain Path: /languages
- * Requires at least: 5.0
- * Requires PHP: 7.0
- * Update URI: https://git-updater.wpallstars.com
- * GitHub Plugin URI: wpallstars/wp-fix-plugin-does-not-exist-notices
- * GitHub Branch: main
- * Gitea Plugin URI: wpallstars/wp-fix-plugin-does-not-exist-notices
- * Gitea Branch: main
  *
- * This plugin is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * any later version.
- *
- * This plugin is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this plugin. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
+ * @package Fix_Plugin_Does_Not_Exist_Notices
  */
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
-// Define plugin constants
+// Define plugin constants.
 define( 'FPDEN_VERSION', '2.0.8' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'FPDEN_PLUGIN_FILE', __FILE__ );
-define( 'FPDEN_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
- * Load plugin text domain.
+ * Main plugin class.
  *
- * @return void
- */
-function fpden_load_textdomain() {
-	load_plugin_textdomain(
-		'wp-fix-plugin-does-not-exist-notices',
-		false,
-		dirname( plugin_basename( __FILE__ ) ) . '/languages/'
-	);
-}
-add_action( 'plugins_loaded', 'fpden_load_textdomain' );
-
-/**
- * Main class for the plugin.
+ * Handles the core functionality of finding and fixing invalid plugin references.
+ *
+ * @since 1.0.0
  */
 class Fix_Plugin_Does_Not_Exist_Notices {
 
 	/**
-	 * Cached list of invalid plugins.
+	 * Stores a list of invalid plugins found in the active_plugins option.
 	 *
+	 * @since 1.0.0
 	 * @var array
 	 */
 	private $invalid_plugins = null;
@@ -102,6 +62,12 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 		// Filter the plugin API to fix version display in plugin details popup
 		add_filter( 'plugins_api', array( $this, 'filter_plugin_details' ), 10, 3 );
+		
+		// Prevent WordPress from caching our plugin API responses
+		add_filter( 'plugins_api_result', array( $this, 'prevent_plugins_api_caching' ), 10, 3 );
+		
+		// Clear plugin API transients on plugin activation and when viewing plugins page
+		add_action( 'admin_init', array( $this, 'maybe_clear_plugin_api_cache' ) );
 
 		// We're no longer trying to prevent WordPress from auto-deactivating plugins
 		// as it was causing critical errors in some environments
@@ -500,6 +466,83 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Prevent WordPress from caching our plugin API responses.
+	 *
+	 * @param object|WP_Error $result The result object or WP_Error.
+	 * @param string $action The type of information being requested.
+	 * @param object $args Plugin API arguments.
+	 * @return object|WP_Error The result object or WP_Error.
+	 */
+	public function prevent_plugins_api_caching( $result, $action, $args ) {
+		// Only modify plugin_information requests
+		if ( 'plugin_information' !== $action ) {
+			return $result;
+		}
+
+		// Check if we have a slug to work with
+		if ( empty( $args->slug ) ) {
+			return $result;
+		}
+
+		// Get our list of invalid plugins
+		$invalid_plugins = $this->get_invalid_plugins();
+
+		// Check if the requested plugin is one of our missing plugins
+		foreach ( $invalid_plugins as $plugin_file ) {
+			// Extract the plugin slug from the plugin file path
+			$plugin_slug = dirname( $plugin_file );
+			if ( '.' === $plugin_slug ) {
+				$plugin_slug = basename( $plugin_file, '.php' );
+			}
+
+			// If this is one of our missing plugins, prevent caching
+			if ( $args->slug === $plugin_slug ) {
+				// Add a filter to prevent caching of this response
+				add_filter( 'plugins_api_result_' . $args->slug, '__return_false' );
+				
+				// Add a timestamp to force cache busting
+				if ( is_object( $result ) ) {
+					$result->last_updated = current_time( 'mysql' );
+					$result->cache_time = 0;
+				}
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Clear plugin API cache when viewing the plugins page.
+	 *
+	 * @return void
+	 */
+	public function maybe_clear_plugin_api_cache() {
+		// Only run on the plugins page
+		if ( ! $this->is_plugins_page() ) {
+			return;
+		}
+
+		// Get our list of invalid plugins
+		$invalid_plugins = $this->get_invalid_plugins();
+
+		// Clear transients for each invalid plugin
+		foreach ( $invalid_plugins as $plugin_file ) {
+			// Extract the plugin slug from the plugin file path
+			$plugin_slug = dirname( $plugin_file );
+			if ( '.' === $plugin_slug ) {
+				$plugin_slug = basename( $plugin_file, '.php' );
+			}
+
+			// Delete the transient for this plugin
+			delete_transient( 'plugins_api_' . $plugin_slug );
+			delete_site_transient( 'plugins_api_' . $plugin_slug );
+			
+			// Also delete the update transient which might cache plugin info
+			delete_site_transient( 'update_plugins' );
+		}
 	}
 } // End class Fix_Plugin_Does_Not_Exist_Notices
 
