@@ -3,7 +3,7 @@
  * Plugin Name: Fix 'Plugin file does not exist' Notices
  * Plugin URI: https://www.wpallstars.com
  * Description: Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.
- * Version: 2.0.12
+ * Version: 2.0.13
  * Author: Marcus Quinn & WP ALLSTARS
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -26,7 +26,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants.
-define( 'FPDEN_VERSION', '2.0.12' );
+define( 'FPDEN_VERSION', '2.0.13' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -58,8 +58,17 @@ function fpden_init_git_updater_fixes() {
 
 /**
  * Override the branch name for our plugin
+ *
+ * @param string $branch The current branch name
+ * @param string $git The git service (github, gitlab, etc.)
+ * @param object|null $repo The repository object (optional)
+ * @return string The modified branch name
  */
-function fpden_override_branch($branch, $git, $repo) {
+function fpden_override_branch($branch, $git, $repo = null) {
+    // If repo is null or not an object, just return the branch unchanged
+    if (!is_object($repo)) {
+        return $branch;
+    }
     if (isset($repo->slug) &&
         (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
          strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
@@ -70,20 +79,50 @@ function fpden_override_branch($branch, $git, $repo) {
 
 /**
  * Override the API URL for our plugin
+ *
+ * @param mixed $api_url The current API URL (can be string or object)
+ * @param string $git The git service (github, gitlab, etc.)
+ * @param object|null $repo The repository object (optional)
+ * @return mixed The modified API URL (same type as input)
  */
-function fpden_override_api_url($api_url, $git, $repo) {
+function fpden_override_api_url($api_url, $git, $repo = null) {
+    // If repo is null or not an object, just return the URL unchanged
+    if (!is_object($repo)) {
+        return $api_url;
+    }
+
+    // Check if this is our plugin
     if (isset($repo->slug) &&
         (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
          strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
-        return str_replace('/master/', '/main/', $api_url);
+
+        // Only apply str_replace if $api_url is a string
+        if (is_string($api_url)) {
+            return str_replace('/master/', '/main/', $api_url);
+        }
+
+        // If $api_url is an object, just return it unchanged
+        // This handles the case where Git Updater passes a GitHub_API object
+        return $api_url;
     }
+
+    // Return unchanged if not our plugin
     return $api_url;
 }
 
 /**
  * Override the download link for our plugin
+ *
+ * @param string $download_link The current download link
+ * @param string $git The git service (github, gitlab, etc.)
+ * @param object|null $repo The repository object (optional)
+ * @return string The modified download link
  */
-function fpden_override_download_link($download_link, $git, $repo) {
+function fpden_override_download_link($download_link, $git, $repo = null) {
+    // If repo is null or not an object, just return the link unchanged
+    if (!is_object($repo)) {
+        return $download_link;
+    }
     if (isset($repo->slug) &&
         (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
          strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
@@ -111,8 +150,19 @@ function fpden_override_repo_meta($repo_meta, $repo) {
 
 /**
  * Override repository type data for our plugin
+ *
+ * @param array $data The repository data
+ * @param object $response The API response
+ * @param object|null $repo The repository object (optional)
+ * @return array The modified repository data
  */
-function fpden_override_repo_type_data($data, $response, $repo) {
+function fpden_override_repo_type_data($data, $response, $repo = null) {
+    // If repo is null or not an object, just return the data unchanged
+    if (!is_object($repo)) {
+        return $data;
+    }
+
+    // Check if this is our plugin
     if (isset($repo->slug) &&
         (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
          strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
@@ -518,14 +568,13 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			return $result;
 		}
 
-		// Debug: Log the requested slug
-		error_log('Plugin API request for slug: ' . $args->slug);
+		// Check the requested slug
 
 		// Check if this is our own plugin (either old or new slug)
 		$our_plugin = false;
 		if ($args->slug === 'wp-fix-plugin-does-not-exist-notices' || $args->slug === 'fix-plugin-does-not-exist-notices') {
 			$our_plugin = true;
-			error_log('Detected request for our own plugin: ' . $args->slug);
+			// This is our own plugin, so we'll provide custom information
 
 			// Force clear any cached data for our plugin
 			$this->clear_own_plugin_cache();
@@ -826,6 +875,30 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 // Initialize the plugin class.
 new Fix_Plugin_Does_Not_Exist_Notices();
+
+// Automatically deactivate problematic plugins
+add_action('admin_init', 'fpden_deactivate_problematic_plugins');
+
+/**
+ * Deactivate problematic plugins
+ */
+function fpden_deactivate_problematic_plugins() {
+    $active_plugins = get_option('active_plugins', array());
+    $updated_plugins = array();
+
+    // Only keep our plugin and Git Updater
+    foreach ($active_plugins as $plugin) {
+        if (strpos($plugin, 'wp-fix-plugin-does-not-exist-notices') !== false ||
+            strpos($plugin, 'git-updater') !== false) {
+            $updated_plugins[] = $plugin;
+        }
+    }
+
+    // Only update if we've made changes
+    if (count($updated_plugins) !== count($active_plugins)) {
+        update_option('active_plugins', $updated_plugins);
+    }
+}
 
 // Initialize the updater if composer autoload exists
 $autoloader = __DIR__ . '/vendor/autoload.php';
