@@ -83,11 +83,12 @@ This plugin allows you to choose where you want to receive updates from:
 1. In the Plugins list, find "Fix 'Plugin file does not exist' Notices"
 2. Click the "Choose Update Source" link next to the plugin
 3. Select your preferred update source:
-   - **Auto-detect** (default): Automatically determines the source based on installation origin
-   - **WordPress.org**: Updates from the official WordPress.org repository (may have delays due to approval process)
-   - **GitHub**: Updates directly from GitHub (usually has the latest version first)
-   - **Gitea**: Updates from Gitea (usually has the latest version first)
+   - **WordPress.org**: Updates from the official WordPress.org repository (has a version update delay due to the WP.org policy review and approval process, best for unmonitored auto-updates)
+   - **GitHub**: Updates directly from the GitHub repo main branch for the latest stable release (requires Git Updater plugin, best for monitored updates where the latest features and fixes are needed immediately)
+   - **Gitea**: Updates directly from the Gitea repo main branch for the latest stable release (requires Git Updater plugin, best for monitored updates and independence from big-tech)
 4. Click "Save" to apply your preference
+
+> **Note:** If no preference is set, the plugin will automatically use the source it was installed from.
 
 > **Note:** GitHub and Gitea options require the Git Updater plugin to be installed and activated.
 
@@ -165,7 +166,17 @@ Your experience and feedback helps others discover the plugin, and encourages co
 
 ### Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please follow these steps to set up a development environment:
+
+1. Install [LocalWP](https://localwp.com/) and create a clean site called "Plugin Testing" using the "Preferred" setup option
+2. Run "Site shell" once from the LocalWP page on the site's settings to ensure wp-cli is enabled
+3. Run "Add Run Configurations to VS Code" to update site configuration files in: ~/Local/plugin-testing/conf/
+4. Clone this repository to your local machine
+5. Use the build.sh and deploy-local.sh scripts to build and deploy the plugin for testing
+
+[AugmentCode.com](https://augmentcode.com/) is recommended as a good all-in-one AI IDE for plugin development and testing.
+
+Please feel free to submit a Pull Request with your improvements.
 
 1. Fork the repository
 2. Create your feature branch: `git checkout -b feature/amazing-feature`

@@ -1,6 +1,4 @@
-# Changelog
-
-All notable changes to this project will be documented in this file.
+All notable changes to this project should be documented both here and in the main Readme files.
 
 #### [2.1.1] - 2025-04-13
 #### Added

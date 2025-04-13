@@ -100,11 +100,12 @@ This plugin allows you to choose where you want to receive updates from:
 1. In the Plugins list, find "Fix 'Plugin file does not exist' Notices"
 2. Click the "Choose Update Source" link next to the plugin
 3. Select your preferred update source:
-   * **Auto-detect** (default): Automatically determines the source based on installation origin
-   * **WordPress.org**: Updates from the official WordPress.org repository (may have delays due to approval process)
-   * **GitHub**: Updates directly from GitHub (usually has the latest version first)
-   * **Gitea**: Updates from Gitea (usually has the latest version first)
+   * **WordPress.org**: Updates from the official WordPress.org repository (has a version update delay due to the WP.org policy review and approval process, best for unmonitored auto-updates)
+   * **GitHub**: Updates directly from the GitHub repo main branch for the latest stable release (requires Git Updater plugin, best for monitored updates where the latest features and fixes are needed immediately)
+   * **Gitea**: Updates directly from the Gitea repo main branch for the latest stable release (requires Git Updater plugin, best for monitored updates and independence from big-tech)
 4. Click "Save" to apply your preference
+
+If no preference is set, the plugin will automatically use the source it was installed from.
 
 **Note:** GitHub and Gitea options require the Git Updater plugin to be installed and activated.
 

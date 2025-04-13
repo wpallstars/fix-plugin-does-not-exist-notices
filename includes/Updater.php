@@ -62,15 +62,15 @@ class Updater {
      */
     private function determine_installation_source() {
         // Check for user preference first
-        $user_preference = \get_option('fpden_update_source', 'auto');
+        $user_preference = \get_option('fpden_update_source', '');
 
-        // If not set to auto, use the user preference
-        if ($user_preference !== 'auto') {
+        // If user has set a preference, use it
+        if (!empty($user_preference)) {
             return $user_preference;
         }
 
-        // Otherwise, auto-detect as before
-        $source = 'wordpress.org';
+        // Otherwise, auto-detect the installation source
+        $source = 'wordpress.org'; // Default to WordPress.org if unidentifiable
 
         // Check if the plugin was installed from GitHub
         if ($this->is_github_installation()) {

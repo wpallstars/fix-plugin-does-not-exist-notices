@@ -967,15 +967,9 @@ function fpden_add_update_source_modal() {
 
         <form id="fpden-update-source-form">
             <label>
-                <input type="radio" name="update_source" value="auto" <?php checked($current_source, 'auto'); ?>>
-                Auto-detect (recommended)
-                <span class="fpden-source-description">Automatically determines the update source based on where the plugin was installed from.</span>
-            </label>
-
-            <label>
                 <input type="radio" name="update_source" value="wordpress.org" <?php checked($current_source, 'wordpress.org'); ?>>
                 WordPress.org
-                <span class="fpden-source-description">Updates from the official WordPress.org plugin repository. Will have a version update delay due to allow for the WP.org policy review and approval process. Best for unmonitored auto-updates.</span>
+                <span class="fpden-source-description">Updates from the official WordPress.org plugin repository. Has a version update delay, to allow for the WP.org policy review and approval process. Best for unmonitored auto-updates.</span>
             </label>
 
             <label>
@@ -1011,12 +1005,12 @@ function fpden_save_update_source() {
     }
 
     // Get and sanitize source
-    $source = isset($_POST['source']) ? sanitize_text_field($_POST['source']) : 'auto';
+    $source = isset($_POST['source']) ? sanitize_text_field($_POST['source']) : '';
 
     // Validate source
-    $valid_sources = ['auto', 'wordpress.org', 'github', 'gitea'];
+    $valid_sources = ['wordpress.org', 'github', 'gitea'];
     if (!in_array($source, $valid_sources)) {
-        $source = 'auto';
+        $source = ''; // Empty means use auto-detection
     }
 
     // Save option

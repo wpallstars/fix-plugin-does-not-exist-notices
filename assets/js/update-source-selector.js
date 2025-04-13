@@ -48,7 +48,14 @@ jQuery(document).ready(function($) {
     });
 
     // Close modal when clicking overlay or close button
-    $(document).on('click', '#fpden-modal-overlay, .fpden-close-modal', function() {
+    $(document).on('click', '#fpden-modal-overlay', function() {
+        $('#fpden-update-source-modal').hide();
+        $('#fpden-modal-overlay').remove();
+    });
+
+    // Separate handler for close button to ensure it works
+    $(document).on('click', '.fpden-close-modal', function(e) {
+        e.preventDefault();
         $('#fpden-update-source-modal').hide();
         $('#fpden-modal-overlay').remove();
     });
@@ -80,9 +87,7 @@ jQuery(document).ready(function($) {
             if (response.success) {
                 // Update the badge
                 var badgeText = source.charAt(0).toUpperCase() + source.slice(1);
-                if (source === 'auto') {
-                    badgeText = 'Auto';
-                } else if (source === 'wordpress.org') {
+                if (source === 'wordpress.org') {
                     badgeText = 'WP.org';
                 }
 
