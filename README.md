@@ -185,6 +185,17 @@ The plugin works by:
 
 ## Changelog
 
+### 2.1.1
+* Fixed: Updated heading styles in CHANGELOG.md for better readability
+* Fixed: Corrected dates in changelog to use 2025 instead of 2024
+* Improved: Documentation improvements for better clarity
+
+### 2.1.0
+* Minor version bump for Git Updater compatibility
+* Improved error handling for Git Updater integration
+* Enhanced type checking in branch fix functions
+* Updated documentation for Git Updater installation and cache refreshing
+
 ### 2.0.13
 * Fixed: Critical error when Git Updater passes an object instead of a string to API URL filter
 * Fixed: Type checking in branch fix functions to handle both string and object inputs

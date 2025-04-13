@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,11 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.1.1 =
+* Fixed: Updated heading styles in CHANGELOG.md for better readability
+* Fixed: Corrected dates in changelog to use 2025 instead of 2024
+* Updated: Documentation improvements for better clarity
 
 = 2.1.0 =
 * Minor version bump for Git Updater compatibility
@@ -475,6 +480,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.1.1 =
+Fixed dates in changelog and improved documentation formatting.
 
 = 2.1.0 =
 Minor version bump with improved Git Updater compatibility and error handling.
