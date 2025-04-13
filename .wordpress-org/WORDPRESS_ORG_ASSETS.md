@@ -113,10 +113,10 @@ For converting SVG to PNG or creating different sizes of images, you can use:
 - **Command Line** (using ImageMagick):
   ```bash
   # For 256x256 icon
-  convert -background none -size 256x256 assets/icon/icon.svg assets/icon/icon-256x256.png
+  convert -background none -size 256x256 .wordpress-org/assets/icon.svg .wordpress-org/assets/icon-256x256.png
 
   # For 128x128 icon
-  convert -background none -size 128x128 assets/icon/icon.svg assets/icon/icon-128x128.png
+  convert -background none -size 128x128 .wordpress-org/assets/icon.svg .wordpress-org/assets/icon-128x128.png
   ```
 
 ## Resources

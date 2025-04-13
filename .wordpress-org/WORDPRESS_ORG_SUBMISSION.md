@@ -30,15 +30,15 @@ This document outlines the requirements for assets when submitting a plugin to t
 ## Current Status
 
 ### Icon
-- ✅ SVG source available in `assets/icon/icon.svg`
-- ✅ PNG files created in `assets/icon/icon-256x256.png` and `assets/icon/icon-128x128.png`
+- ✅ SVG source available in `.wordpress-org/assets/icon.svg`
+- ✅ PNG files created in `.wordpress-org/assets/icon-256x256.png` and `.wordpress-org/assets/icon-128x128.png`
 
 ### Banner
-- ✅ Both sizes available in `assets/banner/`
+- ✅ Both sizes available in `.wordpress-org/assets/`
 - ✅ Properly named files: `banner-772x250.png` and `banner-1544x500.png`
 
 ### Screenshots
-- ✅ One screenshot available in `assets/screenshots/screenshot-1.png`
+- ✅ One screenshot available in `.wordpress-org/assets/screenshot-1.png`
 - ✅ Screenshot description in readme.txt updated to reference only one screenshot
 
 ## SVN Directory Structure
@@ -68,11 +68,11 @@ When submitting to WordPress.org, your SVN repository will have this structure:
 
 ```bash
 # Copy assets to WordPress.org SVN assets directory
-cp assets/icon/icon-256x256.png /path/to/wordpress-svn/assets/
-cp assets/icon/icon-128x128.png /path/to/wordpress-svn/assets/
-cp assets/banner/banner-772x250.png /path/to/wordpress-svn/assets/
-cp assets/banner/banner-1544x500.png /path/to/wordpress-svn/assets/
-cp assets/screenshots/screenshot-1.png /path/to/wordpress-svn/assets/
+cp .wordpress-org/assets/icon-256x256.png /path/to/wordpress-svn/assets/
+cp .wordpress-org/assets/icon-128x128.png /path/to/wordpress-svn/assets/
+cp .wordpress-org/assets/banner-772x250.png /path/to/wordpress-svn/assets/
+cp .wordpress-org/assets/banner-1544x500.png /path/to/wordpress-svn/assets/
+cp .wordpress-org/assets/screenshot-1.png /path/to/wordpress-svn/assets/
 ```
 
 ## Resources
