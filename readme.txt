@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.0.8
+Stable tag: 2.0.9
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,12 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.0.9 =
+* Fixed: Plugin details popup now correctly shows version and author information
+* Added: Support for both old and new plugin slugs to fix caching issues
+* Improved: Cache clearing mechanism to ensure plugin details are always up-to-date
+* Enhanced: Version display in plugin details popup
 
 = 2.0.8 =
 * Fixed: Plugin details popup now correctly shows version and author information
