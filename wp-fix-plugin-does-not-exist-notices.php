@@ -441,13 +441,34 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 				// Set the version to our plugin version
 				$result->version = FPDEN_VERSION;
 
+				// Add our plugin's author information
+				$result->author = 'Marcus Quinn & WP ALLSTARS';
+				$result->author_profile = 'https://www.wpallstars.com';
+
+				// Add contributors information
+				$result->contributors = array(
+					'marcusquinn' => array(
+						'profile' => 'https://profiles.wordpress.org/marcusquinn/',
+						'avatar' => 'https://secure.gravatar.com/avatar/',
+						'display_name' => 'Marcus Quinn'
+					),
+					'wpallstars' => array(
+						'profile' => 'https://profiles.wordpress.org/wpallstars/',
+						'avatar' => 'https://secure.gravatar.com/avatar/',
+						'display_name' => 'WP ALLSTARS'
+					)
+				);
+
+				// Add last updated information (current date)
+				$result->last_updated = date('Y-m-d');
+
+				// Add requires information
+				$result->requires = '5.0';
+				$result->requires_php = '7.0';
+
 				// Add other details if they're not already set
 				if ( ! isset( $result->name ) ) {
 					$result->name = basename( $plugin_file );
-				}
-
-				if ( ! isset( $result->author ) ) {
-					$result->author = '';
 				}
 
 				if ( ! isset( $result->description ) ) {
