@@ -36,7 +36,7 @@ git checkout -b v1.7.0
 
 Update the version number in the following files:
 
-#### a. Main Plugin File (fix-plugin-does-not-exist-notices.php)
+#### a. Main Plugin File (wp-fix-plugin-does-not-exist-notices.php)
 
 ```php
 /**
@@ -73,14 +73,16 @@ Add a new section at the top of the CHANGELOG.md file:
 - Bug fix 2
 ```
 
-#### c. POT File (languages/fix-plugin-does-not-exist-notices.pot)
+#### c. POT File (languages/wp-fix-plugin-does-not-exist-notices.pot)
 
-Update the Project-Id-Version and POT-Creation-Date:
+Update the Project-Id-Version and POT-Creation-Date (IMPORTANT - don't forget this step!):
 
 ```
-"Project-Id-Version: Fix 'Plugin file does not exist.' Notices {MAJOR}.{MINOR}.{PATCH}\n"
+"Project-Id-Version: Fix 'Plugin file does not exist' Notices {MAJOR}.{MINOR}.{PATCH}\n"
 "POT-Creation-Date: YYYY-MM-DDT00:00:00+00:00\n"
 ```
+
+Note: Always use the current date for POT-Creation-Date in the format YYYY-MM-DD.
 
 #### d. readme.txt
 
@@ -112,7 +114,7 @@ Brief description of the most important changes in this release
 ### 3. Commit Changes
 
 ```bash
-git add fix-plugin-does-not-exist-notices.php CHANGELOG.md readme.txt README.md languages/fix-plugin-does-not-exist-notices.pot
+git add wp-fix-plugin-does-not-exist-notices.php CHANGELOG.md readme.txt README.md languages/wp-fix-plugin-does-not-exist-notices.pot
 git commit -m "Prepare release v{MAJOR}.{MINOR}.{PATCH}"
 ```
 
@@ -154,7 +156,7 @@ git push gitea refs/tags/v{MAJOR}.{MINOR}.{PATCH}
 ### 8. Monitor GitHub Actions
 
 Open the GitHub Actions page to monitor the build and deployment process:
-https://github.com/wpallstars/fix-plugin-does-not-exist-notices/actions
+https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/actions
 
 ### 9. Verify Release
 

@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.0.13
+Stable tag: 2.1.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,13 +77,21 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 The plugin is designed to be a best-practice example for WordPress plugin development and can be used as a boilerplate for your own plugins.
 
-
 == Installation ==
 
 1. Upload the `wp-fix-plugin-does-not-exist-notices` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. No configuration needed - the plugin works automatically
 4. If you have missing plugin errors, you'll immediately see them in your plugins list with "Remove Notice" links
+
+= Using with Git Updater =
+
+If you've installed this plugin from GitHub or Gitea, you'll need Git Updater to receive updates:
+
+1. Install the Git Updater plugin from [https://git-updater.com/git-updater/](https://git-updater.com/git-updater/)
+2. Go to Settings > Git Updater > Remote Management
+3. Click the "Refresh Cache" button to ensure Git Updater recognizes the latest version
+4. Updates will now appear in your WordPress dashboard when available
 
 == Frequently Asked Questions ==
 
@@ -140,6 +148,12 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.1.0 =
+* Minor version bump for Git Updater compatibility
+* Improved error handling for Git Updater integration
+* Enhanced type checking in branch fix functions
+* Updated documentation for Git Updater installation and cache refreshing
 
 = 2.0.13 =
 * Fixed: Critical error when Git Updater passes an object instead of a string to API URL filter
@@ -461,6 +475,9 @@ Manually editing the WordPress database is risky and requires technical knowledg
 * Initial release
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+Minor version bump with improved Git Updater compatibility and error handling.
 
 = 2.0.2 =
 Improved organization of assets for WordPress.org submission.

@@ -3,7 +3,7 @@
  * Plugin Name: Fix 'Plugin file does not exist' Notices
  * Plugin URI: https://www.wpallstars.com
  * Description: Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.
- * Version: 2.0.13
+ * Version: 2.1.0
  * Author: Marcus Quinn & WP ALLSTARS
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -26,7 +26,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants.
-define( 'FPDEN_VERSION', '2.0.13' );
+define( 'FPDEN_VERSION', '2.1.0' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -876,12 +876,12 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 // Initialize the plugin class.
 new Fix_Plugin_Does_Not_Exist_Notices();
 
-// Automatically deactivate problematic plugins
+// This function was previously deactivating all plugins except our plugin and Git Updater
+// It has been disabled to allow other plugins to be activated
+// Uncomment the following code if you need to troubleshoot plugin conflicts
+/*
 add_action('admin_init', 'fpden_deactivate_problematic_plugins');
 
-/**
- * Deactivate problematic plugins
- */
 function fpden_deactivate_problematic_plugins() {
     $active_plugins = get_option('active_plugins', array());
     $updated_plugins = array();
@@ -899,6 +899,7 @@ function fpden_deactivate_problematic_plugins() {
         update_option('active_plugins', $updated_plugins);
     }
 }
+*/
 
 // Initialize the updater if composer autoload exists
 $autoloader = __DIR__ . '/vendor/autoload.php';

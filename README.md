@@ -25,6 +25,7 @@ This small utility plugin adds missing plugins to your WordPress plugins list an
 * Includes helpful notifications explaining how to fix plugin errors
 * One-click auto-scroll to find missing plugins in large sites
 * Clean, user-friendly interface following WordPress design patterns
+* Integrated Git Updater branch fix (changes 'master' to 'main' for proper updates)
 
 ### How It Works
 
@@ -65,6 +66,15 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 2. If you have missing plugin errors, you'll see them in your plugins list with "(File Missing)" markers
 3. Click the "Remove Notice" link next to any missing plugin
 4. The reference will be removed, and the error notification will disappear
+
+### Using with Git Updater
+
+If you've installed this plugin from GitHub or Gitea, you'll need Git Updater to receive updates:
+
+1. Install the Git Updater plugin from [git-updater.com/git-updater/](https://git-updater.com/git-updater/)
+2. Go to Settings > Git Updater > Remote Management
+3. Click the "Refresh Cache" button to ensure Git Updater recognizes the latest version
+4. Updates will now appear in your WordPress dashboard when available
 
 ## Frequently Asked Questions
 
@@ -174,6 +184,52 @@ The plugin works by:
 4. Providing a secure method to remove plugin references from the database
 
 ## Changelog
+
+### 2.0.13
+* Fixed: Critical error when Git Updater passes an object instead of a string to API URL filter
+* Fixed: Type checking in branch fix functions to handle both string and object inputs
+* Improved: Error handling for Git Updater integration
+* Improved: Documentation for Git Updater installation and cache refreshing
+
+### 2.0.12
+* Fixed: Integrated Git Updater branch fix directly into main plugin
+* Fixed: Removed separate "GU Branch Fix" plugin (no longer needed)
+* Added: Documentation explaining branch fix integration
+* Improved: Compatibility with Git Updater plugin
+* Improved: Deploy script to remove separate branch fix plugin
+
+### 2.0.11
+* Added: Created separate "GU Branch Fix" plugin to fix Git Updater branch issues
+* Added: Deploy script for local testing
+* Fixed: Git Updater branch issues with 'main' vs 'master' branch names
+* Improved: Compatibility with Git Updater plugin
+
+### 2.0.10
+* Fixed: Plugin details popup version display issue with Git Updater integration
+* Added: JavaScript-based solution to ensure correct version display in plugin details
+* Improved: Version consistency across all plugin views
+* Improved: Cache busting for plugin information API
+
+### 2.0.9
+* Fixed: Plugin details popup now correctly shows version and author information
+* Added: Support for both old and new plugin slugs to fix caching issues
+* Improved: Cache clearing mechanism to ensure plugin details are always up-to-date
+* Improved: Version display in plugin details popup
+
+### 2.0.8
+* Fixed: Plugin details popup now correctly shows version and author information
+* Added: Cache-busting mechanism to ensure plugin details are always up-to-date
+* Improved: Author and contributor information display in plugin details
+* Improved: Added WordPress 6.5 compatibility indicator
+
+### 2.0.7
+* Changed: Additional text improvements and minor fixes
+
+### 2.0.6
+* Changed: Text improvements and minor fixes
+
+### 2.0.5
+* Fixed: Display correct version in plugin details popup
 
 ### 2.0.4
 * Fixed: Display actual plugin version instead of 'N/A' for missing plugins in plugin details view

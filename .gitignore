@@ -152,12 +152,12 @@ wp-content/debug.log
 
 # Development tools
 .git/
-.github/
+# .github/ # Needed for GitHub Actions
 .gitlab/
-.gitattributes
+# .gitattributes # Needed for file handling
 .travis.yml
-.drone.yml
-.woodpecker.yml
+# .drone.yml # Needed for Drone CI
+# .woodpecker.yml # Needed for Woodpecker CI
 codecov.yml
 .babelrc
 .browserslistrc
