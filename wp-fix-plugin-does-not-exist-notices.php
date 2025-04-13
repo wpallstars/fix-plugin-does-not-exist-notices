@@ -88,7 +88,16 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			return;
 		}
 
-		// Get invalid plugins to decide if assets are needed.
+		// Always load the plugin details fix script on the plugins page
+		wp_enqueue_script(
+			'fpden-plugin-details-fix',
+			FPDEN_PLUGIN_URL . 'assets/js/plugin-details-fix.js',
+			array( 'jquery', 'thickbox' ), // Add thickbox dependency
+			FPDEN_VERSION . '.' . time(), // Add timestamp to force cache busting
+			true // Load in footer.
+		);
+
+		// Get invalid plugins to decide if other assets are needed.
 		$invalid_plugins = $this->get_invalid_plugins();
 		if ( empty( $invalid_plugins ) ) {
 			return; // No missing plugins, no need for the special notice JS/CSS.
@@ -119,6 +128,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 					'pluginMissing' => esc_html__( 'File Missing', 'wp-fix-plugin-does-not-exist-notices' ),
 					'removeNotice' => esc_html__( 'Remove Notice', 'wp-fix-plugin-does-not-exist-notices' ),
 				),
+				'version' => FPDEN_VERSION, // Add version for the plugin details fix script
 			)
 		);
 	}
