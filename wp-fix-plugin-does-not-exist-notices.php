@@ -155,7 +155,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 						'<code>/wp-content/plugins/</code>'
 					),
 					'Version'     => FPDEN_VERSION, // Use our plugin version instead of 'N/A'
-					'Author'      => 'Marcus Quinn & WP ALLSTARS',
+					'Author'      => '<a href="https://www.wpallstars.com">Marcus Quinn & WP ALLSTARS</a>',
 					'PluginURI'   => 'https://www.wpallstars.com',
 					'AuthorURI'   => 'https://www.wpallstars.com',
 					'Title'       => $plugin_name . ' (' . __( 'Missing', 'wp-fix-plugin-does-not-exist-notices' ) . ')',
@@ -163,6 +163,11 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 					// Add fields needed for the "View details" link
 					'slug'        => $plugin_slug,
 					'plugin'      => $plugin_path,
+					// Add fields for plugin details and Git Updater
+					'update-supported' => true,
+					'GitHub Plugin URI' => 'wpallstars/wp-fix-plugin-does-not-exist-notices',
+					'GitHub Branch'    => 'main',
+					'TextDomain'      => 'wp-fix-plugin-does-not-exist-notices',
 				);
 			}
 		}
