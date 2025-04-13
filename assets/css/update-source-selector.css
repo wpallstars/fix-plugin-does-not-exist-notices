@@ -50,12 +50,14 @@
     margin-left: 10px;
 }
 
+/* Remove explicit color to inherit from theme */
 .fpden-update-source-toggle {
-    color: #2271b1;
+    /* color is now inherited from theme */
 }
 
 .fpden-update-source-toggle:hover {
-    color: #135e96;
+    /* hover color is now inherited from theme */
+    text-decoration: underline;
 }
 
 /* Source badges */
@@ -69,7 +71,7 @@
     font-weight: normal;
 }
 
-.fpden-source-badge.wordpress {
+.fpden-source-badge.wordpress, .fpden-source-badge.wordpress\.org {
     background-color: #0073aa;
 }
 

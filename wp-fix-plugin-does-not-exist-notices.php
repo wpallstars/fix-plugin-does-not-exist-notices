@@ -961,7 +961,7 @@ function fpden_add_update_source_modal() {
     // Modal HTML
     ?>
     <div id="fpden-update-source-modal">
-        <a href="#" class="fpden-close-modal">×</a>
+        <a href="#" class="fpden-close-modal" aria-label="Close modal">×</a>
         <h2>Choose Update Source</h2>
         <p>Select where you want to receive plugin updates from:</p>
 
@@ -975,23 +975,22 @@ function fpden_add_update_source_modal() {
             <label>
                 <input type="radio" name="update_source" value="wordpress.org" <?php checked($current_source, 'wordpress.org'); ?>>
                 WordPress.org
-                <span class="fpden-source-description">Updates from the official WordPress.org plugin repository. May have a delay due to approval process.</span>
+                <span class="fpden-source-description">Updates from the official WordPress.org plugin repository. Will have a version update delay due to allow for the WP.org policy review and approval process. Best for unmonitored auto-updates.</span>
             </label>
 
             <label>
                 <input type="radio" name="update_source" value="github" <?php checked($current_source, 'github'); ?>>
                 GitHub
-                <span class="fpden-source-description">Updates directly from GitHub. Requires Git Updater plugin. Usually has the latest version first.</span>
+                <span class="fpden-source-description">Update directly from the GitHub repo main branch for the latest stable release. Git Updater plugin must be installed & active. Best for monitored updates, where the latest features and fixes are required as soon as they are merged into the main branch.</span>
             </label>
 
             <label>
                 <input type="radio" name="update_source" value="gitea" <?php checked($current_source, 'gitea'); ?>>
                 Gitea
-                <span class="fpden-source-description">Updates from Gitea. Requires Git Updater plugin. Usually has the latest version first.</span>
+                <span class="fpden-source-description">Update directly from the Gitea repo main branch for the latest stable release. Git Updater plugin must be installed & active. Best for monitored updates, where the latest features and fixes are required as soon as they are merged into the main branch, and independence from big-tech.</span>
             </label>
 
             <div class="fpden-submit-container">
-                <button type="button" class="button fpden-close-modal">Cancel</button>
                 <button type="submit" class="button button-primary">Save</button>
             </div>
         </form>

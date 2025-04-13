@@ -160,6 +160,38 @@ class Updater {
             return '';
         });
 
+        // Add filter to trigger Git Updater cache refresh when a version update is detected
+        \add_filter('site_transient_update_plugins', function($transient) {
+            // Check if our plugin has an update
+            $plugin_basename = \plugin_basename($this->plugin_file);
+            if (isset($transient->response) && isset($transient->response[$plugin_basename])) {
+                // Check if Git Updater is active by looking for its functions
+                if (function_exists('\\Fragen\\Git_Updater\\flush_git_updater_cache') ||
+                    class_exists('\\Fragen\\Git_Updater\\API\\API')) {
+
+                    // Try to call the flush cache function if it exists
+                    if (function_exists('\\Fragen\\Git_Updater\\flush_git_updater_cache')) {
+                        \Fragen\Git_Updater\flush_git_updater_cache();
+                    } elseif (class_exists('\\Fragen\\Git_Updater\\API\\API')) {
+                        // Try to use the API class if available
+                        try {
+                            $api = new \Fragen\Git_Updater\API\API();
+                            if (method_exists($api, 'flush_cache_site_transient')) {
+                                $api->flush_cache_site_transient();
+                            }
+                        } catch (\Exception $e) {
+                            // Silently fail if API class can't be instantiated
+                        }
+                    }
+
+                    // Also delete the update plugins transient to force a refresh
+                    \delete_site_transient('update_plugins');
+                }
+            }
+
+            return $transient;
+        });
+
         // Initialize Git Updater Lite
         if (class_exists('\\Fragen\\Git_Updater\\Lite')) {
             (new \Fragen\Git_Updater\Lite($this->plugin_file))->run();
