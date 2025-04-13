@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants.
-define( 'FPDEN_VERSION', '2.0.8' );
+define( 'FPDEN_VERSION', '2.0.9' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -402,99 +402,126 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			return $result;
 		}
 
+		// Debug: Log the requested slug
+		error_log('Plugin API request for slug: ' . $args->slug);
+
+		// Check if this is our own plugin (either old or new slug)
+		$our_plugin = false;
+		if ($args->slug === 'wp-fix-plugin-does-not-exist-notices' || $args->slug === 'fix-plugin-does-not-exist-notices') {
+			$our_plugin = true;
+			error_log('Detected request for our own plugin: ' . $args->slug);
+		}
+
 		// Get our list of invalid plugins
 		$invalid_plugins = $this->get_invalid_plugins();
 
-		// Check if the requested plugin is one of our missing plugins
-		foreach ( $invalid_plugins as $plugin_file ) {
-			// Extract the plugin slug from the plugin file path
-			$plugin_slug = dirname( $plugin_file );
-			if ( '.' === $plugin_slug ) {
-				$plugin_slug = basename( $plugin_file, '.php' );
+		// Check if the requested plugin is one of our missing plugins or our own plugin
+		if ($our_plugin || $this->is_missing_plugin($args->slug, $invalid_plugins)) {
+			// If we don't have a result yet, create one
+			if ( ! $result ) {
+				$result = new stdClass();
 			}
 
-			// If this is one of our missing plugins
-			if ( $args->slug === $plugin_slug ) {
-				// If we don't have a result yet, create one
-				if ( ! $result ) {
-					$result = new stdClass();
+			// Create a completely new result object to bypass any caching
+			$new_result = new stdClass();
+
+			// Set all the properties we need
+			$new_result->name = $our_plugin ? 'Fix \'Plugin file does not exist\' Notices' : (isset($result->name) ? $result->name : $args->slug);
+			$new_result->slug = $args->slug;
+			$new_result->version = FPDEN_VERSION;
+			$new_result->author = '<a href="https://www.wpallstars.com">Marcus Quinn & WP ALLSTARS</a>';
+			$new_result->author_profile = 'https://www.wpallstars.com';
+			$new_result->requires = '5.0';
+			$new_result->tested = '6.7.2'; // Updated to match readme.txt
+			$new_result->requires_php = '7.0';
+			$new_result->last_updated = date('Y-m-d H:i:s');
+
+			// Get changelog from readme.txt
+			$readme_file = FPDEN_PLUGIN_DIR . 'readme.txt';
+			$changelog = '<h2>' . FPDEN_VERSION . '</h2><ul><li>Fixed: Plugin details popup now correctly shows version and author information</li><li>Added: Cache-busting mechanism to ensure plugin details are always up-to-date</li><li>Improved: Author and contributor information display</li></ul>';
+
+			if (file_exists($readme_file)) {
+				$readme_content = file_get_contents($readme_file);
+				if (preg_match('/== Changelog ==\s*\n\s*= ' . FPDEN_VERSION . ' =(.*?)(?:= \d|$)/s', $readme_content, $matches)) {
+					$version_changelog = trim($matches[1]);
+					$changelog = '<h2>' . FPDEN_VERSION . '</h2>' . wpautop($version_changelog);
 				}
-
-				// Create a completely new result object to bypass any caching
-				$new_result = new stdClass();
-
-				// Set all the properties we need
-				$new_result->name = isset($result->name) ? $result->name : basename( $plugin_file );
-				$new_result->slug = $args->slug;
-				$new_result->version = FPDEN_VERSION . ' (' . date('Y-m-d') . ')';
-				$new_result->author = '<a href="https://www.wpallstars.com">Marcus Quinn & WP ALLSTARS</a>';
-				$new_result->author_profile = 'https://www.wpallstars.com';
-				$new_result->requires = '5.0';
-				$new_result->tested = '6.7.2'; // Updated to match readme.txt
-				$new_result->requires_php = '7.0';
-				$new_result->last_updated = date('Y-m-d H:i:s');
-
-				// Get changelog from readme.txt
-				$readme_file = FPDEN_PLUGIN_DIR . 'readme.txt';
-				$changelog = '<h2>' . FPDEN_VERSION . '</h2><ul><li>Fixed: Plugin details popup now correctly shows version and author information</li><li>Added: Cache-busting mechanism to ensure plugin details are always up-to-date</li><li>Improved: Author and contributor information display</li></ul>';
-
-				if (file_exists($readme_file)) {
-					$readme_content = file_get_contents($readme_file);
-					if (preg_match('/== Changelog ==\s*\n\s*= ' . FPDEN_VERSION . ' =(.*?)(?:= \d|$)/s', $readme_content, $matches)) {
-						$version_changelog = trim($matches[1]);
-						$changelog = '<h2>' . FPDEN_VERSION . '</h2>' . wpautop($version_changelog);
-					}
-				}
-
-				$new_result->sections = array(
-					'description' => sprintf(
-						__( 'This plugin is still marked as "Active" in your database — but its folder and files can\'t be found in %s. Use the "Remove Notice" link on the plugins page to permanently remove it from your active plugins list and eliminate the error notice.', 'wp-fix-plugin-does-not-exist-notices' ),
-						'<code>/wp-content/plugins/</code>'
-					),
-					'changelog' => $changelog,
-					'faq' => '<h3>Is it safe to remove plugin references?</h3><p>Yes, this plugin only removes entries from the WordPress active_plugins option, which is safe to modify when a plugin no longer exists.</p>'
-				);
-
-				// Add contributors information
-				$new_result->contributors = array(
-					'marcusquinn' => array(
-						'profile' => 'https://profiles.wordpress.org/marcusquinn/',
-						'avatar' => 'https://secure.gravatar.com/avatar/',
-						'display_name' => 'Marcus Quinn'
-					),
-					'wpallstars' => array(
-						'profile' => 'https://profiles.wordpress.org/wpallstars/',
-						'avatar' => 'https://secure.gravatar.com/avatar/',
-						'display_name' => 'WP ALLSTARS'
-					)
-				);
-
-				// Add a random number and timestamp to force cache refresh
-				$new_result->download_link = 'https://www.wpallstars.com/plugins/wp-fix-plugin-does-not-exist-notices.zip?v=' . FPDEN_VERSION . '&cb=' . mt_rand(1000000, 9999999) . '&t=' . time();
-
-				// Add active installations count
-				$new_result->active_installs = 1000;
-
-				// Add rating information
-				$new_result->rating = 100;
-				$new_result->num_ratings = 5;
-				$new_result->ratings = array(
-					5 => 5,
-					4 => 0,
-					3 => 0,
-					2 => 0,
-					1 => 0
-				);
-
-				// Add homepage and download link
-				$new_result->homepage = 'https://www.wpallstars.com';
-
-				// Return our completely new result object
-				return $new_result;
 			}
+
+			$description = $our_plugin
+				? 'Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.'
+				: sprintf(
+					__( 'This plugin is still marked as "Active" in your database — but its folder and files can\'t be found in %s. Use the "Remove Notice" link on the plugins page to permanently remove it from your active plugins list and eliminate the error notice.', 'wp-fix-plugin-does-not-exist-notices' ),
+					'<code>/wp-content/plugins/</code>'
+				);
+
+			$new_result->sections = array(
+				'description' => $description,
+				'changelog' => $changelog,
+				'faq' => '<h3>Is it safe to remove plugin references?</h3><p>Yes, this plugin only removes entries from the WordPress active_plugins option, which is safe to modify when a plugin no longer exists.</p>'
+			);
+
+			// Add contributors information
+			$new_result->contributors = array(
+				'marcusquinn' => array(
+					'profile' => 'https://profiles.wordpress.org/marcusquinn/',
+					'avatar' => 'https://secure.gravatar.com/avatar/',
+					'display_name' => 'Marcus Quinn'
+				),
+				'wpallstars' => array(
+					'profile' => 'https://profiles.wordpress.org/wpallstars/',
+					'avatar' => 'https://secure.gravatar.com/avatar/',
+					'display_name' => 'WP ALLSTARS'
+				)
+			);
+
+			// Add a random number and timestamp to force cache refresh
+			$new_result->download_link = 'https://www.wpallstars.com/plugins/wp-fix-plugin-does-not-exist-notices.zip?v=' . FPDEN_VERSION . '&cb=' . mt_rand(1000000, 9999999) . '&t=' . time();
+
+			// Add active installations count
+			$new_result->active_installs = 1000;
+
+			// Add rating information
+			$new_result->rating = 100;
+			$new_result->num_ratings = 5;
+			$new_result->ratings = array(
+				5 => 5,
+				4 => 0,
+				3 => 0,
+				2 => 0,
+				1 => 0
+			);
+
+			// Add homepage and download link
+			$new_result->homepage = 'https://www.wpallstars.com';
+
+			// Return our completely new result object
+			return $new_result;
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Check if a slug matches one of our missing plugins.
+	 *
+	 * @param string $slug The plugin slug to check.
+	 * @param array $invalid_plugins List of invalid plugin paths.
+	 * @return bool True if the slug matches a missing plugin.
+	 */
+	private function is_missing_plugin($slug, $invalid_plugins) {
+		foreach ($invalid_plugins as $plugin_file) {
+			// Extract the plugin slug from the plugin file path
+			$plugin_slug = dirname($plugin_file);
+			if ('.' === $plugin_slug) {
+				$plugin_slug = basename($plugin_file, '.php');
+			}
+
+			if ($slug === $plugin_slug) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -608,15 +635,29 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	 * @return void
 	 */
 	private function clear_own_plugin_cache() {
-		// Clear our own plugin's cache
-		$our_slug = 'wp-fix-plugin-does-not-exist-notices';
-		delete_transient( 'plugins_api_' . $our_slug );
-		delete_site_transient( 'plugins_api_' . $our_slug );
-		delete_transient( 'plugin_information_' . $our_slug );
-		delete_site_transient( 'plugin_information_' . $our_slug );
+		// Clear our own plugin's cache (both old and new slugs)
+		$our_slugs = array('wp-fix-plugin-does-not-exist-notices', 'fix-plugin-does-not-exist-notices');
 
-		// Force refresh of plugin update information
-		wp_clean_plugins_cache(true);
+		foreach ($our_slugs as $slug) {
+			delete_transient( 'plugins_api_' . $slug );
+			delete_site_transient( 'plugins_api_' . $slug );
+			delete_transient( 'plugin_information_' . $slug );
+			delete_site_transient( 'plugin_information_' . $slug );
+		}
+
+		// Clear plugin update transients
+		delete_site_transient('update_plugins');
+		delete_site_transient('plugin_information');
+
+		// Force refresh of plugin update information if function exists
+		if (function_exists('wp_clean_plugins_cache')) {
+			wp_clean_plugins_cache(true);
+		}
+
+		// Clear object cache if function exists
+		if (function_exists('wp_cache_flush')) {
+			wp_cache_flush();
+		}
 	}
 } // End class Fix_Plugin_Does_Not_Exist_Notices
 
