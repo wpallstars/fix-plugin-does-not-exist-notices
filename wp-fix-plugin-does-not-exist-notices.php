@@ -413,6 +413,9 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 		if ($args->slug === 'wp-fix-plugin-does-not-exist-notices' || $args->slug === 'fix-plugin-does-not-exist-notices') {
 			$our_plugin = true;
 			error_log('Detected request for our own plugin: ' . $args->slug);
+
+			// Force clear any cached data for our plugin
+			$this->clear_own_plugin_cache();
 		}
 
 		// Get our list of invalid plugins
@@ -420,12 +423,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 		// Check if the requested plugin is one of our missing plugins or our own plugin
 		if ($our_plugin || $this->is_missing_plugin($args->slug, $invalid_plugins)) {
-			// If we don't have a result yet, create one
-			if ( ! $result ) {
-				$result = new stdClass();
-			}
-
-			// Create a completely new result object to bypass any caching
+			// Always create a new result object to bypass any caching
 			$new_result = new stdClass();
 
 			// Set all the properties we need
@@ -438,6 +436,9 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			$new_result->tested = '6.7.2'; // Updated to match readme.txt
 			$new_result->requires_php = '7.0';
 			$new_result->last_updated = date('Y-m-d H:i:s');
+
+			// Add a cache buster timestamp
+			$new_result->cache_buster = time();
 
 			// Get changelog from readme.txt
 			$readme_file = FPDEN_PLUGIN_DIR . 'readme.txt';
@@ -497,6 +498,9 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 			// Add homepage and download link
 			$new_result->homepage = 'https://www.wpallstars.com';
+
+			// Set no caching
+			$new_result->cache_time = 0;
 
 			// Return our completely new result object
 			return $new_result;
