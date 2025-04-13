@@ -14,7 +14,7 @@
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/wp-fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 2.0.7
+ * Version: 2.0.8
  * Author: Marcus Quinn & WP ALLSTARS
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'FPDEN_VERSION', '2.0.7' );
+define( 'FPDEN_VERSION', '2.0.8' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FPDEN_PLUGIN_FILE', __FILE__ );
@@ -438,11 +438,17 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 					$result = new stdClass();
 				}
 
-				// Set the version to our plugin version
-				$result->version = FPDEN_VERSION;
+				// Generate a cache-busting timestamp
+				$cache_buster = time();
+
+				// Set the version to our plugin version with cache buster
+				$result->version = FPDEN_VERSION . ' (CB:' . $cache_buster . ')';
+
+				// Strip the cache buster for display purposes
+				$result->display_version = FPDEN_VERSION;
 
 				// Add our plugin's author information
-				$result->author = 'Marcus Quinn & WP ALLSTARS';
+				$result->author = '<a href="https://www.wpallstars.com">Marcus Quinn & WP ALLSTARS</a>';
 				$result->author_profile = 'https://www.wpallstars.com';
 
 				// Add contributors information
@@ -460,11 +466,12 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 				);
 
 				// Add last updated information (current date)
-				$result->last_updated = date('Y-m-d');
+				$result->last_updated = date('Y-m-d H:i:s');
 
 				// Add requires information
 				$result->requires = '5.0';
 				$result->requires_php = '7.0';
+				$result->tested = '6.5';
 
 				// Add other details if they're not already set
 				if ( ! isset( $result->name ) ) {

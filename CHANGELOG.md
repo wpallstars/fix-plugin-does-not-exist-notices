@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.8] - 2024-05-17
+### Fixed
+- Plugin details popup now correctly shows version and author information
+- Added cache-busting mechanism to ensure plugin details are always up-to-date
+
+### Improved
+- Author and contributor information display in plugin details
+- Added WordPress 6.5 compatibility indicator
+
 ## [2.0.7] - 2024-05-17
 ### Changed
 - Additional text improvements and minor fixes
