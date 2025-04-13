@@ -120,6 +120,22 @@ Manually editing the WordPress database is risky and requires technical knowledg
 
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
+## Support
+
+If you need help with this plugin, there are several ways to get support:
+
+* [WordPress.org Support Forums](https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices/)
+* [GitHub Issues](https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/issues)
+* [Gitea Issues](https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices/issues)
+
+## Reviews
+
+This utility plugin is released under the GPLv2 license as free open source software.
+
+If you find this plugin helpful, please consider [leaving a review](https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices/reviews/) on WordPress.org.
+
+Your experience and feedback helps others discover the plugin, and encourages continued community-driven, open-source development and support.
+
 ## Developers
 
 ### Contributing
@@ -374,13 +390,3 @@ The plugin works by:
 ## License
 
 This project is licensed under the GPL-2.0+ License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-If you need help with this plugin, there are several ways to get support:
-
-* [WordPress.org Support Forums](https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices/)
-* [GitHub Issues](https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/issues)
-* [Gitea Issues](https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices/issues)
-
-If you find this plugin helpful, please consider [leaving a review](https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices/reviews/) on WordPress.org. Your feedback helps others discover the plugin and encourages continued development and support.

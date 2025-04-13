@@ -1,11 +1,11 @@
 === Fix 'Plugin file does not exist.' Notices ===
-Contributors: marcusquinn, wpallstars
-Donate link: https://www.marcusquinn.com
+Contributors: surferking, wpallstars
+Donate link: https://www.wpallstars.com/
 Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file does not exist, wordpress error, plugin error, deactivated plugin, remove plugin reference, fix plugin error, plugin does not exist, plugin file does not exist error
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.0.4
+Stable tag: 2.0.7
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,35 @@ When WordPress detects a plugin file that no longer exists but is still referenc
 * A plugin was removed by another admin but references remain
 * You've migrated from another site and have leftover plugin references
 * Your hosting provider removed a plugin but didn't clean the database
+
+= Support & Feedback =
+
+If you need help with this plugin, there are several ways to get support:
+
+* [WordPress.org Support Forums](https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices/)
+* [GitHub Issues](https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/issues)
+* [Gitea Issues](https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices/issues)
+
+= Reviews =
+
+This utility plugin is released under the GPLv2 license as free open source software.
+
+If you find this plugin helpful, please consider [leaving a review](https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices/reviews/) on WordPress.org.
+
+Your experience and feedback helps others discover the plugin, and encourages continued community-driven, open-source development and support.
+
+= Contributing =
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository on [GitHub](https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/) or [Gitea](https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices/)
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add some amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Submit a pull request
+
+The plugin is designed to be a best-practice example for WordPress plugin development and can be used as a boilerplate for your own plugins.
+
 
 == Installation ==
 
@@ -110,6 +139,15 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.0.7 =
+* Additional text improvements and minor fixes
+
+= 2.0.6 =
+* Text improvements and minor fixes
+
+= 2.0.5 =
+* Fixed: Display correct version in plugin details popup
 
 = 2.0.4 =
 * Fixed: Display actual plugin version instead of 'N/A' for missing plugins in plugin details view
@@ -473,25 +511,3 @@ Completely redesigned for better compatibility with all WordPress themes - now w
 
 = 1.2.2 =
 Important stability fix - resolves timeout issues during plugin activation!
-
-== Contributing ==
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository on [GitHub](https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/) or [Gitea](https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices/)
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add some amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Submit a pull request
-
-The plugin is designed to be a best-practice example for WordPress plugin development and can be used as a boilerplate for your own plugins.
-
-== Support ==
-
-If you need help with this plugin, there are several ways to get support:
-
-* [WordPress.org Support Forums](https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices/)
-* [GitHub Issues](https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/issues)
-* [Gitea Issues](https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices/issues)
-
-If you find this plugin helpful, please consider [leaving a review](https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices/reviews/) on WordPress.org. Your feedback helps others discover the plugin and encourages continued development and support.

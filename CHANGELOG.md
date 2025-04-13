@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.7] - 2024-05-17
+### Changed
+- Additional text improvements and minor fixes
+
+## [2.0.6] - 2024-05-17
+### Changed
+- Text improvements and minor fixes
+
+## [2.0.5] - 2024-05-17
+### Fixed
+- Display correct version in plugin details popup
+
 ## [2.0.4] - 2024-05-17
 ### Fixed
 - Display actual plugin version instead of 'N/A' for missing plugins in plugin details view

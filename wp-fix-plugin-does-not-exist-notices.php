@@ -3,8 +3,9 @@
  * Fix 'Plugin file does not exist.' Notices
  *
  * @package           FixPluginDoesNotExistNotices
- * @author            Marcus Quinn
- * @copyright         2023 WP ALLSTARS
+ * @author            Marcus Quinn & The WP ALLSTARS Team
+ * @contributor       WP ALLSTARS
+ * @copyright         2025 WP ALLSTARS
  * @license           GPL-2.0+
  * @noinspection      PhpUndefinedFunctionInspection
  * @noinspection      PhpUndefinedConstantInspection
@@ -13,7 +14,7 @@
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
  * Plugin URI: https://wordpress.org/plugins/wp-fix-plugin-does-not-exist-notices/
  * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
- * Version: 2.0.4
+ * Version: 2.0.7
  * Author: Marcus Quinn & WP ALLSTARS
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -48,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'FPDEN_VERSION', '2.0.4' );
+define( 'FPDEN_VERSION', '2.0.7' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FPDEN_PLUGIN_FILE', __FILE__ );
@@ -98,6 +99,9 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 		// Enqueue admin scripts and styles.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+
+		// Filter the plugin API to fix version display in plugin details popup
+		add_filter( 'plugins_api', array( $this, 'filter_plugin_details' ), 10, 3 );
 
 		// We're no longer trying to prevent WordPress from auto-deactivating plugins
 		// as it was causing critical errors in some environments
@@ -396,6 +400,69 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 	}
 
 // We've removed the prevent_auto_deactivation method as it was causing critical errors
+
+	/**
+	 * Filter the plugin API response to fix version display in plugin details popup.
+	 *
+	 * @param false|object|array $result The result object or array. Default false.
+	 * @param string            $action The type of information being requested from the Plugin Installation API.
+	 * @param object            $args   Plugin API arguments.
+	 * @return false|object|array The potentially modified result.
+	 */
+	public function filter_plugin_details( $result, $action, $args ) {
+		// Only modify plugin_information requests
+		if ( 'plugin_information' !== $action ) {
+			return $result;
+		}
+
+		// Check if we have a slug to work with
+		if ( empty( $args->slug ) ) {
+			return $result;
+		}
+
+		// Get our list of invalid plugins
+		$invalid_plugins = $this->get_invalid_plugins();
+
+		// Check if the requested plugin is one of our missing plugins
+		foreach ( $invalid_plugins as $plugin_file ) {
+			// Extract the plugin slug from the plugin file path
+			$plugin_slug = dirname( $plugin_file );
+			if ( '.' === $plugin_slug ) {
+				$plugin_slug = basename( $plugin_file, '.php' );
+			}
+
+			// If this is one of our missing plugins
+			if ( $args->slug === $plugin_slug ) {
+				// If we don't have a result yet, create one
+				if ( ! $result ) {
+					$result = new stdClass();
+				}
+
+				// Set the version to our plugin version
+				$result->version = FPDEN_VERSION;
+
+				// Add other details if they're not already set
+				if ( ! isset( $result->name ) ) {
+					$result->name = basename( $plugin_file );
+				}
+
+				if ( ! isset( $result->author ) ) {
+					$result->author = '';
+				}
+
+				if ( ! isset( $result->description ) ) {
+					$result->description = sprintf(
+						__( 'This plugin is still marked as "Active" in your database — but its folder and files can\'t be found in %s. Use the "Remove Notice" link on the plugins page to permanently remove it from your active plugins list and eliminate the error notice.', 'wp-fix-plugin-does-not-exist-notices' ),
+						'<code>/wp-content/plugins/</code>'
+					);
+				}
+
+				break;
+			}
+		}
+
+		return $result;
+	}
 } // End class Fix_Plugin_Does_Not_Exist_Notices
 
 // Initialize the plugin class.

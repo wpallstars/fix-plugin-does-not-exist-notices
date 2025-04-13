@@ -1,8 +1,8 @@
-# Copyright (C) 2024 Marcus Quinn
+# Copyright (C) 2025 Marcus Quinn & The WP ALLSTARS Team
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Fix 'Plugin file does not exist.' Notices 2.0.4\n"
+"Project-Id-Version: Fix 'Plugin file does not exist.' Notices 2.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-fix-plugin-does-not-exist-notices\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
