@@ -3,12 +3,18 @@
 All notable changes to this project will be documented in this file.
 
 #### [2.1.1] - 2025-04-13
+#### Added
+- New "Choose Update Source" feature allowing users to select their preferred update source (WordPress.org, GitHub, or Gitea)
+- Modal dialog with detailed information about each update source option
+- Visual indicator showing the currently selected update source
+
 #### Fixed
 - Updated heading styles in CHANGELOG.md for better readability
 - Corrected dates in changelog to use 2025 instead of 2024
 
 #### Improved
 - Documentation improvements for better clarity
+- Enhanced Git Updater integration with user-selectable update sources
 
 #### [2.1.0] - 2025-04-13
 #### Changed

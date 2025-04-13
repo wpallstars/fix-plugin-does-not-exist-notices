@@ -76,6 +76,21 @@ If you've installed this plugin from GitHub or Gitea, you'll need Git Updater to
 3. Click the "Refresh Cache" button to ensure Git Updater recognizes the latest version
 4. Updates will now appear in your WordPress dashboard when available
 
+### Choosing Your Update Source
+
+This plugin allows you to choose where you want to receive updates from:
+
+1. In the Plugins list, find "Fix 'Plugin file does not exist' Notices"
+2. Click the "Choose Update Source" link next to the plugin
+3. Select your preferred update source:
+   - **Auto-detect** (default): Automatically determines the source based on installation origin
+   - **WordPress.org**: Updates from the official WordPress.org repository (may have delays due to approval process)
+   - **GitHub**: Updates directly from GitHub (usually has the latest version first)
+   - **Gitea**: Updates from Gitea (usually has the latest version first)
+4. Click "Save" to apply your preference
+
+> **Note:** GitHub and Gitea options require the Git Updater plugin to be installed and activated.
+
 ## Frequently Asked Questions
 
 ### Is it safe to remove plugin references?
@@ -186,9 +201,13 @@ The plugin works by:
 ## Changelog
 
 ### 2.1.1
+* Added: New "Choose Update Source" feature allowing users to select their preferred update source (WordPress.org, GitHub, or Gitea)
+* Added: Modal dialog with detailed information about each update source option
+* Added: Visual indicator showing the currently selected update source
 * Fixed: Updated heading styles in CHANGELOG.md for better readability
 * Fixed: Corrected dates in changelog to use 2025 instead of 2024
 * Improved: Documentation improvements for better clarity
+* Improved: Enhanced Git Updater integration with user-selectable update sources
 
 ### 2.1.0
 * Minor version bump for Git Updater compatibility

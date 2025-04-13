@@ -40,6 +40,15 @@ add_action('plugins_loaded', 'fpden_init_git_updater_fixes');
  * It uses named functions instead of anonymous functions for better compatibility
  */
 function fpden_init_git_updater_fixes() {
+    // Add filter for plugin action links to add our update source selector
+    add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'fpden_add_update_source_link');
+
+    // Add AJAX handler for saving update source
+    add_action('wp_ajax_fpden_save_update_source', 'fpden_save_update_source');
+
+    // Add the update source modal to admin footer
+    add_action('admin_footer', 'fpden_add_update_source_modal');
+
     // Fix for Git Updater looking for 'master' branch instead of 'main'
     add_filter('gu_get_repo_branch', 'fpden_override_branch', 999, 3);
 
@@ -875,6 +884,150 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 // Initialize the plugin class.
 new Fix_Plugin_Does_Not_Exist_Notices();
+
+/**
+ * Add the "Choose Update Source" link to plugin action links
+ *
+ * @param array $links Array of plugin action links
+ * @return array Modified array of plugin action links
+ */
+function fpden_add_update_source_link($links) {
+    if (!current_user_can('manage_options')) {
+        return $links;
+    }
+
+    // Get current update source
+    $current_source = get_option('fpden_update_source', 'auto');
+
+    // Add a badge to show the current source
+    $badge_class = 'fpden-source-badge ' . $current_source;
+    $badge_text = ucfirst($current_source);
+    if ($current_source === 'auto') {
+        $badge_text = 'Auto';
+    } elseif ($current_source === 'wordpress.org') {
+        $badge_text = 'WP.org';
+    }
+
+    // Add the link with the badge
+    $update_source_link = '<a href="#" class="fpden-update-source-toggle">Choose Update Source <span class="' . $badge_class . '">' . $badge_text . '</span></a>';
+    $links[] = $update_source_link;
+
+    return $links;
+}
+
+/**
+ * Add the update source modal to the admin footer
+ */
+function fpden_add_update_source_modal() {
+    if (!is_admin() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    // Only show on plugins page
+    $screen = get_current_screen();
+    if (!$screen || $screen->id !== 'plugins') {
+        return;
+    }
+
+    // Get current source
+    $current_source = get_option('fpden_update_source', 'auto');
+
+    // Enqueue the CSS and JS
+    wp_enqueue_style(
+        'fpden-update-source-selector',
+        FPDEN_PLUGIN_URL . 'assets/css/update-source-selector.css',
+        array(),
+        FPDEN_VERSION
+    );
+
+    wp_enqueue_script(
+        'fpden-update-source-selector',
+        FPDEN_PLUGIN_URL . 'assets/js/update-source-selector.js',
+        array('jquery'),
+        FPDEN_VERSION,
+        true
+    );
+
+    // Add nonce to the existing fpdenData object or create it if it doesn't exist
+    $nonce = wp_create_nonce('fpden_update_source');
+    wp_localize_script(
+        'fpden-update-source-selector',
+        'fpdenData',
+        array(
+            'updateSourceNonce' => $nonce,
+        )
+    );
+
+    // Modal HTML
+    ?>
+    <div id="fpden-update-source-modal">
+        <a href="#" class="fpden-close-modal">×</a>
+        <h2>Choose Update Source</h2>
+        <p>Select where you want to receive plugin updates from:</p>
+
+        <form id="fpden-update-source-form">
+            <label>
+                <input type="radio" name="update_source" value="auto" <?php checked($current_source, 'auto'); ?>>
+                Auto-detect (recommended)
+                <span class="fpden-source-description">Automatically determines the update source based on where the plugin was installed from.</span>
+            </label>
+
+            <label>
+                <input type="radio" name="update_source" value="wordpress.org" <?php checked($current_source, 'wordpress.org'); ?>>
+                WordPress.org
+                <span class="fpden-source-description">Updates from the official WordPress.org plugin repository. May have a delay due to approval process.</span>
+            </label>
+
+            <label>
+                <input type="radio" name="update_source" value="github" <?php checked($current_source, 'github'); ?>>
+                GitHub
+                <span class="fpden-source-description">Updates directly from GitHub. Requires Git Updater plugin. Usually has the latest version first.</span>
+            </label>
+
+            <label>
+                <input type="radio" name="update_source" value="gitea" <?php checked($current_source, 'gitea'); ?>>
+                Gitea
+                <span class="fpden-source-description">Updates from Gitea. Requires Git Updater plugin. Usually has the latest version first.</span>
+            </label>
+
+            <div class="fpden-submit-container">
+                <button type="button" class="button fpden-close-modal">Cancel</button>
+                <button type="submit" class="button button-primary">Save</button>
+            </div>
+        </form>
+    </div>
+    <?php
+}
+
+/**
+ * Handle AJAX request to save update source
+ */
+function fpden_save_update_source() {
+    // Check nonce
+    check_ajax_referer('fpden_update_source', 'nonce');
+
+    // Check permissions
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error('Permission denied');
+    }
+
+    // Get and sanitize source
+    $source = isset($_POST['source']) ? sanitize_text_field($_POST['source']) : 'auto';
+
+    // Validate source
+    $valid_sources = ['auto', 'wordpress.org', 'github', 'gitea'];
+    if (!in_array($source, $valid_sources)) {
+        $source = 'auto';
+    }
+
+    // Save option
+    update_option('fpden_update_source', $source);
+
+    // Clear update cache
+    delete_site_transient('update_plugins');
+
+    wp_send_json_success();
+}
 
 // This function was previously deactivating all plugins except our plugin and Git Updater
 // It has been disabled to allow other plugins to be activated
