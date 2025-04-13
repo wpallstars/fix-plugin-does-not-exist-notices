@@ -6,7 +6,7 @@
 # Set variables
 SOURCE_DIR="$(pwd)"
 TARGET_DIR="$HOME/Local/plugin-testing/app/public/wp-content/plugins"
-MAIN_PLUGIN_NAME="fix-plugin-file-does-not-exist-notices"
+MAIN_PLUGIN_NAME="wp-fix-plugin-does-not-exist-notices"
 
 # Create target directory if it doesn't exist
 mkdir -p "$TARGET_DIR/$MAIN_PLUGIN_NAME"
@@ -22,14 +22,14 @@ if [ -f "$TARGET_DIR/gu-branch-fix.php" ]; then
 fi
 
 # Remove the old plugin directory if it exists
-if [ -d "$TARGET_DIR/wp-fix-plugin-does-not-exist-notices" ]; then
+if [ -d "$TARGET_DIR/fix-plugin-file-does-not-exist-notices" ]; then
     echo "Removing old plugin directory..."
-    rm -rf "$TARGET_DIR/wp-fix-plugin-does-not-exist-notices"
+    rm -rf "$TARGET_DIR/fix-plugin-file-does-not-exist-notices"
 fi
 
 # Copy main plugin files
 echo "Copying plugin files..."
-cp "$SOURCE_DIR/wp-fix-plugin-does-not-exist-notices.php" "$TARGET_DIR/$MAIN_PLUGIN_NAME/fix-plugin-file-does-not-exist-notices.php"
+cp "$SOURCE_DIR/wp-fix-plugin-does-not-exist-notices.php" "$TARGET_DIR/$MAIN_PLUGIN_NAME/wp-fix-plugin-does-not-exist-notices.php"
 cp "$SOURCE_DIR/readme.txt" "$TARGET_DIR/$MAIN_PLUGIN_NAME/"
 
 # Copy additional directories and files for the main plugin
