@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.10] - 2024-05-18
+### Fixed
+- Plugin details popup version display issue with Git Updater integration
+- Added JavaScript-based solution to ensure correct version display in plugin details
+
+### Improved
+- Version consistency across all plugin views
+- Enhanced cache busting for plugin information API
+
+## [2.0.9] - 2024-05-18
+### Fixed
+- Plugin details popup now correctly shows version and author information
+- Added support for both old and new plugin slugs to fix caching issues
+
+### Improved
+- Cache clearing mechanism to ensure plugin details are always up-to-date
+- Enhanced version display in plugin details popup
+
 ## [2.0.8] - 2024-05-17
 ### Fixed
 - Plugin details popup now correctly shows version and author information

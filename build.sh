@@ -52,6 +52,10 @@ cd ..
 if [ -f "$ZIP_FILE" ]; then
   echo "✅ Build successful: $ZIP_FILE created"
   echo "File path: $(pwd)/$ZIP_FILE"
+
+  # Deploy to local WordPress installation
+  echo "\nDeploying to local WordPress installation..."
+  ./scripts/deploy-local.sh
 else
   echo "❌ Build failed: ZIP file was not created"
   exit 1
