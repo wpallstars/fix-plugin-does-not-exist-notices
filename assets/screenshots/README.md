@@ -1,11 +1,14 @@
 # WordPress.org Screenshot Files
 
-This directory contains screenshot files for the WordPress.org plugin repository.
+This directory contains source files for screenshots. The actual PNG files used for the WordPress.org plugin repository are stored in the `.wordpress-org/assets/` directory.
 
 ## Files in this Directory
 
-- `screenshot-1.png` - Main screenshot showing the plugin in action
 - `screenshot-1.pxd` - Source file for editing in Pixelmator
+
+## Files in .wordpress-org/assets/
+
+- `screenshot-1.png` - Main screenshot showing the plugin in action
 
 ## WordPress.org Submission
 

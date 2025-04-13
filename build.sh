@@ -37,8 +37,37 @@ mkdir -p $BUILD_DIR/includes
 cp -r includes/* $BUILD_DIR/includes/
 mkdir -p $BUILD_DIR/languages
 cp -r languages/* $BUILD_DIR/languages/
-mkdir -p $BUILD_DIR/assets
-cp -r assets/* $BUILD_DIR/assets/
+
+# Copy assets
+mkdir -p $BUILD_DIR/assets/css
+cp -r assets/css/* $BUILD_DIR/assets/css/
+mkdir -p $BUILD_DIR/assets/js
+cp -r assets/js/* $BUILD_DIR/assets/js/
+
+# Copy asset source files (PXD)
+mkdir -p $BUILD_DIR/assets/banner
+cp -r assets/banner/*.pxd $BUILD_DIR/assets/banner/ 2>/dev/null || :
+mkdir -p $BUILD_DIR/assets/icon
+cp -r assets/icon/*.pxd $BUILD_DIR/assets/icon/ 2>/dev/null || :
+mkdir -p $BUILD_DIR/assets/screenshots
+cp -r assets/screenshots/*.pxd $BUILD_DIR/assets/screenshots/ 2>/dev/null || :
+
+# Copy README files from assets directories
+cp -r assets/README.md $BUILD_DIR/assets/ 2>/dev/null || :
+cp -r assets/banner/README.md $BUILD_DIR/assets/banner/ 2>/dev/null || :
+cp -r assets/icon/README.md $BUILD_DIR/assets/icon/ 2>/dev/null || :
+cp -r assets/screenshots/README.md $BUILD_DIR/assets/screenshots/ 2>/dev/null || :
+cp -r assets/WORDPRESS_ORG_ASSETS.md $BUILD_DIR/assets/ 2>/dev/null || :
+cp -r assets/WORDPRESS_ORG_SUBMISSION.md $BUILD_DIR/assets/ 2>/dev/null || :
+
+# Copy PNG files from .wordpress-org/assets to the build directory
+mkdir -p $BUILD_DIR/assets/banner
+cp -r .wordpress-org/assets/banner-*.png $BUILD_DIR/assets/banner/ 2>/dev/null || :
+mkdir -p $BUILD_DIR/assets/icon
+cp -r .wordpress-org/assets/icon-*.png $BUILD_DIR/assets/icon/ 2>/dev/null || :
+mkdir -p $BUILD_DIR/assets/screenshots
+cp -r .wordpress-org/assets/screenshot-*.png $BUILD_DIR/assets/screenshots/ 2>/dev/null || :
+
 mkdir -p $BUILD_DIR/vendor
 cp -r vendor/* $BUILD_DIR/vendor/
 

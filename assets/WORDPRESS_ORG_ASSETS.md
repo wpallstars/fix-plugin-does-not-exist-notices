@@ -39,7 +39,7 @@ Note: `-rtl` is specifically for Right-to-Left language support, not for dark th
   - Required: 256x256 pixels (`icon-256x256.png`)
   - Optional: 128x128 pixels (`icon-128x128.png`)
 - **Location**: Upload to the `/assets/` directory in the WordPress.org SVN repository
-- **Status**: ✅ READY - Files are in `assets/icon/`
+- **Status**: ✅ READY - Files are in `.wordpress-org/assets/`
 
 ### Banner
 
@@ -48,15 +48,14 @@ Note: `-rtl` is specifically for Right-to-Left language support, not for dark th
   - Required: 772x250 pixels (`banner-772x250.png`)
   - Optional: 1544x500 pixels (`banner-1544x500.png`) for high-DPI displays
 - **Location**: Upload to the `/assets/` directory in the WordPress.org SVN repository
-- **Status**: ✅ READY - Files are in `assets/banner/`
+- **Status**: ✅ READY - Files are in `.wordpress-org/assets/`
 
 ### Screenshots
 
 - **Format**: PNG
 - **Naming**: `screenshot-1.png`
 - **Location**: Upload to the `/assets/` directory in the WordPress.org SVN repository
-- **Status**: ✅ READY
-  - `screenshot-1.png` is available in `assets/screenshots/`
+- **Status**: ✅ READY - Files are in `.wordpress-org/assets/`
 
 ## Submission Process
 
@@ -78,11 +77,11 @@ Note: `-rtl` is specifically for Right-to-Left language support, not for dark th
    cp -r [your-local-plugin-files]/* fix-plugin-does-not-exist-notices/trunk/
 
    # Copy assets to assets directory
-   cp assets/icon/icon-256x256.png fix-plugin-does-not-exist-notices/assets/
-   cp assets/icon/icon-128x128.png fix-plugin-does-not-exist-notices/assets/
-   cp assets/banner/banner-772x250.png fix-plugin-does-not-exist-notices/assets/
-   cp assets/banner/banner-1544x500.png fix-plugin-does-not-exist-notices/assets/
-   cp assets/screenshots/screenshot-1.png fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/icon-256x256.png fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/icon-128x128.png fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/banner-772x250.png fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/banner-1544x500.png fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/screenshot-1.png fix-plugin-does-not-exist-notices/assets/
 
    # Add new files
    cd fix-plugin-does-not-exist-notices
