@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - '.wordpress-org/**'
-      - 'assets/**'
 
 jobs:
   assets:
@@ -15,10 +14,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
+
       - name: WordPress.org plugin asset/readme update
         uses: 10up/action-wordpress-plugin-asset-update@stable
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: wp-fix-plugin-does-not-exist-notices 
+          SLUG: wp-fix-plugin-does-not-exist-notices

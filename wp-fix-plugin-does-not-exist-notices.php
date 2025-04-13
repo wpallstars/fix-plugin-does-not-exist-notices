@@ -253,7 +253,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 		// Always load our version fix script on the plugins page
 		wp_enqueue_script(
 			'fpden-version-fix',
-			FPDEN_PLUGIN_URL . 'assets/js/version-fix.js',
+			FPDEN_PLUGIN_URL . 'admin/js/version-fix.js',
 			array( 'jquery', 'thickbox' ),
 			FPDEN_VERSION,
 			true // Load in footer.
@@ -267,14 +267,14 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 		wp_enqueue_style(
 			'fpden-admin-styles',
-			FPDEN_PLUGIN_URL . 'assets/css/admin-styles.css',
+			FPDEN_PLUGIN_URL . 'admin/css/admin-styles.css',
 			array(),
 			FPDEN_VERSION
 		);
 
 		wp_enqueue_script(
 			'fpden-admin-scripts',
-			FPDEN_PLUGIN_URL . 'assets/js/admin-scripts.js',
+			FPDEN_PLUGIN_URL . 'admin/js/admin-scripts.js',
 			array( 'jquery' ), // Add dependencies if needed, e.g., jQuery.
 			FPDEN_VERSION,
 			true // Load in footer.
@@ -935,14 +935,14 @@ function fpden_add_update_source_modal() {
     // Enqueue the CSS and JS
     wp_enqueue_style(
         'fpden-update-source-selector',
-        FPDEN_PLUGIN_URL . 'assets/css/update-source-selector.css',
+        FPDEN_PLUGIN_URL . 'admin/css/update-source-selector.css',
         array(),
         FPDEN_VERSION
     );
 
     wp_enqueue_script(
         'fpden-update-source-selector',
-        FPDEN_PLUGIN_URL . 'assets/js/update-source-selector.js',
+        FPDEN_PLUGIN_URL . 'admin/js/update-source-selector.js',
         array('jquery'),
         FPDEN_VERSION,
         true

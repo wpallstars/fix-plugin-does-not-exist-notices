@@ -16,12 +16,10 @@ This directory contains assets specific to the WordPress.org plugin repository a
 
 ## Asset Organization
 
-- **PNG Files**: All PNG files for WordPress.org are stored in this directory (`.wordpress-org/assets/`)
-- **Source Files**: Source files (PXD, SVG) are stored in the main `assets/` directory:
-  - `assets/banner/banner-1544x500.pxd`
-  - `assets/icon/icon.svg`
-  - `assets/icon/icon-1024x1024.pxd`
-  - `assets/screenshots/screenshot-1.pxd`
+- **All Asset Files**: All files for WordPress.org are stored in this directory (`.wordpress-org/assets/`)
+  - PNG files (icon-256x256.png, banner-772x250.png, etc.)
+  - Source files (PXD, SVG)
+  - Documentation
 
 ## Purpose
 
@@ -55,9 +53,8 @@ Note that the `-rtl` suffix is specifically for Right-to-Left language support, 
 ## Build Process
 
 The build script (`build.sh`) is configured to:
-1. Keep source files (PXD, SVG) in the `assets/` directory for development
-2. Use PNG files from the `.wordpress-org/assets/` directory for the build
-3. Copy these PNG files to the appropriate locations in the build directory
+1. Use all asset files from the `.wordpress-org/assets/` directory
+2. Copy these files to the appropriate locations in the build directory
 
 ## Additional Resources
 
@@ -65,4 +62,4 @@ For more detailed information about WordPress.org plugin assets, please see:
 
 - [WordPress Plugin Developer Handbook - Plugin Assets](https://developer.wordpress.org/plugins/wordpress-org/plugin-assets/)
 - [WordPress Plugin Directory README.txt Standard](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/)
-- [WordPress.org Plugin Submission Assets Guide](../assets/WORDPRESS_ORG_ASSETS.md)
+- [WordPress.org Plugin Submission Assets Guide](./.wordpress-org/WORDPRESS_ORG_ASSETS.md)
