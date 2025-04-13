@@ -62,10 +62,10 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 
 		// Filter the plugin API to fix version display in plugin details popup
 		add_filter( 'plugins_api', array( $this, 'filter_plugin_details' ), 10, 3 );
-		
+
 		// Prevent WordPress from caching our plugin API responses
 		add_filter( 'plugins_api_result', array( $this, 'prevent_plugins_api_caching' ), 10, 3 );
-		
+
 		// Clear plugin API transients on plugin activation and when viewing plugins page
 		add_action( 'admin_init', array( $this, 'maybe_clear_plugin_api_cache' ) );
 
@@ -142,6 +142,11 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 		foreach ( $invalid_plugins as $plugin_path ) {
 			if ( ! isset( $plugins[ $plugin_path ] ) ) {
 				$plugin_name          = basename( $plugin_path );
+				$plugin_slug = dirname( $plugin_path );
+				if ( '.' === $plugin_slug ) {
+					$plugin_slug = basename( $plugin_path, '.php' );
+				}
+
 				$plugins[ $plugin_path ] = array(
 					'Name'        => $plugin_name . ' <span class="error">(File Missing)</span>',
 					/* translators: %s: Path to wp-content/plugins */
@@ -150,11 +155,14 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 						'<code>/wp-content/plugins/</code>'
 					),
 					'Version'     => FPDEN_VERSION, // Use our plugin version instead of 'N/A'
-					'Author'      => '',
-					'PluginURI'   => '',
-					'AuthorURI'   => '',
+					'Author'      => 'Marcus Quinn & WP ALLSTARS',
+					'PluginURI'   => 'https://www.wpallstars.com',
+					'AuthorURI'   => 'https://www.wpallstars.com',
 					'Title'       => $plugin_name . ' (' . __( 'Missing', 'wp-fix-plugin-does-not-exist-notices' ) . ')',
-					'AuthorName'  => '',
+					'AuthorName'  => 'Marcus Quinn & WP ALLSTARS',
+					// Add fields needed for the "View details" link
+					'slug'        => $plugin_slug,
+					'plugin'      => $plugin_path,
 				);
 			}
 		}
@@ -502,7 +510,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			if ( $args->slug === $plugin_slug ) {
 				// Add a filter to prevent caching of this response
 				add_filter( 'plugins_api_result_' . $args->slug, '__return_false' );
-				
+
 				// Add a timestamp to force cache busting
 				if ( is_object( $result ) ) {
 					$result->last_updated = current_time( 'mysql' );
@@ -539,7 +547,7 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			// Delete the transient for this plugin
 			delete_transient( 'plugins_api_' . $plugin_slug );
 			delete_site_transient( 'plugins_api_' . $plugin_slug );
-			
+
 			// Also delete the update transient which might cache plugin info
 			delete_site_transient( 'update_plugins' );
 		}
