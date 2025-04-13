@@ -29,6 +29,7 @@ This small utility plugin adds missing plugins to your WordPress plugins list an
 * Includes helpful notifications explaining how to fix plugin errors
 * One-click auto-scroll to find missing plugins in large sites
 * Clean, user-friendly interface following WordPress design patterns
+* Integrated Git Updater branch fix (changes 'master' to 'main' for proper updates)
 
 = How It Works =
 
@@ -139,6 +140,13 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.0.12 =
+* Fixed: Integrated Git Updater branch fix directly into main plugin
+* Removed: Separate "GU Branch Fix" plugin (no longer needed)
+* Updated: Deploy script to remove separate branch fix plugin
+* Added: Documentation explaining branch fix integration
+* Improved: Compatibility with Git Updater plugin
 
 = 2.0.11 =
 * Added: Created separate "GU Branch Fix" plugin to fix Git Updater branch issues
