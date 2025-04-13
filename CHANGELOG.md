@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.11] - 2024-05-19
+### Added
+- Created separate "GU Branch Fix" plugin to fix Git Updater branch issues
+- Added deploy script for local testing
+
+### Fixed
+- Git Updater branch issues with 'main' vs 'master' branch names
+- Improved compatibility with Git Updater plugin
+
 ## [2.0.10] - 2024-05-18
 ### Fixed
 - Plugin details popup version display issue with Git Updater integration

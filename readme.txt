@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.0.10
+Stable tag: 2.0.11
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,12 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.0.11 =
+* Added: Created separate "GU Branch Fix" plugin to fix Git Updater branch issues
+* Added: Deploy script for local testing
+* Fixed: Git Updater branch issues with 'main' vs 'master' branch names
+* Improved: Compatibility with Git Updater plugin
 
 = 2.0.10 =
 * Fixed: Plugin details popup version display issue with Git Updater integration

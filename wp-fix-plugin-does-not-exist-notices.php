@@ -3,7 +3,7 @@
  * Plugin Name: Fix 'Plugin file does not exist' Notices
  * Plugin URI: https://www.wpallstars.com
  * Description: Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.
- * Version: 2.0.10
+ * Version: 2.0.11
  * Author: Marcus Quinn & WP ALLSTARS
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -12,6 +12,9 @@
  * Domain Path: /languages
  * GitHub Plugin URI: wpallstars/wp-fix-plugin-does-not-exist-notices
  * GitHub Branch: main
+ * Primary Branch: main
+ * Release Branch: main
+ * Release Asset: true
  * Update URI: https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices
  *
  * @package Fix_Plugin_Does_Not_Exist_Notices
@@ -23,9 +26,109 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants.
-define( 'FPDEN_VERSION', '2.0.10' );
+define( 'FPDEN_VERSION', '2.0.11' );
 define( 'FPDEN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FPDEN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+
+// Direct fix for Git Updater branch issue - added to main file to avoid loading issues
+add_action('plugins_loaded', 'fpden_init_git_updater_fixes');
+
+/**
+ * Initialize Git Updater fixes
+ *
+ * This function adds filters to fix Git Updater's handling of 'main' vs 'master' branches
+ * It uses named functions instead of anonymous functions for better compatibility
+ */
+function fpden_init_git_updater_fixes() {
+    // Fix for Git Updater looking for 'master' branch instead of 'main'
+    add_filter('gu_get_repo_branch', 'fpden_override_branch', 999, 3);
+
+    // Fix for Git Updater API URLs
+    add_filter('gu_get_repo_api', 'fpden_override_api_url', 999, 3);
+
+    // Fix for Git Updater download URLs
+    add_filter('gu_download_link', 'fpden_override_download_link', 999, 3);
+
+    // Fix for Git Updater repository metadata
+    add_filter('gu_get_repo_meta', 'fpden_override_repo_meta', 999, 2);
+
+    // Fix for Git Updater API responses
+    add_filter('gu_api_repo_type_data', 'fpden_override_repo_type_data', 999, 3);
+}
+
+/**
+ * Override the branch name for our plugin
+ */
+function fpden_override_branch($branch, $git, $repo) {
+    if (isset($repo->slug) &&
+        (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
+         strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
+        return 'main';
+    }
+    return $branch;
+}
+
+/**
+ * Override the API URL for our plugin
+ */
+function fpden_override_api_url($api_url, $git, $repo) {
+    if (isset($repo->slug) &&
+        (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
+         strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
+        return str_replace('/master/', '/main/', $api_url);
+    }
+    return $api_url;
+}
+
+/**
+ * Override the download link for our plugin
+ */
+function fpden_override_download_link($download_link, $git, $repo) {
+    if (isset($repo->slug) &&
+        (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
+         strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
+        return str_replace('/master.zip', '/main.zip', $download_link);
+    }
+    return $download_link;
+}
+
+/**
+ * Override repository metadata for our plugin
+ */
+function fpden_override_repo_meta($repo_meta, $repo) {
+    if (isset($repo->slug) &&
+        (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
+         strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
+
+        // Set the correct repository information
+        $repo_meta['github_updater_repo'] = 'wp-fix-plugin-does-not-exist-notices';
+        $repo_meta['github_updater_branch'] = 'main';
+        $repo_meta['github_updater_api'] = 'https://api.github.com';
+        $repo_meta['github_updater_raw'] = 'https://raw.githubusercontent.com/wpallstars/wp-fix-plugin-does-not-exist-notices/main';
+    }
+    return $repo_meta;
+}
+
+/**
+ * Override repository type data for our plugin
+ */
+function fpden_override_repo_type_data($data, $response, $repo) {
+    if (isset($repo->slug) &&
+        (strpos($repo->slug, 'wp-fix-plugin-does-not-exist-notices') !== false ||
+         strpos($repo->slug, 'fix-plugin-does-not-exist-notices') !== false)) {
+
+        // Set the correct branch
+        if (isset($data['branch'])) {
+            $data['branch'] = 'main';
+        }
+
+        // Set the correct version
+        if (isset($data['version'])) {
+            $data['version'] = FPDEN_VERSION;
+        }
+    }
+    return $data;
+}
 
 /**
  * Main plugin class.
@@ -88,12 +191,12 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			return;
 		}
 
-		// Always load the plugin details fix script on the plugins page
+		// Always load our version fix script on the plugins page
 		wp_enqueue_script(
-			'fpden-plugin-details-fix',
-			FPDEN_PLUGIN_URL . 'assets/js/plugin-details-fix.js',
-			array( 'jquery', 'thickbox' ), // Add thickbox dependency
-			FPDEN_VERSION . '.' . time(), // Add timestamp to force cache busting
+			'fpden-version-fix',
+			FPDEN_PLUGIN_URL . 'assets/js/version-fix.js',
+			array( 'jquery', 'thickbox' ),
+			FPDEN_VERSION,
 			true // Load in footer.
 		);
 
@@ -450,30 +553,73 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 			// Add a cache buster timestamp
 			$new_result->cache_buster = time();
 
-			// Get changelog from readme.txt
+			// Get full readme content for our plugin
 			$readme_file = FPDEN_PLUGIN_DIR . 'readme.txt';
-			$changelog = '<h2>' . FPDEN_VERSION . '</h2><ul><li>Fixed: Plugin details popup now correctly shows version and author information</li><li>Added: Cache-busting mechanism to ensure plugin details are always up-to-date</li><li>Improved: Author and contributor information display</li></ul>';
+			$readme_content = '';
+			$description = '';
+			$changelog = '';
+			$faq = '';
+			$installation = '';
+			$screenshots = '';
 
-			if (file_exists($readme_file)) {
+			if (file_exists($readme_file) && $our_plugin) {
 				$readme_content = file_get_contents($readme_file);
-				if (preg_match('/== Changelog ==\s*\n\s*= ' . FPDEN_VERSION . ' =(.*?)(?:= \d|$)/s', $readme_content, $matches)) {
-					$version_changelog = trim($matches[1]);
-					$changelog = '<h2>' . FPDEN_VERSION . '</h2>' . wpautop($version_changelog);
+
+				// Extract description
+				if (preg_match('/== Description ==(.+?)(?:==|$)/s', $readme_content, $matches)) {
+					$description = trim($matches[1]);
 				}
+
+				// Extract changelog
+				if (preg_match('/== Changelog ==(.+?)(?:==|$)/s', $readme_content, $matches)) {
+					$changelog = trim($matches[1]);
+				}
+
+				// Extract FAQ
+				if (preg_match('/== Frequently Asked Questions ==(.+?)(?:==|$)/s', $readme_content, $matches)) {
+					$faq = trim($matches[1]);
+				}
+
+				// Extract installation
+				if (preg_match('/== Installation ==(.+?)(?:==|$)/s', $readme_content, $matches)) {
+					$installation = trim($matches[1]);
+				}
+
+				// Extract screenshots
+				if (preg_match('/== Screenshots ==(.+?)(?:==|$)/s', $readme_content, $matches)) {
+					$screenshots = trim($matches[1]);
+				}
+			} else {
+				// Fallback content if readme.txt doesn't exist or for missing plugins
+				$changelog = '<h2>' . FPDEN_VERSION . '</h2><ul><li>Fixed: Plugin details popup version display issue with Git Updater integration</li><li>Added: JavaScript-based solution to ensure correct version display in plugin details</li><li>Improved: Version consistency across all plugin views</li><li>Enhanced: Cache busting for plugin information API</li></ul>';
 			}
 
-			$description = $our_plugin
-				? 'Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.'
-				: sprintf(
+			// Set description based on whether this is our plugin or a missing plugin
+			if ($our_plugin) {
+				$description = !empty($description) ? wpautop($description) : 'Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.';
+			} else {
+				$description = sprintf(
 					__( 'This plugin is still marked as "Active" in your database — but its folder and files can\'t be found in %s. Use the "Remove Notice" link on the plugins page to permanently remove it from your active plugins list and eliminate the error notice.', 'wp-fix-plugin-does-not-exist-notices' ),
 					'<code>/wp-content/plugins/</code>'
 				);
+			}
 
+			// Prepare sections
 			$new_result->sections = array(
 				'description' => $description,
-				'changelog' => $changelog,
-				'faq' => '<h3>Is it safe to remove plugin references?</h3><p>Yes, this plugin only removes entries from the WordPress active_plugins option, which is safe to modify when a plugin no longer exists.</p>'
+				'changelog' => !empty($changelog) ? wpautop($changelog) : $changelog,
+				'faq' => !empty($faq) ? wpautop($faq) : '<h3>Is it safe to remove plugin references?</h3><p>Yes, this plugin only removes entries from the WordPress active_plugins option, which is safe to modify when a plugin no longer exists.</p>',
 			);
+
+			// Add installation section if available
+			if (!empty($installation)) {
+				$new_result->sections['installation'] = wpautop($installation);
+			}
+
+			// Add screenshots section if available
+			if (!empty($screenshots)) {
+				$new_result->sections['screenshots'] = wpautop($screenshots);
+			}
 
 			// Add contributors information
 			$new_result->contributors = array(
