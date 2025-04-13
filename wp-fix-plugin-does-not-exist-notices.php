@@ -141,12 +141,13 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 		// Add each invalid plugin to the plugin list.
 		foreach ( $invalid_plugins as $plugin_path ) {
 			if ( ! isset( $plugins[ $plugin_path ] ) ) {
-				$plugin_name          = basename( $plugin_path );
+				$plugin_name = basename( $plugin_path );
 				$plugin_slug = dirname( $plugin_path );
 				if ( '.' === $plugin_slug ) {
 					$plugin_slug = basename( $plugin_path, '.php' );
 				}
 
+				// Create a basic plugin data array
 				$plugins[ $plugin_path ] = array(
 					'Name'        => $plugin_name . ' <span class="error">(File Missing)</span>',
 					/* translators: %s: Path to wp-content/plugins */
@@ -155,20 +156,22 @@ class Fix_Plugin_Does_Not_Exist_Notices {
 						'<code>/wp-content/plugins/</code>'
 					),
 					'Version'     => FPDEN_VERSION, // Use our plugin version instead of 'N/A'
-					'Author'      => '<a href="https://www.wpallstars.com">Marcus Quinn & WP ALLSTARS</a>',
+					'Author'      => 'Marcus Quinn & WP ALLSTARS',
 					'PluginURI'   => 'https://www.wpallstars.com',
 					'AuthorURI'   => 'https://www.wpallstars.com',
 					'Title'       => $plugin_name . ' (' . __( 'Missing', 'wp-fix-plugin-does-not-exist-notices' ) . ')',
 					'AuthorName'  => 'Marcus Quinn & WP ALLSTARS',
-					// Add fields needed for the "View details" link
-					'slug'        => $plugin_slug,
-					'plugin'      => $plugin_path,
-					// Add fields for plugin details and Git Updater
-					'update-supported' => true,
-					'GitHub Plugin URI' => 'wpallstars/wp-fix-plugin-does-not-exist-notices',
-					'GitHub Branch'    => 'main',
-					'TextDomain'      => 'wp-fix-plugin-does-not-exist-notices',
 				);
+
+				// Add the data needed for the "View details" link
+				$plugins[ $plugin_path ]['slug'] = $plugin_slug;
+				$plugins[ $plugin_path ]['plugin'] = $plugin_path;
+				$plugins[ $plugin_path ]['type'] = 'plugin';
+
+				// Add Git Updater fields
+				$plugins[ $plugin_path ]['GitHub Plugin URI'] = 'wpallstars/wp-fix-plugin-does-not-exist-notices';
+				$plugins[ $plugin_path ]['GitHub Branch'] = 'main';
+				$plugins[ $plugin_path ]['TextDomain'] = 'wp-fix-plugin-does-not-exist-notices';
 			}
 		}
 
