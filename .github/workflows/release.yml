@@ -40,6 +40,10 @@ jobs:
             cp -r languages build/wp-fix-plugin-does-not-exist-notices/
           fi
 
+          if [ -d ".wordpress-org" ]; then
+            cp -r .wordpress-org build/wp-fix-plugin-does-not-exist-notices/
+          fi
+
       - name: Create ZIP file
         run: |
           cd build
