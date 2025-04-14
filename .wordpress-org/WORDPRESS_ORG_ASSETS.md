@@ -14,9 +14,9 @@ When submitting a plugin to WordPress.org, you'll work with an SVN repository th
     banner-1544x500.png
     screenshot-1.png
 /tags/           # Contains tagged releases
-    /1.6.27/
+    /2.2.3/
         [plugin files]
-    /1.6.26/
+    /2.2.2-stable/
         [plugin files]
 /trunk/          # Contains the current version of the plugin
     [plugin files]
@@ -27,8 +27,6 @@ When submitting a plugin to WordPress.org, you'll work with an SVN repository th
 For languages that read from right to left (like Hebrew and Arabic), you can provide RTL-specific versions of your assets by appending `-rtl` to the filename. For example:
 - `banner-772x250-rtl.png`
 - `icon-256x256-rtl.png`
-
-Note: `-rtl` is specifically for Right-to-Left language support, not for dark theme versions.
 
 ## Asset Requirements
 
@@ -71,20 +69,20 @@ Note: `-rtl` is specifically for Right-to-Left language support, not for dark th
    - When you receive SVN access, use these commands:
    ```bash
    # Check out the repository
-   svn checkout https://plugins.svn.wordpress.org/fix-plugin-does-not-exist-notices/
+   svn checkout https://plugins.svn.wordpress.org/wp-fix-plugin-does-not-exist-notices/
 
    # Copy plugin files to trunk
-   cp -r [your-local-plugin-files]/* fix-plugin-does-not-exist-notices/trunk/
+   cp -r [your-local-plugin-files]/* wp-fix-plugin-does-not-exist-notices/trunk/
 
    # Copy assets to assets directory
-   cp .wordpress-org/assets/icon-256x256.png fix-plugin-does-not-exist-notices/assets/
-   cp .wordpress-org/assets/icon-128x128.png fix-plugin-does-not-exist-notices/assets/
-   cp .wordpress-org/assets/banner-772x250.png fix-plugin-does-not-exist-notices/assets/
-   cp .wordpress-org/assets/banner-1544x500.png fix-plugin-does-not-exist-notices/assets/
-   cp .wordpress-org/assets/screenshot-1.png fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/icon-256x256.png wp-fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/icon-128x128.png wp-fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/banner-772x250.png wp-fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/banner-1544x500.png wp-fix-plugin-does-not-exist-notices/assets/
+   cp .wordpress-org/assets/screenshot-1.png wp-fix-plugin-does-not-exist-notices/assets/
 
    # Add new files
-   cd fix-plugin-does-not-exist-notices
+   cd wp-fix-plugin-does-not-exist-notices
    svn add --force trunk/*
    svn add --force assets/*
 

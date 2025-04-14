@@ -53,9 +53,9 @@ When submitting to WordPress.org, your SVN repository will have this structure:
     banner-1544x500.png
     screenshot-1.png
 /tags/
-    /1.6.27/
+    /2.2.3/
         [plugin files]
-    /1.6.26/
+    /2.2.2-stable/
         [plugin files]
 /trunk/
     [current plugin files]
@@ -68,11 +68,11 @@ When submitting to WordPress.org, your SVN repository will have this structure:
 
 ```bash
 # Copy assets to WordPress.org SVN assets directory
-cp .wordpress-org/assets/icon-256x256.png /path/to/wordpress-svn/assets/
-cp .wordpress-org/assets/icon-128x128.png /path/to/wordpress-svn/assets/
-cp .wordpress-org/assets/banner-772x250.png /path/to/wordpress-svn/assets/
-cp .wordpress-org/assets/banner-1544x500.png /path/to/wordpress-svn/assets/
-cp .wordpress-org/assets/screenshot-1.png /path/to/wordpress-svn/assets/
+cp .wordpress-org/assets/icon-256x256.png wp-fix-plugin-does-not-exist-notices/assets/
+cp .wordpress-org/assets/icon-128x128.png wp-fix-plugin-does-not-exist-notices/assets/
+cp .wordpress-org/assets/banner-772x250.png wp-fix-plugin-does-not-exist-notices/assets/
+cp .wordpress-org/assets/banner-1544x500.png wp-fix-plugin-does-not-exist-notices/assets/
+cp .wordpress-org/assets/screenshot-1.png wp-fix-plugin-does-not-exist-notices/assets/
 ```
 
 ## Resources
