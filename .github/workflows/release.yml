@@ -29,6 +29,9 @@ jobs:
           cp LICENSE build/wp-fix-plugin-does-not-exist-notices/
           cp README.md build/wp-fix-plugin-does-not-exist-notices/
           cp -r assets build/wp-fix-plugin-does-not-exist-notices/
+          cp -r admin build/wp-fix-plugin-does-not-exist-notices/
+          cp -r includes build/wp-fix-plugin-does-not-exist-notices/
+          cp -r languages build/wp-fix-plugin-does-not-exist-notices/
 
       - name: Create ZIP file
         run: |
@@ -46,7 +49,7 @@ jobs:
             wp-fix-plugin-does-not-exist-notices-${{ steps.get_version.outputs.VERSION }}.zip
           body: |
             Fix 'Plugin file does not exist.' Notices v${{ steps.get_version.outputs.VERSION }}
-            
+
             See [CHANGELOG.md](https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/blob/main/CHANGELOG.md) for details.
 
   # Deploy to WordPress.org
@@ -57,7 +60,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
+
       - name: WordPress Plugin Deploy
         id: deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
