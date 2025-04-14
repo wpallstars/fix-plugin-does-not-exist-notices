@@ -14,9 +14,9 @@ When submitting a plugin to WordPress.org, you'll work with an SVN repository th
     banner-1544x500.png
     screenshot-1.png
 /tags/           # Contains tagged releases
-    /2.2.3/
+    /2.2.5/
         [plugin files]
-    /2.2.2-stable/
+    /2.2.4/
         [plugin files]
 /trunk/          # Contains the current version of the plugin
     [plugin files]

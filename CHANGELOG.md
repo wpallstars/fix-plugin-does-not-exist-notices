@@ -1,5 +1,11 @@
 All notable changes to this project should be documented both here and in the main Readme files.
 
+#### [2.2.5] - 2025-04-14
+#### Added
+- Documentation for the developer preferences memory file in .ai-workflows/
+- Improved AI assistant instructions for maintaining developer preferences
+- Updated version numbers across all files for consistency
+
 #### [2.2.4] - 2025-04-14
 #### Added
 - Developer preferences memory file for AI assistants

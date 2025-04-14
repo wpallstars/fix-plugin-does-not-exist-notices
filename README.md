@@ -234,6 +234,11 @@ For more information on Git Updater integration, see the [Git Updater Required H
 
 ## Changelog
 
+### 2.2.5
+* Added: Documentation for the developer preferences memory file in .ai-workflows/
+* Improved: AI assistant instructions for maintaining developer preferences
+* Updated: Version numbers across all files for consistency
+
 ### 2.2.4
 * Added: Developer preferences memory file for AI assistants
 * Improved: AI assistant documentation with instructions for maintaining developer preferences

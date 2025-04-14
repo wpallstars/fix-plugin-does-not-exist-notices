@@ -53,9 +53,9 @@ When submitting to WordPress.org, your SVN repository will have this structure:
     banner-1544x500.png
     screenshot-1.png
 /tags/
-    /2.2.3/
+    /2.2.5/
         [plugin files]
-    /2.2.2-stable/
+    /2.2.4/
         [plugin files]
 /trunk/
     [current plugin files]
