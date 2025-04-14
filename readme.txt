@@ -5,11 +5,11 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.1.1
+Stable tag: 2.2.2-stable
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily remove references to deleted plugins that cause "Plugin file does not exist" errors in your WordPress admin. By Marcus Quinn (marcusquinn.com) & WP ALLSTARS (wpallstars.com).
+Easily remove references to deleted plugins that cause "Plugin file does not exist" errors in your WordPress admin. By Marcus Quinn (marcusquinn.com) & WPALLSTARS (wpallstars.com).
 
 == Description ==
 
@@ -98,7 +98,7 @@ If you've installed this plugin from GitHub or Gitea, you'll need Git Updater to
 This plugin allows you to choose where you want to receive updates from:
 
 1. In the Plugins list, find "Fix 'Plugin file does not exist' Notices"
-2. Click the "Choose Update Source" link next to the plugin
+2. Click the "Update Source" link next to the plugin
 3. Select your preferred update source:
    * **WordPress.org**: Updates from the official WordPress.org repository (has a version update delay due to the WP.org policy review and approval process, best for unmonitored auto-updates)
    * **GitHub**: Updates directly from the GitHub repo main branch for the latest stable release (requires Git Updater plugin, best for monitored updates where the latest features and fixes are needed immediately)
@@ -178,6 +178,27 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.2.2-stable =
+* Changed: Renamed includes files to lowercase for consistency with the rest of the codebase
+* Removed: Redundant Git Updater patches and version-fix.js as they're no longer needed
+* Improved: Documentation for Git Updater integration and release process
+* Fixed: Token-efficient documentation with references to .ai-workflows files
+* Added: Comprehensive release process documentation with emphasis on merging to main branch
+
+= 2.2.1 =
+* Changed: Commented out version-fix.js script as it's no longer needed after refactoring
+* Fixed: Version consistency across all files
+
+= 2.2.0 =
+* Added: Completely refactored plugin to use OOP best practices
+* Added: New class structure with proper namespaces
+* Added: Improved code organization and maintainability
+* Added: Better separation of concerns with dedicated classes
+* Changed: "Choose Update Source" link to just "Update Source"
+* Fixed: Close button in the update source modal
+* Added: Links to the main page for each update source in the modal
+* Changed: Replaced all instances of "WP ALLSTARS" with "WPALLSTARS"
 
 = 2.1.1 =
 * Added: New "Choose Update Source" feature allowing users to select their preferred update source (WordPress.org, GitHub, or Gitea)

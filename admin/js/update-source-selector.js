@@ -56,6 +56,15 @@ jQuery(document).ready(function($) {
     // Separate handler for close button to ensure it works
     $(document).on('click', '.fpden-close-modal', function(e) {
         e.preventDefault();
+        e.stopPropagation(); // Prevent event bubbling
+        $('#fpden-update-source-modal').hide();
+        $('#fpden-modal-overlay').remove();
+    });
+
+    // Direct binding to the close button for extra reliability
+    $('.fpden-close-modal').on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation(); // Prevent event bubbling
         $('#fpden-update-source-modal').hide();
         $('#fpden-modal-overlay').remove();
     });

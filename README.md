@@ -209,7 +209,40 @@ The plugin works by:
 3. Adding helpful notifications near error messages
 4. Providing a secure method to remove plugin references from the database
 
+### Git Updater Integration
+
+This plugin is designed to work seamlessly with the Git Updater plugin for updates from GitHub and Gitea. To ensure proper integration:
+
+1. **Required Headers**: The plugin includes specific headers in the main plugin file that Git Updater uses to determine update sources and branches:
+   ```php
+   * GitHub Plugin URI: wpallstars/wp-fix-plugin-does-not-exist-notices
+   * GitHub Branch: main
+   * Primary Branch: main
+   * Release Branch: main
+   * Release Asset: true
+   * Gitea Plugin URI: https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices
+   * Gitea Branch: main
+   ```
+
+2. **Tagging Releases**: When creating a new release, always tag it with the 'v' prefix (e.g., `v2.2.0`) to ensure GitHub Actions can create the proper release assets.
+
+3. **GitHub Actions**: The repository includes a GitHub Actions workflow that automatically builds the plugin and creates a release with the .zip file when a new tag is pushed.
+
+4. **Update Source Selection**: The plugin includes a feature that allows users to choose their preferred update source (WordPress.org, GitHub, or Gitea).
+
+For more information on Git Updater integration, see the [Git Updater Required Headers documentation](https://git-updater.com/knowledge-base/required-headers/).
+
 ## Changelog
+
+### 2.2.0
+* Added: Completely refactored plugin to use OOP best practices
+* Added: New class structure with proper namespaces
+* Added: Improved code organization and maintainability
+* Added: Better separation of concerns with dedicated classes
+* Changed: "Choose Update Source" link to just "Update Source"
+* Fixed: Close button in the update source modal
+* Added: Links to the main page for each update source in the modal
+* Changed: Replaced all instances of "WP ALLSTARS" with "WPALLSTARS"
 
 ### 2.1.1
 * Added: New "Choose Update Source" feature allowing users to select their preferred update source (WordPress.org, GitHub, or Gitea)
@@ -385,7 +418,7 @@ The plugin works by:
 * Ensured compatibility with WordPress 6.4
 
 ### 1.6.12
-* Added WP ALLSTARS as a co-author
+* Added WPALLSTARS as a co-author
 * Updated author information and links
 * Added author websites to plugin description
 * Fixed issue with multiple author URLs
@@ -450,7 +483,7 @@ The plugin works by:
 * Fixed Git Updater repository URLs to use full repository paths
 * Corrected Update URI configuration for proper update detection
 * Improved version management following semantic versioning
-* Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+* Updated organization name from 'WP All Stars' to 'WPALLSTARS'
 * Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
 ### 1.6.2
