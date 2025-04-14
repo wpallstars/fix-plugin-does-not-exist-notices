@@ -21,14 +21,14 @@ This document outlines the folder structure of the plugin and explains the purpo
 - **admin/settings/** - Admin settings functionality
 - **admin/tools/** - Admin tools functionality
 - **admin/lib/** - Admin-specific library files and helper functions
+  - **admin/lib/admin.php** - Admin class for handling admin-specific functionality
+  - **admin/lib/modal.php** - Modal class for handling the update source selector modal
 
 ## Includes Directory
 
 The `includes/` directory contains the core plugin functionality:
 
-- **includes/admin.php** - Admin class for handling admin-specific functionality
 - **includes/core.php** - Core class for handling the main plugin functionality
-- **includes/modal.php** - Modal class for handling the update source selector modal
 - **includes/plugin.php** - Main plugin class that initializes all components
 - **includes/updater.php** - Updater class for handling plugin updates
 
@@ -52,8 +52,8 @@ When referring to files or directories in AI conversations, use the following fo
 
 - **@includes/plugin.php** - Main plugin class
 - **@includes/core.php** - Core functionality
-- **@includes/admin.php** - Admin functionality
-- **@includes/modal.php** - Modal functionality
+- **@admin/lib/admin.php** - Admin functionality
+- **@admin/lib/modal.php** - Modal functionality
 - **@includes/updater.php** - Updater functionality
 - **@admin/js/update-source-selector.js** - Update source selector JavaScript
 - **@admin/css/update-source-selector.css** - Update source selector CSS
