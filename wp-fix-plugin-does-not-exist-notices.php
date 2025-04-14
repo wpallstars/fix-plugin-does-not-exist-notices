@@ -15,7 +15,13 @@
  * Primary Branch: main
  * Release Branch: main
  * Release Asset: true
+ * Requires at least: 5.0
+ * Requires PHP: 7.0
  * Update URI: https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices
+ *
+ * Gitea Plugin URI: https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices
+ * Gitea Branch: main
+ * Gitea Languages: languages
  *
  * @package WPALLSTARS\FixPluginDoesNotExistNotices
  */

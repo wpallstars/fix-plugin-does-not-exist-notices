@@ -143,10 +143,16 @@ class Plugin {
      * Initialize Git Updater fixes
      *
      * This function adds filters to fix Git Updater's handling of 'main' vs 'master' branches
+     * Note: This fix is commented out as we're now using the proper plugin headers instead.
+     * See: https://git-updater.com/knowledge-base/required-headers/
      *
      * @return void
      */
     private function init_git_updater_fixes() {
+        // These fixes are no longer needed with proper plugin headers
+        // Keeping the code commented for reference
+
+        /*
         // Fix for Git Updater looking for 'master' branch instead of 'main'
         add_filter('gu_get_repo_branch', array($this, 'override_branch'), 999, 3);
 
@@ -161,6 +167,7 @@ class Plugin {
 
         // Fix for Git Updater API responses
         add_filter('gu_api_repo_type_data', array($this, 'override_repo_type_data'), 999, 3);
+        */
     }
 
     /**
