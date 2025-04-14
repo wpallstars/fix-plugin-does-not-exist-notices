@@ -32,7 +32,7 @@ if (!defined('WPINC')) {
 }
 
 // Load the main plugin class
-require_once plugin_dir_path(__FILE__) . 'includes/Plugin.php';
+require_once plugin_dir_path(__FILE__) . 'includes/plugin.php';
 
 // Initialize the plugin
 new WPALLSTARS\FixPluginDoesNotExistNotices\Plugin(__FILE__, '2.2.2-stable');
