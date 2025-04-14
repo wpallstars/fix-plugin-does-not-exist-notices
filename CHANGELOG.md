@@ -1,5 +1,13 @@
 All notable changes to this project should be documented both here and in the main Readme files.
 
+#### [2.2.2-stable] - 2025-04-14
+#### Changed
+- Renamed includes files to lowercase for consistency with the rest of the codebase
+- Removed redundant Git Updater patches and version-fix.js as they're no longer needed
+- Improved documentation for Git Updater integration and release process
+- Fixed token-efficient documentation with references to .ai-workflows files
+- Added comprehensive release process documentation with emphasis on merging to main branch
+
 #### [2.2.1] - 2025-04-14
 #### Changed
 - Commented out version-fix.js script as it's no longer needed after refactoring

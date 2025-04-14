@@ -63,12 +63,14 @@ new WPALLSTARS\FixPluginDoesNotExistNotices\Plugin(__FILE__, '{MAJOR}.{MINOR}.{P
 
 #### b. JavaScript Files with Version Constants
 
-Check for any JavaScript files that contain version constants, such as `admin/js/version-fix.js`:
+Check for any JavaScript files that might contain version constants:
 
 ```javascript
 // Current plugin version - this should match the version in the main plugin file
 const CURRENT_VERSION = '{MAJOR}.{MINOR}.{PATCH}';
 ```
+
+**Note**: As of version 2.2.1, we've removed redundant JavaScript files like `version-fix.js` since Git Updater now correctly detects the version from the main branch.
 
 #### c. CHANGELOG.md
 
@@ -170,9 +172,11 @@ https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/releases
 If the release doesn't appear or doesn't have the ZIP file attached, check the GitHub Actions page:
 https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/actions
 
-### 8. Merge to Main (When Ready)
+### 8. Merge to Main (CRITICAL STEP)
 
-When you're satisfied with the release, merge the feature branch to main:
+**IMPORTANT**: This step is critical for Git Updater to detect the new version. Git Updater reads the readme.txt file from the main branch, not from tags or releases.
+
+Merge the feature branch to main immediately after pushing the tag:
 
 ```bash
 git checkout main
@@ -182,6 +186,8 @@ git push gitea main
 ```
 
 The `--no-ff` flag creates a merge commit even if a fast-forward merge is possible, which helps preserve the branch history.
+
+**Note**: Only use named branches like feature/*, fix/*, etc. for development. Release branches (v*) should always be merged to main immediately after tagging to ensure Git Updater can detect the new version.
 
 ### 9. Verify Release
 
