@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.2.2-stable
+Stable tag: 2.2.3
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,12 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.2.3 =
+* Improved: Moved admin-specific files to admin/lib directory for better organization
+* Improved: Updated namespaces to reflect the new file locations
+* Added: Comprehensive folder structure documentation
+* Fixed: File references in the main plugin file
 
 = 2.2.2-stable =
 * Changed: Renamed includes files to lowercase for consistency with the rest of the codebase

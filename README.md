@@ -234,6 +234,23 @@ For more information on Git Updater integration, see the [Git Updater Required H
 
 ## Changelog
 
+### 2.2.3
+* Improved: Moved admin-specific files to admin/lib directory for better organization
+* Improved: Updated namespaces to reflect the new file locations
+* Added: Comprehensive folder structure documentation
+* Fixed: File references in the main plugin file
+
+### 2.2.2-stable
+* Changed: Renamed includes files to lowercase for consistency with the rest of the codebase
+* Removed: Redundant Git Updater patches and version-fix.js as they're no longer needed
+* Improved: Documentation for Git Updater integration and release process
+* Fixed: Token-efficient documentation with references to .ai-workflows files
+* Added: Comprehensive release process documentation with emphasis on merging to main branch
+
+### 2.2.1
+* Changed: Commented out version-fix.js script as it's no longer needed after refactoring
+* Fixed: Version consistency across all files
+
 ### 2.2.0
 * Added: Completely refactored plugin to use OOP best practices
 * Added: New class structure with proper namespaces

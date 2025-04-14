@@ -43,6 +43,8 @@ mkdir -p $BUILD_DIR/admin/css
 cp -r admin/css/* $BUILD_DIR/admin/css/
 mkdir -p $BUILD_DIR/admin/js
 cp -r admin/js/* $BUILD_DIR/admin/js/
+mkdir -p $BUILD_DIR/admin/lib
+cp -r admin/lib/* $BUILD_DIR/admin/lib/
 
 # Create assets directory structure
 mkdir -p $BUILD_DIR/assets

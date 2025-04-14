@@ -1,5 +1,12 @@
 All notable changes to this project should be documented both here and in the main Readme files.
 
+#### [2.2.3] - 2025-04-14
+#### Changed
+- Moved admin-specific files to admin/lib directory for better organization
+- Updated namespaces to reflect the new file locations
+- Added comprehensive folder structure documentation
+- Fixed file references in the main plugin file
+
 #### [2.2.2-stable] - 2025-04-14
 #### Changed
 - Renamed includes files to lowercase for consistency with the rest of the codebase
