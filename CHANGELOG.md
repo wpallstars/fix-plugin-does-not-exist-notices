@@ -1,5 +1,10 @@
 All notable changes to this project should be documented both here and in the main Readme files.
 
+#### [2.2.1] - 2025-04-14
+#### Changed
+- Commented out version-fix.js script as it's no longer needed after refactoring
+- Fixed version consistency across all files
+
 #### [2.2.0] - 2025-04-14
 #### Added
 - Completely refactored plugin to use OOP best practices
