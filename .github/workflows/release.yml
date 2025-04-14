@@ -28,10 +28,17 @@ jobs:
           cp readme.txt build/wp-fix-plugin-does-not-exist-notices/
           cp LICENSE build/wp-fix-plugin-does-not-exist-notices/
           cp README.md build/wp-fix-plugin-does-not-exist-notices/
-          cp -r assets build/wp-fix-plugin-does-not-exist-notices/
           cp -r admin build/wp-fix-plugin-does-not-exist-notices/
           cp -r includes build/wp-fix-plugin-does-not-exist-notices/
-          cp -r languages build/wp-fix-plugin-does-not-exist-notices/
+
+          # Copy directories if they exist
+          if [ -d "assets" ]; then
+            cp -r assets build/wp-fix-plugin-does-not-exist-notices/
+          fi
+
+          if [ -d "languages" ]; then
+            cp -r languages build/wp-fix-plugin-does-not-exist-notices/
+          fi
 
       - name: Create ZIP file
         run: |
