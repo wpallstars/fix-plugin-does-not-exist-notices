@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.7.2
 Requires PHP: 7.0
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,11 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.2.4 =
+* Added: Developer preferences memory file for AI assistants
+* Improved: AI assistant documentation with instructions for maintaining developer preferences
+* Updated: WordPress.org documentation with correct plugin slug and version numbers
 
 = 2.2.3 =
 * Improved: Moved admin-specific files to admin/lib directory for better organization

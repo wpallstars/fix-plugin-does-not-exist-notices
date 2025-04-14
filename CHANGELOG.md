@@ -1,5 +1,11 @@
 All notable changes to this project should be documented both here and in the main Readme files.
 
+#### [2.2.4] - 2025-04-14
+#### Added
+- Developer preferences memory file for AI assistants
+- Improved AI assistant documentation with instructions for maintaining developer preferences
+- Updated WordPress.org documentation with correct plugin slug and version numbers
+
 #### [2.2.3] - 2025-04-14
 #### Changed
 - Moved admin-specific files to admin/lib directory for better organization

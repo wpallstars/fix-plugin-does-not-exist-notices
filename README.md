@@ -234,6 +234,11 @@ For more information on Git Updater integration, see the [Git Updater Required H
 
 ## Changelog
 
+### 2.2.4
+* Added: Developer preferences memory file for AI assistants
+* Improved: AI assistant documentation with instructions for maintaining developer preferences
+* Updated: WordPress.org documentation with correct plugin slug and version numbers
+
 ### 2.2.3
 * Improved: Moved admin-specific files to admin/lib directory for better organization
 * Improved: Updated namespaces to reflect the new file locations
