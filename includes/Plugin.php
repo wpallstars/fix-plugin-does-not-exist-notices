@@ -52,7 +52,7 @@ class Plugin {
     /**
      * Admin functionality instance
      *
-     * @var Admin
+     * @var Admin\Admin
      */
     private $admin;
 
@@ -110,9 +110,9 @@ class Plugin {
         }
 
         // Load required files
-        require_once $this->plugin_dir . 'includes/Core.php';
-        require_once $this->plugin_dir . 'includes/Admin.php';
-        require_once $this->plugin_dir . 'includes/Modal.php';
+        require_once $this->plugin_dir . 'includes/core.php';
+        require_once $this->plugin_dir . 'admin/lib/admin.php';
+        require_once $this->plugin_dir . 'admin/lib/modal.php';
     }
 
     /**
@@ -125,7 +125,7 @@ class Plugin {
         $this->core = new Core();
 
         // Initialize admin functionality
-        $this->admin = new Admin($this->core);
+        $this->admin = new Admin\Admin($this->core);
 
         // Initialize Git Updater fixes
         $this->init_git_updater_fixes();
@@ -136,7 +136,7 @@ class Plugin {
         }
 
         // Initialize the modal for update source selection
-        new Modal();
+        new Admin\Modal();
     }
 
     /**
