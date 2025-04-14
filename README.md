@@ -211,6 +211,16 @@ The plugin works by:
 
 ## Changelog
 
+### 2.2.0
+* Added: Completely refactored plugin to use OOP best practices
+* Added: New class structure with proper namespaces
+* Added: Improved code organization and maintainability
+* Added: Better separation of concerns with dedicated classes
+* Changed: "Choose Update Source" link to just "Update Source"
+* Fixed: Close button in the update source modal
+* Added: Links to the main page for each update source in the modal
+* Changed: Replaced all instances of "WP ALLSTARS" with "WPALLSTARS"
+
 ### 2.1.1
 * Added: New "Choose Update Source" feature allowing users to select their preferred update source (WordPress.org, GitHub, or Gitea)
 * Added: Modal dialog with detailed information about each update source option
@@ -385,7 +395,7 @@ The plugin works by:
 * Ensured compatibility with WordPress 6.4
 
 ### 1.6.12
-* Added WP ALLSTARS as a co-author
+* Added WPALLSTARS as a co-author
 * Updated author information and links
 * Added author websites to plugin description
 * Fixed issue with multiple author URLs
@@ -450,7 +460,7 @@ The plugin works by:
 * Fixed Git Updater repository URLs to use full repository paths
 * Corrected Update URI configuration for proper update detection
 * Improved version management following semantic versioning
-* Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+* Updated organization name from 'WP All Stars' to 'WPALLSTARS'
 * Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
 ### 1.6.2

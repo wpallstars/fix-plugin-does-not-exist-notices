@@ -1,5 +1,18 @@
 All notable changes to this project should be documented both here and in the main Readme files.
 
+#### [2.2.0] - 2025-04-14
+#### Added
+- Completely refactored plugin to use OOP best practices
+- New class structure with proper namespaces
+- Improved code organization and maintainability
+- Better separation of concerns with dedicated classes
+
+#### Changed
+- Changed "Choose Update Source" link to just "Update Source"
+- Fixed close button in the update source modal
+- Added links to the main page for each update source in the modal
+- Replaced all instances of "WP ALLSTARS" with "WPALLSTARS"
+
 #### [2.1.1] - 2025-04-13
 #### Added
 - New "Choose Update Source" feature allowing users to select their preferred update source (WordPress.org, GitHub, or Gitea)
@@ -241,7 +254,7 @@ All notable changes to this project should be documented both here and in the ma
 
 #### [1.6.12] - 2025-03-14
 #### Added
-- Added WP ALLSTARS as a co-author
+- Added WPALLSTARS as a co-author
 - Updated author information and links
 - Added author websites to plugin description
 - Fixed issue with multiple author URLs
@@ -297,7 +310,7 @@ All notable changes to this project should be documented both here and in the ma
 - Version management following semantic versioning
 
 #### Changed
-- Updated organization name from 'WP All Stars' to 'WP ALLSTARS'
+- Updated organization name from 'WP All Stars' to 'WPALLSTARS'
 - Updated namespace from 'WPAllStars' to 'WPALLSTARS'
 
 #### [1.6.2] - 2025-03-04
