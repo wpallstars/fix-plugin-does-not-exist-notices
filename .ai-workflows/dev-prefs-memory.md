@@ -55,3 +55,8 @@ This document serves as a persistent memory for developer preferences establishe
 - Use a specific formatting style for the CHANGELOG.md file, using #### for section headings
 - When updating plugin versions, remember to update language files (POT/PO)
 - Comment out redundant code during testing
+
+### Potential AI Assised IDE Issues
+
+- Check for non-standard local terminal commandline customisations that might not be understood by the AI IDE in its terminal useage and cause errors in execution or confusion in not seeing expected results, and advise on how to resolve
+- Check for non-standard or multiple python and node.js versions, including homebrew versions, that might not be understood by the AI IDE in its terminal useage and cause errors in execution or confusion in not seeing expected results, and advise on how to resolve
