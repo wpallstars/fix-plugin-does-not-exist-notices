@@ -8,7 +8,7 @@
     'use strict';
 
     // Current plugin version - this should match the version in the main plugin file
-    const CURRENT_VERSION = '2.2.0';
+    const CURRENT_VERSION = '2.2.1';
 
     // Plugin slugs to check for
     const OUR_SLUGS = ['wp-fix-plugin-does-not-exist-notices', 'fix-plugin-does-not-exist-notices'];

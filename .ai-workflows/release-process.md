@@ -21,15 +21,23 @@ Based on the changes made, determine the appropriate version increment:
 
 ## Release Steps
 
-### 1. Create a New Branch
+### 1. Start from a Feature Branch or Create a New Branch
+
+You can either use an existing feature branch or create a new branch specifically for the release:
 
 ```bash
+# Option 1: Use existing feature branch
+git checkout feature/branch-name
+
+# Option 2: Create a new branch
 git checkout -b v{MAJOR}.{MINOR}.{PATCH}
 ```
 
 Example:
 ```bash
-git checkout -b v1.7.0
+git checkout feature/refactor-and-improvements
+# or
+git checkout -b v2.2.1
 ```
 
 ### 2. Update Version Numbers
@@ -38,42 +46,49 @@ Update the version number in the following files:
 
 #### a. Main Plugin File (wp-fix-plugin-does-not-exist-notices.php)
 
+Update both the plugin header and the version parameter in the Plugin class initialization:
+
 ```php
 /**
  * Plugin Name: Fix 'Plugin file does not exist.' Notices
- * Plugin URI: https://wordpress.org/plugins/fix-plugin-does-not-exist-notices/
- * Description: Adds missing plugins to the plugins list with a "Remove Reference" link so you can permanently clean up invalid plugin entries and remove error notices.
+ * Plugin URI: https://www.wpallstars.com
+ * Description: Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.
  * Version: {MAJOR}.{MINOR}.{PATCH}
  * ...
  */
+
+// At the bottom of the file, update the version parameter:
+new WPALLSTARS\FixPluginDoesNotExistNotices\Plugin(__FILE__, '{MAJOR}.{MINOR}.{PATCH}');
 ```
 
-Also update the FPDEN_VERSION constant:
+#### b. JavaScript Files with Version Constants
 
-```php
-define( 'FPDEN_VERSION', '{MAJOR}.{MINOR}.{PATCH}' );
+Check for any JavaScript files that contain version constants, such as `admin/js/version-fix.js`:
+
+```javascript
+// Current plugin version - this should match the version in the main plugin file
+const CURRENT_VERSION = '{MAJOR}.{MINOR}.{PATCH}';
 ```
 
-#### b. CHANGELOG.md
+#### c. CHANGELOG.md
 
 Add a new section at the top of the CHANGELOG.md file:
 
 ```markdown
-## [{MAJOR}.{MINOR}.{PATCH}] - YYYY-MM-DD
-### Added
-- New feature 1
-- New feature 2
+All notable changes to this project should be documented both here and in the main Readme files.
 
-### Changed
+#### [{MAJOR}.{MINOR}.{PATCH}] - YYYY-MM-DD
+#### Added/Changed/Fixed
 - Change 1
 - Change 2
+- Change 3
 
-### Fixed
-- Bug fix 1
-- Bug fix 2
+#### [{PREVIOUS_VERSION}] - YYYY-MM-DD
 ```
 
-#### c. POT File (languages/wp-fix-plugin-does-not-exist-notices.pot)
+Note: Use the `####` heading format for consistency with the existing CHANGELOG.md structure.
+
+#### d. POT File (languages/wp-fix-plugin-does-not-exist-notices.pot)
 
 Update the Project-Id-Version and POT-Creation-Date (IMPORTANT - don't forget this step!):
 
@@ -84,7 +99,7 @@ Update the Project-Id-Version and POT-Creation-Date (IMPORTANT - don't forget th
 
 Note: Always use the current date for POT-Creation-Date in the format YYYY-MM-DD.
 
-#### d. readme.txt
+#### e. readme.txt
 
 Update the stable tag:
 
@@ -96,73 +111,84 @@ Add a new entry to the changelog section:
 
 ```
 = {MAJOR}.{MINOR}.{PATCH} =
-* New feature 1
-* New feature 2
 * Change 1
 * Change 2
-* Fixed bug 1
-* Fixed bug 2
+* Change 3
 ```
 
-Update the upgrade notice section:
+### 3. Build and Test Locally
 
-```
-= {MAJOR}.{MINOR}.{PATCH} =
-Brief description of the most important changes in this release
-```
-
-### 3. Commit Changes
+Run the build script to create the plugin ZIP file and deploy to your local WordPress testing environment:
 
 ```bash
-git add wp-fix-plugin-does-not-exist-notices.php CHANGELOG.md readme.txt README.md languages/wp-fix-plugin-does-not-exist-notices.pot
-git commit -m "Prepare release v{MAJOR}.{MINOR}.{PATCH}"
+./build.sh {MAJOR}.{MINOR}.{PATCH}
 ```
 
-### 4. Test Changes Locally
+This will:
+1. Create a build directory
+2. Install composer dependencies
+3. Copy required files to the build directory
+4. Create a ZIP file named `wp-fix-plugin-does-not-exist-notices-{MAJOR}.{MINOR}.{PATCH}.zip`
+5. Deploy the plugin to your local WordPress testing environment
 
-Test the changes thoroughly on the version branch to ensure everything works as expected:
-
+Test the plugin thoroughly in your local WordPress environment:
 - Test with the latest WordPress version
-- Test with PHP 7.0+ (minimum supported version)
 - Verify all features work as expected
 - Check for any PHP warnings or notices
+- Test any specific changes made in this version
 
-### 5. Merge to Main
+### 4. Commit Changes
 
-When satisfied with testing, merge the version branch to main:
+```bash
+git add wp-fix-plugin-does-not-exist-notices.php CHANGELOG.md readme.txt admin/js/version-fix.js languages/wp-fix-plugin-does-not-exist-notices.pot
+git commit -m "Version {MAJOR}.{MINOR}.{PATCH} - Brief description of changes"
+```
+
+### 5. Create a Tag
+
+```bash
+git tag -a v{MAJOR}.{MINOR}.{PATCH} -m "Version {MAJOR}.{MINOR}.{PATCH} - Brief description of changes"
+```
+
+### 6. Push Branch and Tag to Remotes
+
+```bash
+# Push the branch
+git push github feature/branch-name
+git push gitea feature/branch-name
+
+# Push the tag
+git push github v{MAJOR}.{MINOR}.{PATCH}
+git push gitea v{MAJOR}.{MINOR}.{PATCH}
+```
+
+### 7. Verify GitHub Release
+
+Check that the GitHub release was created successfully with the ZIP file attached:
+https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/releases
+
+If the release doesn't appear or doesn't have the ZIP file attached, check the GitHub Actions page:
+https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/actions
+
+### 8. Merge to Main (When Ready)
+
+When you're satisfied with the release, merge the feature branch to main:
 
 ```bash
 git checkout main
-git merge v{MAJOR}.{MINOR}.{PATCH} --no-ff
-```
-
-The `--no-ff` flag creates a merge commit even if a fast-forward merge is possible, which helps preserve the branch history.
-
-### 6. Push Main to Remotes
-
-```bash
+git merge feature/branch-name --no-ff
 git push github main
 git push gitea main
 ```
 
-### 7. Create and Push Tag
-
-```bash
-git tag -a v{MAJOR}.{MINOR}.{PATCH} -m "Release version {MAJOR}.{MINOR}.{PATCH}"
-git push github refs/tags/v{MAJOR}.{MINOR}.{PATCH}
-git push gitea refs/tags/v{MAJOR}.{MINOR}.{PATCH}
-```
-
-### 8. Monitor GitHub Actions
-
-Open the GitHub Actions page to monitor the build and deployment process:
-https://github.com/wpallstars/wp-fix-plugin-does-not-exist-notices/actions
+The `--no-ff` flag creates a merge commit even if a fast-forward merge is possible, which helps preserve the branch history.
 
 ### 9. Verify Release
 
-- [ ] Check that the GitHub release was created successfully
-- [ ] Verify that the plugin was deployed to WordPress.org
-- [ ] Test the plugin from WordPress.org to ensure it works correctly
+- [ ] Check that the GitHub release was created successfully with the ZIP file attached
+- [ ] Verify that the plugin was deployed to WordPress.org (if applicable)
+- [ ] Test the plugin from the GitHub release ZIP to ensure it works correctly
+- [ ] Verify that Git Updater can detect and install the new version
 
 ## Testing Previous Versions
 

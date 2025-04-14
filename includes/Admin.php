@@ -45,7 +45,9 @@ class Admin {
             return;
         }
 
-        // Always load our version fix script on the plugins page
+        // Version fix script is no longer needed after refactoring
+        // Commented out for testing
+        /*
         wp_enqueue_script(
             'fpden-version-fix',
             FPDEN_PLUGIN_URL . 'admin/js/version-fix.js',
@@ -53,6 +55,7 @@ class Admin {
             FPDEN_VERSION,
             true // Load in footer
         );
+        */
 
         // Get invalid plugins to decide if other assets are needed
         $invalid_plugins = $this->core->get_invalid_plugins();

@@ -209,6 +209,29 @@ The plugin works by:
 3. Adding helpful notifications near error messages
 4. Providing a secure method to remove plugin references from the database
 
+### Git Updater Integration
+
+This plugin is designed to work seamlessly with the Git Updater plugin for updates from GitHub and Gitea. To ensure proper integration:
+
+1. **Required Headers**: The plugin includes specific headers in the main plugin file that Git Updater uses to determine update sources and branches:
+   ```php
+   * GitHub Plugin URI: wpallstars/wp-fix-plugin-does-not-exist-notices
+   * GitHub Branch: main
+   * Primary Branch: main
+   * Release Branch: main
+   * Release Asset: true
+   * Gitea Plugin URI: https://gitea.wpallstars.com/wpallstars/wp-fix-plugin-does-not-exist-notices
+   * Gitea Branch: main
+   ```
+
+2. **Tagging Releases**: When creating a new release, always tag it with the 'v' prefix (e.g., `v2.2.0`) to ensure GitHub Actions can create the proper release assets.
+
+3. **GitHub Actions**: The repository includes a GitHub Actions workflow that automatically builds the plugin and creates a release with the .zip file when a new tag is pushed.
+
+4. **Update Source Selection**: The plugin includes a feature that allows users to choose their preferred update source (WordPress.org, GitHub, or Gitea).
+
+For more information on Git Updater integration, see the [Git Updater Required Headers documentation](https://git-updater.com/knowledge-base/required-headers/).
+
 ## Changelog
 
 ### 2.2.0
