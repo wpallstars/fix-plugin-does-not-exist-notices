@@ -90,7 +90,24 @@ All notable changes to this project should be documented both here and in the ma
 
 Note: Use the `####` heading format for consistency with the existing CHANGELOG.md structure.
 
-#### d. POT File (languages/wp-fix-plugin-does-not-exist-notices.pot)
+#### d. README.md
+
+Update the Changelog section in the main README.md file to match the changes in readme.txt:
+
+```markdown
+## Changelog
+
+### {MAJOR}.{MINOR}.{PATCH}
+* Change 1
+* Change 2
+* Change 3
+
+### {PREVIOUS_VERSION}
+```
+
+**IMPORTANT**: Always keep the changelogs in README.md, readme.txt, and CHANGELOG.md in sync to avoid confusion.
+
+#### e. POT File (languages/wp-fix-plugin-does-not-exist-notices.pot)
 
 Update the Project-Id-Version and POT-Creation-Date (IMPORTANT - don't forget this step!):
 
@@ -101,7 +118,7 @@ Update the Project-Id-Version and POT-Creation-Date (IMPORTANT - don't forget th
 
 Note: Always use the current date for POT-Creation-Date in the format YYYY-MM-DD.
 
-#### e. readme.txt
+#### f. readme.txt
 
 Update the stable tag:
 
@@ -142,9 +159,11 @@ Test the plugin thoroughly in your local WordPress environment:
 ### 4. Commit Changes
 
 ```bash
-git add wp-fix-plugin-does-not-exist-notices.php CHANGELOG.md readme.txt admin/js/version-fix.js languages/wp-fix-plugin-does-not-exist-notices.pot
+git add wp-fix-plugin-does-not-exist-notices.php CHANGELOG.md README.md readme.txt languages/wp-fix-plugin-does-not-exist-notices.pot
 git commit -m "Version {MAJOR}.{MINOR}.{PATCH} - Brief description of changes"
 ```
+
+Note: Make sure to include README.md in your commit to keep all changelog files in sync.
 
 ### 5. Create a Tag
 
@@ -195,6 +214,7 @@ The `--no-ff` flag creates a merge commit even if a fast-forward merge is possib
 - [ ] Verify that the plugin was deployed to WordPress.org (if applicable)
 - [ ] Test the plugin from the GitHub release ZIP to ensure it works correctly
 - [ ] Verify that Git Updater can detect and install the new version
+- [ ] Confirm that all changelog files (README.md, readme.txt, and CHANGELOG.md) are in sync
 
 ## Testing Previous Versions
 
