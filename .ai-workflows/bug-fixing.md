@@ -6,15 +6,17 @@ This document provides guidance for AI assistants to help with bug fixing for th
 
 ### 1. Create a Bug Fix Branch
 
-Always start by creating a bug fix branch from the main branch:
+Always start by creating a bug fix branch from the latest main branch pulled from origin (this step is mandatory):
 
 ```bash
 git checkout main
-git pull github main
+git pull origin main  # Critical step - never skip this
 git checkout -b fix/bug-description
 ```
 
-Use a descriptive name that clearly indicates what bug is being fixed.
+Use a descriptive name that clearly indicates what bug is being fixed. If there's an issue number, include it in the branch name (e.g., `fix/123-plugin-activation-error`).
+
+For more detailed git workflow guidelines, see **@.ai-workflows/git-workflow.md**.
 
 ### 2. Understand the Bug
 
@@ -99,12 +101,17 @@ If the repository uses pull requests for code review, create a pull request from
 
 ## Determining Version Increment
 
-After fixing a bug, determine the appropriate version increment:
+After fixing a bug and confirming it works, determine the appropriate version increment:
 
 - **PATCH** (e.g., 1.6.0 → 1.6.1): For most bug fixes that don't change functionality
-  - **IMPORTANT**: Always increment the patch version for every change, even small ones, to make rollbacks easier if issues are found in testing
 - **MINOR** (e.g., 1.6.0 → 1.7.0): For bug fixes that introduce new features or significant changes
 - **MAJOR** (e.g., 1.6.0 → 2.0.0): For bug fixes that introduce breaking changes
+
+**IMPORTANT**: Don't update version numbers during initial development and testing. Only create a version branch (e.g., `v2.2.3`) and update version numbers when the fix is confirmed working.
+
+This approach is more time-efficient as it allows you to focus on fixing the bug without worrying about version updates until the fix is confirmed working.
+
+For detailed guidelines on time-efficient development and testing, see **@.ai-workflows/incremental-development.md**.
 
 ## Testing Previous Versions
 

@@ -15,30 +15,52 @@ This document provides step-by-step instructions for AI assistants to help with 
 Based on the changes made, determine the appropriate version increment:
 
 1. **PATCH** (e.g., 1.6.0 → 1.6.1): For bug fixes and minor improvements
-   - **IMPORTANT**: Always increment the patch version for every change, even small ones, to make rollbacks easier if issues are found in testing
 2. **MINOR** (e.g., 1.6.0 → 1.7.0): For new features and significant improvements
 3. **MAJOR** (e.g., 1.6.0 → 2.0.0): For breaking changes
+   - Only increment when numerous features and fixes are tested and confirmed stable
+
+**IMPORTANT**: For time-efficient development:
+- Use descriptive branches (`fix/`, `feature/`, `patch/`, `refactor/`) without version numbers during development
+- Don't update version numbers during initial development and testing
+- Only create version branches (e.g., `v2.2.3`) and update version numbers when changes are confirmed working
+
+This approach allows focusing on the changes without worrying about version updates until they're ready for release.
+
+For detailed guidelines on time-efficient development and testing, see **@.ai-workflows/incremental-development.md**.
 
 ## Release Steps
 
-### 1. Start from a Feature Branch or Create a New Branch
+### 1. Create a Version Branch
 
-You can either use an existing feature branch or create a new branch specifically for the release:
+When changes are confirmed working and ready for release:
 
 ```bash
-# Option 1: Use existing feature branch
-git checkout feature/branch-name
+# First, ensure you have the latest main branch
+git checkout main
+git pull origin main
 
-# Option 2: Create a new branch
+# Option 1: If you're coming from a development branch
+git checkout fix/your-fix-branch  # or feature/your-feature-branch
+
+# Option 2: Create a version branch directly from main
 git checkout -b v{MAJOR}.{MINOR}.{PATCH}
 ```
 
 Example:
 ```bash
-git checkout feature/refactor-and-improvements
-# or
-git checkout -b v2.2.1
+git checkout main
+git pull origin main
+
+# If coming from a development branch
+git checkout feature/add-new-selector
+
+# Create the version branch
+git checkout -b v2.3.0
 ```
+
+**IMPORTANT**: The version branch is where you'll update all version numbers. This should only be done after the changes have been tested and confirmed working.
+
+For more detailed git workflow guidelines, see **@.ai-workflows/git-workflow.md**.
 
 ### 2. Update Version Numbers
 
@@ -135,9 +157,11 @@ Add a new entry to the changelog section:
 * Change 3
 ```
 
-### 3. Build and Test Locally
+### 3. Build and Test
 
-Run the build script to create the plugin ZIP file and deploy to your local WordPress testing environment:
+#### Local Testing (Default for Incremental Development)
+
+For incremental development and testing, only local testing is required unless specifically requested:
 
 ```bash
 ./build.sh {MAJOR}.{MINOR}.{PATCH}
@@ -156,6 +180,17 @@ Test the plugin thoroughly in your local WordPress environment:
 - Check for any PHP warnings or notices
 - Test any specific changes made in this version
 
+#### Remote Testing (When Specifically Requested)
+
+When the user specifically requests remote testing, follow these additional steps after local testing:
+
+1. Commit changes to the remote repository
+2. Create and push a tag
+3. Verify that GitHub Actions builds the installable ZIP file
+4. Test the remotely built version
+
+This is necessary when testing Git Updater integration or other features that require the plugin to be installed from a remote source.
+
 ### 4. Commit Changes
 
 ```bash
@@ -170,6 +205,17 @@ Note: Make sure to include README.md in your commit to keep all changelog files 
 ```bash
 git tag -a v{MAJOR}.{MINOR}.{PATCH} -m "Version {MAJOR}.{MINOR}.{PATCH} - Brief description of changes"
 ```
+
+#### Marking a Version as Stable
+
+When the user confirms that a version is working correctly and stable:
+
+```bash
+# Create a stable tag for easy reference
+git tag -a v{MAJOR}.{MINOR}.{PATCH}-stable -m "Stable version {MAJOR}.{MINOR}.{PATCH}"
+```
+
+This provides a clear reference point for stable versions that can be used for rollbacks if needed.
 
 ### 6. Push Branch and Tag to Remotes
 
@@ -215,6 +261,7 @@ The `--no-ff` flag creates a merge commit even if a fast-forward merge is possib
 - [ ] Test the plugin from the GitHub release ZIP to ensure it works correctly
 - [ ] Verify that Git Updater can detect and install the new version
 - [ ] Confirm that all changelog files (README.md, readme.txt, and CHANGELOG.md) are in sync
+- [ ] Verify that all CI/CD checks have passed for the release
 
 ## Testing Previous Versions
 

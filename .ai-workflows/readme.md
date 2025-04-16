@@ -9,6 +9,8 @@ This directory contains workflow documentation for AI assistants working with th
 - **dev-prefs-memory.md**: Persistent memory of developer preferences
 - **feature-development.md**: Process for developing new features
 - **folder-structure.md**: Documentation of the plugin's folder structure and naming conventions
+- **git-workflow.md**: Detailed git workflow and branch management guidelines
+- **incremental-development.md**: Time-efficient approach for incremental development and testing
 - **local-env-vars.md**: Local development environment paths and URLs
 - **release-process.md**: Steps for preparing and publishing new releases
 
