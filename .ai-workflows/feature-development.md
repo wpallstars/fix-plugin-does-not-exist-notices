@@ -6,15 +6,17 @@ This document provides guidance for AI assistants to help with feature developme
 
 ### 1. Create a Feature Branch
 
-Always start by creating a feature branch from the main branch:
+Always start by creating a feature branch from the latest main branch pulled from origin (this step is mandatory):
 
 ```bash
 git checkout main
-git pull github main
+git pull origin main  # Critical step - never skip this
 git checkout -b feature/descriptive-name
 ```
 
-Use a descriptive name that clearly indicates what the feature is about.
+Use a descriptive name that clearly indicates what the feature is about. If there's an issue number, include it in the branch name (e.g., `feature/123-update-source-selector`).
+
+For more detailed git workflow guidelines, see **@.ai-workflows/git-workflow.md**.
 
 ### 2. Implement the Feature
 
@@ -58,21 +60,39 @@ git commit -m "Add feature: descriptive name"
 
 When the feature is ready to be released:
 
-1. Create a version branch for the release:
+1. Create a version branch with the appropriate version number (typically increment the minor version for features):
 
 ```bash
-git checkout -b v{MAJOR}.{MINOR}.{PATCH}
+# Example: from 2.2.0 to 2.3.0
+git checkout -b v{MAJOR}.{MINOR+1}.0
 ```
 
-2. Merge your feature branch into the version branch:
+2. Now update version numbers in all required files:
+
+- Main plugin file (wp-fix-plugin-does-not-exist-notices.php)
+- CHANGELOG.md (add a new version section)
+- readme.txt
+- README.md
+- languages/wp-fix-plugin-does-not-exist-notices.pot (Project-Id-Version)
+
+3. Commit the version updates:
 
 ```bash
-git merge feature/descriptive-name --no-ff
+git add .
+git commit -m "Version {MAJOR}.{MINOR+1}.0 - [brief description]"
 ```
 
-3. Update version numbers and changelog entries
+4. Tag the version as stable:
 
-4. Follow the standard release process from this point
+```bash
+git tag -a v{MAJOR}.{MINOR+1}.0-stable -m "Stable version {MAJOR}.{MINOR+1}.0"
+```
+
+5. Follow the standard release process from this point
+
+**IMPORTANT**: Don't update version numbers during initial development and testing. Only create a version branch and update version numbers when the feature is confirmed working.
+
+For detailed guidelines on time-efficient development and testing, see **@.ai-workflows/incremental-development.md**.
 
 ### 7. Push to Remote (Optional for Collaboration)
 
