@@ -1,5 +1,10 @@
 All notable changes to this project should be documented both here and in the main Readme files.
 
+#### [2.3.1] - 2025-04-16
+#### Updated
+- Tested compatibility with WordPress 6.8
+- Documentation to reflect WordPress 6.8 compatibility
+
 #### [2.3.0] - 2025-04-15
 #### Added
 - Improved time-efficient development workflow documentation

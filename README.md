@@ -234,6 +234,10 @@ For more information on Git Updater integration, see the [Git Updater Required H
 
 ## Changelog
 
+### 2.3.1
+* Updated: Tested compatibility with WordPress 6.8
+* Improved: Documentation to reflect WordPress 6.8 compatibility
+
 ### 2.3.0
 * Added: Improved time-efficient development workflow documentation
 * Added: New git workflow guidelines for better branch management
