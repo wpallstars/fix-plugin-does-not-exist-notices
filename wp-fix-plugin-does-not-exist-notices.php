@@ -3,7 +3,7 @@
  * Plugin Name: Fix 'Plugin file does not exist' Notices
  * Plugin URI: https://www.wpallstars.com
  * Description: Adds missing plugins to your plugins list with a "Remove Notice" action link, allowing you to safely clean up invalid plugin references.
- * Version: 2.3.0
+ * Version: 2.3.1
  * Author: Marcus Quinn & The WPALLSTARS Team
  * Author URI: https://www.wpallstars.com
  * License: GPL-2.0+
@@ -36,4 +36,4 @@ require_once plugin_dir_path(__FILE__) . 'includes/plugin.php';
 
 // Initialize the plugin
 // This is a test change for our new workflow
-new WPALLSTARS\FixPluginDoesNotExistNotices\Plugin(__FILE__, '2.3.0');
+new WPALLSTARS\FixPluginDoesNotExistNotices\Plugin(__FILE__, '2.3.1');

@@ -3,9 +3,9 @@ Contributors: surferking, wpallstars
 Donate link: https://www.wpallstars.com/
 Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file does not exist, wordpress error, plugin error, deactivated plugin, remove plugin reference, fix plugin error, plugin does not exist, plugin file does not exist error
 Requires at least: 5.0
-Tested up to: 6.7.2
+Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,10 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.3.1 =
+* Updated: Tested compatibility with WordPress 6.8
+* Improved: Documentation to reflect WordPress 6.8 compatibility
 
 = 2.3.0 =
 * Added: Improved time-efficient development workflow documentation
