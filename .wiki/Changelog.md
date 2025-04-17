@@ -2,6 +2,13 @@
 
 This page documents all notable changes to the "Fix 'Plugin file does not exist' Notices" plugin.
 
+## Version 2.4.0 (2025-04-17)
+- Added: Comprehensive documentation for working in multi-repository workspaces
+- Added: Guidelines to prevent feature hallucination in multi-repo environments
+- Added: New .ai-workflows/multi-repo-workspace.md file with detailed best practices
+- Improved: AI assistant documentation with repository context verification
+- Improved: Wiki documentation to accurately reflect plugin functionality
+
 ## Version 2.3.1 (2025-04-16)
 - Updated: Tested compatibility with WordPress 6.8
 - Improved: Documentation to reflect WordPress 6.8 compatibility
