@@ -35,8 +35,16 @@ Update relevant documentation to reflect the new feature:
 
 - Add a description to CHANGELOG.md under an "Unreleased" section
 - Update readme.txt if the feature affects user-facing functionality
+- Update README.md with the new feature description
 - Update inline documentation/comments
+- Update wiki documentation in the `.wiki` directory:
+  - Create or update feature-specific pages
+  - Update the Home.md page if necessary
+  - Add the feature to any relevant existing pages
+  - Add screenshots or examples if applicable
 - Remember that any feature addition will require a version increment in all relevant files
+
+For detailed guidelines on maintaining wiki documentation, see **@.ai-workflows/wiki-documentation.md**.
 
 ### 4. Testing
 
@@ -141,6 +149,31 @@ If the repository uses pull requests for code review, create a pull request from
 - Escape all output
 - Use nonces for form submissions
 - Use capability checks for user actions
+
+## Working in Multi-Repository Workspaces
+
+When developing features in a workspace with multiple repositories:
+
+1. **Verify Repository Context**:
+   - Confirm you're working in the correct repository before suggesting or implementing features
+   - Use `pwd` and `git remote -v` to verify the current repository
+
+2. **Feature Verification**:
+   - Before implementing a feature, verify it doesn't already exist in the current repository
+   - Don't assume features from other repositories should be implemented in this one
+   - Use `codebase-retrieval` to search for existing functionality
+
+3. **Repository-Specific Implementation**:
+   - Implement features appropriate for this specific plugin's purpose
+   - Maintain consistency with the current repository's architecture and coding style
+   - Don't copy code directly from other repositories without adaptation
+
+4. **Cross-Repository Inspiration**:
+   - If implementing a feature inspired by another repository, explicitly note that it's a new feature
+   - Adapt the feature to fit the current repository's needs and architecture
+   - Document the inspiration source in code comments
+
+For detailed guidelines on working in multi-repository workspaces, see **@.ai-workflows/multi-repo-workspace.md**.
 
 ## Feature Types and Implementation Guidelines
 

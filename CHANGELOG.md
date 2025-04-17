@@ -1,5 +1,15 @@
 All notable changes to this project should be documented both here and in the main Readme files.
 
+#### [2.4.0] - 2025-04-17
+#### Added
+- Comprehensive documentation for working in multi-repository workspaces
+- Guidelines to prevent feature hallucination in multi-repo environments
+- New .ai-workflows/multi-repo-workspace.md file with detailed best practices
+
+#### Improved
+- AI assistant documentation with repository context verification
+- Wiki documentation to accurately reflect plugin functionality
+
 #### [2.3.1] - 2025-04-16
 #### Updated
 - Tested compatibility with WordPress 6.8

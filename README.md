@@ -234,6 +234,13 @@ For more information on Git Updater integration, see the [Git Updater Required H
 
 ## Changelog
 
+### 2.4.0
+* Added: Comprehensive documentation for working in multi-repository workspaces
+* Added: Guidelines to prevent feature hallucination in multi-repo environments
+* Added: New .ai-workflows/multi-repo-workspace.md file with detailed best practices
+* Improved: AI assistant documentation with repository context verification
+* Improved: Wiki documentation to accurately reflect plugin functionality
+
 ### 2.3.1
 * Updated: Tested compatibility with WordPress 6.8
 * Improved: Documentation to reflect WordPress 6.8 compatibility

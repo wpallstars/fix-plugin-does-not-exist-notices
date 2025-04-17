@@ -5,7 +5,7 @@ Tags: plugins, missing plugins, cleanup, error fix, admin tools, plugin file doe
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.3.1
+Stable tag: 2.4.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -178,6 +178,13 @@ Manually editing the WordPress database is risky and requires technical knowledg
 1. Plugin in action - showing error message, explanation notification, and "Remove Notice" link
 
 == Changelog ==
+
+= 2.4.0 =
+* Added: Comprehensive documentation for working in multi-repository workspaces
+* Added: Guidelines to prevent feature hallucination in multi-repo environments
+* Added: New .ai-workflows/multi-repo-workspace.md file with detailed best practices
+* Improved: AI assistant documentation with repository context verification
+* Improved: Wiki documentation to accurately reflect plugin functionality
 
 = 2.3.1 =
 * Updated: Tested compatibility with WordPress 6.8
