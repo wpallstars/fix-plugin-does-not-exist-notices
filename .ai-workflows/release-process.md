@@ -8,6 +8,8 @@ This document provides step-by-step instructions for AI assistants to help with 
 - [ ] All bug fixes for this release are complete
 - [ ] CHANGELOG.md is up to date
 - [ ] readme.txt is up to date
+- [ ] README.md is up to date
+- [ ] Wiki documentation in the `.wiki` directory is up to date
 - [ ] All tests pass
 
 ## Determining the New Version Number
@@ -127,7 +129,7 @@ Update the Changelog section in the main README.md file to match the changes in 
 ### {PREVIOUS_VERSION}
 ```
 
-**IMPORTANT**: Always keep the changelogs in README.md, readme.txt, and CHANGELOG.md in sync to avoid confusion.
+**IMPORTANT**: Always keep the changelogs in README.md, readme.txt, CHANGELOG.md, and .wiki/Changelog.md in sync to avoid confusion.
 
 #### e. POT File (languages/wp-fix-plugin-does-not-exist-notices.pot)
 
@@ -156,6 +158,31 @@ Add a new entry to the changelog section:
 * Change 2
 * Change 3
 ```
+
+#### g. Wiki Documentation (.wiki/Changelog.md)
+
+Update the Changelog.md file in the .wiki directory to match the changes in CHANGELOG.md:
+
+```markdown
+# Changelog
+
+This page documents all notable changes to the "Fix 'Plugin file does not exist' Notices" plugin.
+
+## Version {MAJOR}.{MINOR}.{PATCH} (YYYY-MM-DD)
+- Change 1
+- Change 2
+- Change 3
+
+## Version {PREVIOUS_VERSION} (YYYY-MM-DD)
+```
+
+Also update any other wiki pages that might be affected by the changes in this release, such as:
+- .wiki/Home.md (if major features were added)
+- .wiki/How-It-Works.md (if the internal workings changed)
+- .wiki/Frequently-Asked-Questions.md (if new FAQs were added)
+- Feature-specific pages (if features were added or modified)
+
+For detailed guidelines on maintaining wiki documentation, see **@.ai-workflows/wiki-documentation.md**.
 
 ### 3. Build and Test
 
@@ -194,9 +221,11 @@ This is necessary when testing Git Updater integration or other features that re
 ### 4. Commit Changes
 
 ```bash
-git add wp-fix-plugin-does-not-exist-notices.php CHANGELOG.md README.md readme.txt languages/wp-fix-plugin-does-not-exist-notices.pot
+git add wp-fix-plugin-does-not-exist-notices.php CHANGELOG.md README.md readme.txt languages/wp-fix-plugin-does-not-exist-notices.pot .wiki/Changelog.md
 git commit -m "Version {MAJOR}.{MINOR}.{PATCH} - Brief description of changes"
 ```
+
+Note: If you've updated other wiki pages, make sure to include them in the git add command as well.
 
 Note: Make sure to include README.md in your commit to keep all changelog files in sync.
 
@@ -260,7 +289,9 @@ The `--no-ff` flag creates a merge commit even if a fast-forward merge is possib
 - [ ] Verify that the plugin was deployed to WordPress.org (if applicable)
 - [ ] Test the plugin from the GitHub release ZIP to ensure it works correctly
 - [ ] Verify that Git Updater can detect and install the new version
-- [ ] Confirm that all changelog files (README.md, readme.txt, and CHANGELOG.md) are in sync
+- [ ] Confirm that all changelog files (README.md, readme.txt, CHANGELOG.md, and .wiki/Changelog.md) are in sync
+- [ ] Verify that all wiki documentation is up to date and accurately reflects the changes in this release
+- [ ] Check that the wiki sync GitHub Action has run successfully (if changes were made to the .wiki directory)
 - [ ] Verify that all CI/CD checks have passed for the release
 
 ## Testing Previous Versions

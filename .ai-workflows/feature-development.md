@@ -35,8 +35,16 @@ Update relevant documentation to reflect the new feature:
 
 - Add a description to CHANGELOG.md under an "Unreleased" section
 - Update readme.txt if the feature affects user-facing functionality
+- Update README.md with the new feature description
 - Update inline documentation/comments
+- Update wiki documentation in the `.wiki` directory:
+  - Create or update feature-specific pages
+  - Update the Home.md page if necessary
+  - Add the feature to any relevant existing pages
+  - Add screenshots or examples if applicable
 - Remember that any feature addition will require a version increment in all relevant files
+
+For detailed guidelines on maintaining wiki documentation, see **@.ai-workflows/wiki-documentation.md**.
 
 ### 4. Testing
 

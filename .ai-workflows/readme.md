@@ -13,5 +13,6 @@ This directory contains workflow documentation for AI assistants working with th
 - **incremental-development.md**: Time-efficient approach for incremental development and testing
 - **local-env-vars.md**: Local development environment paths and URLs
 - **release-process.md**: Steps for preparing and publishing new releases
+- **wiki-documentation.md**: Guidelines for maintaining wiki documentation
 
 These documents help ensure consistent quality and approach when using AI tools to assist with development tasks.
