@@ -77,6 +77,32 @@ To ensure consistency across all documentation sources, follow these guidelines:
 2. Update the FAQ and troubleshooting sections based on user feedback
 3. Add new examples or clarifications based on user questions
 
+## Repository-Specific Documentation
+
+When working in a multi-repository workspace, it's critical to ensure that wiki documentation accurately reflects the features and functionality of the **current repository only**.
+
+### Avoiding Cross-Repository Confusion
+
+1. **Verify Features Before Documenting**:
+   - Always verify that a feature exists in the current repository before documenting it
+   - Use `codebase-retrieval` to search for feature implementations
+   - Check the actual code, not just comments or references
+
+2. **Repository-Specific Content**:
+   - Document only features that exist in the current repository
+   - Don't assume features from other repositories are present in this one
+   - Be explicit about which repository the documentation applies to
+
+3. **Feature Inspiration vs. Existing Features**:
+   - If documenting a feature inspired by another repository but not yet implemented, clearly mark it as a proposed feature
+   - Don't document features as if they exist when they're only planned or inspired by other repositories
+
+4. **Cross-Repository References**:
+   - If referencing functionality from another repository, clearly indicate that it's external
+   - Use phrases like "unlike Repository X, this plugin does not include..."
+
+For detailed guidelines on working in multi-repository workspaces, see **@.ai-workflows/multi-repo-workspace.md**.
+
 ## Best Practices
 
 ### Content Guidelines

@@ -150,6 +150,31 @@ If the repository uses pull requests for code review, create a pull request from
 - Use nonces for form submissions
 - Use capability checks for user actions
 
+## Working in Multi-Repository Workspaces
+
+When developing features in a workspace with multiple repositories:
+
+1. **Verify Repository Context**:
+   - Confirm you're working in the correct repository before suggesting or implementing features
+   - Use `pwd` and `git remote -v` to verify the current repository
+
+2. **Feature Verification**:
+   - Before implementing a feature, verify it doesn't already exist in the current repository
+   - Don't assume features from other repositories should be implemented in this one
+   - Use `codebase-retrieval` to search for existing functionality
+
+3. **Repository-Specific Implementation**:
+   - Implement features appropriate for this specific plugin's purpose
+   - Maintain consistency with the current repository's architecture and coding style
+   - Don't copy code directly from other repositories without adaptation
+
+4. **Cross-Repository Inspiration**:
+   - If implementing a feature inspired by another repository, explicitly note that it's a new feature
+   - Adapt the feature to fit the current repository's needs and architecture
+   - Document the inspiration source in code comments
+
+For detailed guidelines on working in multi-repository workspaces, see **@.ai-workflows/multi-repo-workspace.md**.
+
 ## Feature Types and Implementation Guidelines
 
 ### Admin Interface Features
