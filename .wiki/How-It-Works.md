@@ -14,8 +14,8 @@ The "Fix 'Plugin file does not exist' Notices" plugin addresses this issue by:
 
 1. Scanning the WordPress database for references to plugins
 2. Checking if the referenced plugin files actually exist
-3. Providing a user-friendly interface to remove references to non-existent plugins
-4. Automatically cleaning up the database to prevent the notices from appearing
+3. Adding missing plugins to the plugins list with a "Remove Notice" action link
+4. Allowing you to safely clean up invalid plugin references directly from the plugins page
 
 ## Technical Implementation
 
@@ -67,33 +67,36 @@ To ensure safety and prevent data corruption, the plugin:
 
 The plugin integrates with WordPress in the following ways:
 
-### Admin Interface
+### Admin Integration
 
-- Adds a menu item under **Tools > Fix Plugin Notices**
-- Provides a user-friendly interface for scanning and cleaning up orphaned references
-- Displays detailed information about detected issues
-- Offers bulk actions for efficient cleanup
+- Integrates directly with the WordPress plugins page
+- Adds missing plugins to the plugins list with "(File Missing)" indicator
+- Provides a "Remove Notice" action link for each orphaned plugin reference
+- Displays success/error messages after cleanup operations
+- Adds an "Update Source" link to select your preferred update source
 
-### Hooks and Filters
+### Modal Interface
 
-- Uses WordPress action hooks to integrate with the admin interface
-- Provides custom hooks and filters for developers to extend or modify functionality
-- Integrates with WordPress cron for scheduled scans
+- Provides a modal dialog for selecting the update source
+- Offers three options: WordPress.org, GitHub, and Gitea
+- Saves the selected update source preference
+- Ensures the plugin checks for updates from the selected source
 
-### WP-CLI Integration
+### Git Updater Integration
 
-- Provides WP-CLI commands for scanning and cleaning up orphaned references
-- Supports batch processing for large installations
-- Offers verbose output for debugging and logging
+- Integrates with the Git Updater plugin for updates from GitHub and Gitea
+- Provides proper plugin headers for Git Updater compatibility
+- Ensures correct version display in plugin details popup
 
 ## Performance Considerations
 
 The plugin is designed with performance in mind:
 
-- Scans are performed efficiently to minimize database queries
-- Resource-intensive operations are batched to prevent timeouts
-- Automatic scans are scheduled during low-traffic periods
-- Caching is used where appropriate to improve performance
+- Only runs on the plugins page where it's needed
+- Performs scans efficiently to minimize database queries
+- Uses WordPress core functions for database operations
+- Implements proper caching for plugin information
+- Has minimal impact on admin page load times
 
 ## Security Considerations
 

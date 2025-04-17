@@ -19,18 +19,18 @@ The "Fix 'Plugin file does not exist' Notices" plugin addresses a common issue i
 
 This plugin provides a simple, effective solution by:
 
-1. Automatically detecting and removing these orphaned plugin references
-2. Cleaning up the WordPress database to prevent the notices from appearing
-3. Providing a user-friendly interface to manage the cleanup process
+1. Automatically detecting orphaned plugin references in the WordPress database
+2. Adding these missing plugins to your plugins list with a "Remove Notice" action link
+3. Allowing you to safely clean up invalid plugin references directly from the plugins page
 
 ## Key Features
 
 - **Automatic Detection**: Identifies orphaned plugin references in the WordPress database
-- **One-Click Cleanup**: Removes the orphaned references with a single click
-- **Bulk Cleanup**: Handles multiple orphaned references at once
-- **Preventive Measures**: Helps prevent future occurrences of the issue
-- **Detailed Logging**: Keeps track of all cleanup actions for reference
-- **User-Friendly Interface**: Simple, intuitive controls for all users
+- **One-Click Cleanup**: Removes the orphaned references with a single click via the "Remove Notice" action link
+- **Seamless Integration**: Works directly within the WordPress plugins page
+- **No Settings Page**: Zero configuration required - just install and it works
+- **Multisite Compatible**: Works with both single-site and multisite WordPress installations
+- **Update Source Selection**: Choose between WordPress.org, GitHub, or Gitea for plugin updates
 
 ## Getting Started
 

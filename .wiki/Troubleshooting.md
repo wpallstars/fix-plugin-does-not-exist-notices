@@ -27,31 +27,27 @@ This page provides solutions to common issues you might encounter when using the
    - Clear your browser cache and any server-side caches.
    - Disable caching plugins temporarily to see if that resolves the issue.
 
-### Plugin Scan Fails or Times Out
+### Plugin Doesn't Detect Orphaned References on the Plugins Page
 
-**Issue**: The plugin scan fails to complete or times out.
+**Issue**: The plugin doesn't detect any orphaned references when you visit the plugins page.
 
 **Possible Causes and Solutions**:
 
-1. **Server Resource Limitations**:
-   - Your server might have resource limitations (memory, execution time) that prevent the scan from completing.
-   - Try increasing the PHP memory limit and execution time in your `wp-config.php` file:
-     ```php
-     define('WP_MEMORY_LIMIT', '256M');
-     define('WP_MAX_MEMORY_LIMIT', '512M');
-     set_time_limit(300); // 5 minutes
-     ```
+1. **Browser Caching**:
+   - Your browser might be caching the plugins page.
+   - Try clearing your browser cache or using a private/incognito window.
 
-2. **Large Database**:
-   - If you have a large database, the scan might take longer to complete.
-   - Try using the WP-CLI command instead, which is more efficient for large databases:
-     ```
-     wp fix-plugin-notices scan
-     ```
+2. **Plugin Conflicts**:
+   - Another plugin might be interfering with the plugins page.
+   - Try temporarily deactivating other plugins to see if that resolves the issue.
 
-3. **Server Configuration**:
-   - Some server configurations might block long-running processes.
-   - Contact your hosting provider to check if there are any restrictions on script execution time.
+3. **Theme Customizations**:
+   - Custom theme modifications might affect how the plugins page is displayed.
+   - Try switching to a default WordPress theme temporarily to see if that resolves the issue.
+
+4. **Server Configuration**:
+   - Some server configurations might affect how the plugin operates.
+   - Check your server's PHP version and ensure it meets the minimum requirements (PHP 7.0 or higher).
 
 ### Cleanup Doesn't Remove Notices
 
@@ -101,18 +97,20 @@ This page provides solutions to common issues you might encounter when using the
 
 ## Advanced Troubleshooting
 
-### Debugging Mode
+### WordPress Debugging
 
-You can enable debugging mode to get more detailed information about the plugin's operations:
+You can enable WordPress debugging to get more information about what's happening:
 
 1. Add the following code to your `wp-config.php` file:
    ```php
-   define('WPFPDEN_DEBUG', true);
+   define('WP_DEBUG', true);
+   define('WP_DEBUG_LOG', true);
+   define('WP_DEBUG_DISPLAY', false);
    ```
 
-2. Run the plugin scan and cleanup processes.
+2. Visit the plugins page and perform any cleanup actions.
 
-3. Check the debug log file in the plugin's `logs` directory for detailed information.
+3. Check the debug.log file in your wp-content directory for any relevant information.
 
 ### Manual Database Inspection
 

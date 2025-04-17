@@ -52,9 +52,10 @@ If you prefer to install the plugin via Git, you can clone the repository direct
 
 After installing and activating the plugin, you should:
 
-1. Navigate to **Tools > Fix Plugin Notices** in your WordPress admin dashboard.
+1. Navigate to **Plugins** in your WordPress admin dashboard.
 2. The plugin will automatically scan for orphaned plugin references.
-3. Follow the on-screen instructions to clean up any detected issues.
+3. Any detected orphaned references will appear in your plugins list with "(File Missing)" next to their name.
+4. Click the **Remove Notice** link under each orphaned plugin to clean it up.
 
 ## Troubleshooting Installation Issues
 

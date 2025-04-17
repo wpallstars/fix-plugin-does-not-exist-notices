@@ -42,20 +42,18 @@ Yes, this plugin is compatible with all major caching plugins. Since it only ope
 
 ### How often should I run the plugin?
 
-We recommend running the plugin:
+The plugin runs automatically whenever you visit the WordPress plugins page. You don't need to manually run it. We recommend checking your plugins page:
 - After manually deleting any plugins
 - When you see "Plugin file does not exist" notices in your admin dashboard
 - As part of your regular WordPress maintenance routine (monthly or quarterly)
 
-You can also configure the plugin to run automatic scans on a schedule of your choosing.
-
 ### Can I automate the cleanup process?
 
-Yes, you can configure the plugin to automatically clean up orphaned plugin references by enabling the "Automatic Cleanup" option in the plugin settings. You can also use the WP-CLI commands to include the cleanup process in your automated maintenance scripts.
+The plugin doesn't include automatic cleanup functionality. It's designed to give you control over which orphaned references to remove. This is intentional, as automatically removing plugin references could potentially cause issues if the references are still needed by other plugins or themes.
 
 ### Does the plugin create logs of its actions?
 
-Yes, the plugin maintains logs of all scanning and cleanup actions. You can view these logs in the plugin's dashboard or download them for reference. This is particularly useful for troubleshooting or for maintaining an audit trail of changes to your WordPress installation.
+No, the plugin doesn't create logs of its actions. It provides immediate feedback through WordPress admin notices when you remove a plugin reference, but it doesn't maintain a persistent log of these actions.
 
 ### Can I undo the changes made by the plugin?
 
